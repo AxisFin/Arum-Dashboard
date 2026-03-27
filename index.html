@@ -1,0 +1,4021 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ARUM | Dashboard Ejecutivo v20</title>
+  <style id="tw">
+*, *::before, *::after { box-sizing: border-box; }
+html { line-height: 1.5; -webkit-text-size-adjust: 100%; tab-size: 4; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; }
+body { margin: 0; line-height: inherit; }
+h1,h2,h3,h4,h5,h6 { font-size: inherit; font-weight: inherit; margin: 0; }
+p { margin: 0; }
+a { color: inherit; text-decoration: inherit; }
+b, strong { font-weight: bolder; }
+button, input, optgroup, select, textarea { font-family: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-size: 100%; font-weight: inherit; line-height: inherit; color: inherit; margin: 0; padding: 0; }
+button, select { text-transform: none; }
+button, [type='button'], [type='reset'], [type='submit'] { -webkit-appearance: button; background-color: transparent; background-image: none; }
+table { text-indent: 0; border-color: inherit; border-collapse: collapse; }
+input::placeholder { opacity: 1; color: #94a3b8; }
+select { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e"); background-position: right 0.5rem center; background-repeat: no-repeat; background-size: 1.5em 1.5em; padding-right: 2.5rem; appearance: none; }
+template { display: none; }
+[hidden] { display: none; }
+
+.bg-slate-100 { background-color: #f1f5f9 }
+.bg-slate-50 { background-color: #f8fafc }
+.bg-slate-50\/50 { background-color: rgba(248,250,252,0.5) }
+.bg-slate-50\/60 { background-color: rgba(248,250,252,0.6) }
+.bg-white\/70 { background-color: rgba(255,255,255,0.7) }
+.border { border-width: 1px }
+.border-b { border-bottom-width: 1px }
+.border-slate-100 { border-color: #f1f5f9 }
+.border-slate-200 { border-color: #e2e8f0 }
+.border-slate-200\/40 { border-color: rgba(226,232,240,0.4) }
+.border-slate-200\/50 { border-color: rgba(226,232,240,0.5) }
+.border-slate-200\/60 { border-color: rgba(226,232,240,0.6) }
+.border-slate-200\/70 { border-color: rgba(226,232,240,0.7) }
+.col-span-2 { grid-column: span 2 / span 2 }
+.cursor-pointer { cursor: pointer }
+.flex { display: flex }
+.flex-1 { flex: 1 1 0% }
+.flex-col { flex-direction: column }
+.flex-shrink-0 { flex-shrink: 0 }
+.flex-wrap { flex-wrap: wrap }
+.font-medium { font-weight: 500 }
+.font-semibold { font-weight: 600 }
+.gap-1\.5 { gap: 0.375rem }
+.gap-2 { gap: 0.5rem }
+.gap-3 { gap: 0.75rem }
+.gap-4 { gap: 1rem }
+.grid { display: grid }
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)) }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)) }
+.h-1 { height: 0.25rem }
+.h-10 { height: 2.5rem }
+.h-4 { height: 1rem }
+.hidden { display: none }
+.hover\:bg-slate-200:hover { background-color: #e2e8f0 }
+.hover\:bg-slate-50\/40:hover { background-color: rgba(248,250,252,0.4) }
+.hover\:bg-slate-50\/50:hover { background-color: rgba(248,250,252,0.5) }
+.hover\:bg-white:hover { background-color: #ffffff }
+.hover\:text-slate-800:hover { color: #1e293b }
+.italic { font-style: italic }
+.items-center { align-items: center }
+.items-end { align-items: flex-end }
+.justify-between { justify-content: space-between }
+.justify-center { justify-content: center }
+@media (min-width: 1024px) { .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+@media (min-width: 1024px) { .lg\:grid-cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)) } }
+@media (min-width: 1024px) { .lg\:grid-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)) } }
+@media (min-width: 1024px) { .lg\:items-end { align-items: flex-end } }
+@media (min-width: 1024px) { .lg\:justify-between { justify-content: space-between } }
+@media (min-width: 1024px) { .lg\:px-8 { padding-left: 2rem; padding-right: 2rem } }
+.max-w-7xl { max-width: 80rem }
+.mb-1 { margin-bottom: 0.25rem }
+.mb-2 { margin-bottom: 0.5rem }
+.mb-3 { margin-bottom: 0.75rem }
+@media (min-width: 768px) { .md\:col-span-2 { grid-column: span 2 / span 2 } }
+@media (min-width: 768px) { .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+@media (min-width: 768px) { .md\:grid-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)) } }
+.min-h-screen { min-height: 100vh }
+.min-w-full { min-width: 100% }
+.mt-0\.5 { margin-top: 0.125rem }
+.mt-1 { margin-top: 0.25rem }
+.mt-2 { margin-top: 0.5rem }
+.mt-3 { margin-top: 0.75rem }
+.mt-4 { margin-top: 1rem }
+.mt-5 { margin-top: 1.25rem }
+.mt-6 { margin-top: 1.5rem }
+.mt-8 { margin-top: 2rem }
+.mx-1 { margin-left: 0.25rem; margin-right: 0.25rem }
+.mx-auto { margin-left: auto; margin-right: auto }
+.p-10 { padding: 2.5rem }
+.p-4 { padding: 1rem }
+.pl-1 { padding-left: 0.25rem }
+.pl-2 { padding-left: 0.5rem }
+.pl-4 { padding-left: 1rem }
+.pr-2 { padding-right: 0.5rem }
+.pr-3 { padding-right: 0.75rem }
+.px-1 { padding-left: 0.25rem; padding-right: 0.25rem }
+.px-1\.5 { padding-left: 0.375rem; padding-right: 0.375rem }
+.px-2 { padding-left: 0.5rem; padding-right: 0.5rem }
+.px-3 { padding-left: 0.75rem; padding-right: 0.75rem }
+.px-4 { padding-left: 1rem; padding-right: 1rem }
+.py-0\.5 { padding-top: 0.125rem; padding-bottom: 0.125rem }
+.py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem }
+.py-1\.5 { padding-top: 0.375rem; padding-bottom: 0.375rem }
+.py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem }
+.py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem }
+.py-8 { padding-top: 2rem; padding-bottom: 2rem }
+.rounded { border-radius: 0.25rem }
+.rounded-2xl { border-radius: 1rem }
+.rounded-full { border-radius: 9999px }
+.rounded-lg { border-radius: 0.5rem }
+.rounded-xl { border-radius: 0.75rem }
+.self-center { align-self: center }
+.shadow-sm { box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05) }
+@media (min-width: 640px) { .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)) } }
+@media (min-width: 640px) { .sm\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)) } }
+@media (min-width: 640px) { .sm\:items-center { align-items: center } }
+@media (min-width: 640px) { .sm\:items-end { align-items: flex-end } }
+@media (min-width: 640px) { .sm\:justify-between { justify-content: space-between } }
+@media (min-width: 640px) { .sm\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem } }
+@media (min-width: 640px) { .sm\:text-3xl { font-size: 1.875rem; line-height: 2.25rem } }
+.space-y-4 > * + * { margin-top: 1rem }
+.text-2xl { font-size: 1.5rem; line-height: 2rem }
+.text-amber-600 { color: #d97706 }
+.text-center { text-align: center }
+.text-emerald-600 { color: #059669 }
+.text-left { text-align: left }
+.text-lg { font-size: 1.125rem; line-height: 1.75rem }
+.text-red-600 { color: #dc2626 }
+.text-right { text-align: right }
+.text-slate-200 { color: #e2e8f0 }
+.text-slate-300 { color: #cbd5e1 }
+.text-slate-400 { color: #94a3b8 }
+.text-slate-500 { color: #64748b }
+.text-slate-600 { color: #475569 }
+.text-slate-700 { color: #334155 }
+.text-slate-800 { color: #1e293b }
+.text-slate-900 { color: #0f172a }
+.text-sm { font-size: 0.875rem; line-height: 1.25rem }
+.text-white { color: #ffffff }
+.text-xl { font-size: 1.25rem; line-height: 1.75rem }
+.text-xs { font-size: 0.75rem; line-height: 1rem }
+.tracking-tight { letter-spacing: -0.025em }
+.tracking-wider { letter-spacing: 0.05em }
+.transition-all { transition-property: all; transition-timing-function: cubic-bezier(0.4,0,0.2,1); transition-duration: 150ms }
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+.uppercase { text-transform: uppercase }
+.w-10 { width: 2.5rem }
+.w-4 { width: 1rem }
+.w-52 { width: 13rem }
+.w-full { width: full }
+/* Arbitrary font sizes */
+.text-\[10px\] { font-size: 10px; line-height: 1.5; }
+.text-\[11px\] { font-size: 11px; line-height: 1.5; }
+
+/* Arbitrary max-widths */
+.max-w-\[140px\] { max-width: 140px; }
+.max-w-\[180px\] { max-width: 180px; }
+
+/* Responsive: sm:flex-row */
+@media (min-width: 640px) {
+  .sm\:flex-row { flex-direction: row; }
+  .sm\:items-end { align-items: flex-end; }
+  .sm\:items-center { align-items: center; }
+  .sm\:justify-between { justify-content: space-between; }
+  .sm\:flex-row { flex-direction: row; }
+  .sm\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .sm\:p-5 { padding: 1.25rem; }
+  .sm\:text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+  .sm\:col-span-3 { grid-column: span 3 / span 3; }
+  .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sm\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* Responsive: md:* */
+@media (min-width: 768px) {
+  .md\:col-span-2 { grid-column: span 2 / span 2; }
+  .md\:col-span-6 { grid-column: span 6 / span 6; }
+  .md\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .md\:grid-cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .md\:grid-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .md\:flex-row { flex-direction: row; }
+}
+
+/* Responsive: lg:* */
+@media (min-width: 1024px) {
+  .lg\:px-8 { padding-left: 2rem; padding-right: 2rem; }
+  .lg\:flex-row { flex-direction: row; }
+  .lg\:items-end { align-items: flex-end; }
+  .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lg\:grid-cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .lg\:grid-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+}
+
+/* Hover states */
+.hover\:bg-white:hover { background-color: #ffffff; }
+.hover\:bg-slate-50\/50:hover { background-color: rgba(248,250,252,0.5); }
+.hover\:bg-slate-200:hover { background-color: #e2e8f0; }
+.hover\:text-slate-800:hover { color: #1e293b; }
+
+  </style>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <style>
+    :root {
+      --arum-primary: #1F3A4A;
+      --arum-accent: #1BAF9B;
+      --arum-accent-2: #A6C85A;
+      --arum-bg: #F6F8FA;
+      --arum-danger: #DC2626;
+      --arum-warning: #D97706;
+      --arum-positive: #059669;
+    }
+    .arum-gradient {
+      background: radial-gradient(1200px circle at 10% 10%, rgba(27,175,155,.15), transparent 40%),
+                  radial-gradient(900px circle at 90% 0%, rgba(166,200,90,.15), transparent 38%),
+                  linear-gradient(180deg, rgba(31,58,74,.06), transparent 35%);
+    }
+    .arum-card {
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(15, 23, 42, .08);
+    }
+    .kpi { border-left: 4px solid var(--arum-accent); }
+    .pill {
+      border: 1px solid rgba(15, 23, 42, .10);
+      background: rgba(255,255,255,.75);
+    }
+    /* Tab nav */
+    .tab-btn { transition: background .15s, color .15s; }
+    /* Pulse bar */
+    .pulse-bar { background: rgba(255,255,255,.92); border: 1px solid rgba(15,23,42,.08); }
+    /* Semantic colors in tables */
+    .val-neg { color: var(--arum-danger); }
+    .val-pos { color: var(--arum-positive); }
+    .val-warn { color: var(--arum-warning); }
+    /* Status badges */
+    .badge { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 9999px; white-space: nowrap; }
+    .badge-new  { background: #DCFCE7; color: #166534; }
+    .badge-rec  { background: #DBEAFE; color: #1E40AF; }
+    .badge-lost { background: #FEE2E2; color: #991B1B; }
+    /* Alert KPI */
+    .kpi-alert { border-left-color: var(--arum-danger) !important; }
+    /* P&L metric rows */
+    .pyg-metric td { background: rgba(241,245,249,.6); font-weight: 600; }
+    .pyg-section td:first-child { font-weight: 600; }
+    /* Concentration bar */
+    .conc-bar { height: 4px; border-radius: 2px; background: var(--arum-accent); }
+    .conc-bar-warn { background: var(--arum-warning); }
+    .conc-bar-danger { background: var(--arum-danger); }
+    /* Scrollable table wrapper */
+    .tbl-scroll { overflow-x: auto; }
+    /* BU pill in table */
+    .bu-pill { font-size: 10px; padding: 1px 6px; border-radius: 9999px; background: rgba(31,58,74,.08); color: #1F3A4A; white-space: nowrap; }
+    /* Budget module */
+    .semaforo-green  { color: var(--arum-positive); }
+    .semaforo-amber  { color: var(--arum-warning); }
+    .semaforo-red    { color: var(--arum-danger); }
+    .dev-pos { color: var(--arum-positive); font-weight: 600; }
+    .dev-neg { color: var(--arum-danger); font-weight: 600; }
+    .dev-zero{ color: var(--arum-warning); }
+    .unmapped-row td { font-style: italic; color: #94A3B8; }
+    .progress-track { height: 5px; border-radius: 3px; background: rgba(15,23,42,.08); overflow: hidden; }
+    .progress-fill  { height: 5px; border-radius: 3px; transition: width .4s; }
+    /* Client panel */
+    .client-row-inactive { opacity: .55; }
+    .transition-all { transition: all .15s; }
+
+    /* ── Executive Filter Bar ──────────────────────────────── */
+    .exec-filter-select,
+    .exec-filter-input {
+      height: 32px;
+      padding: 0 10px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--arum-primary);
+      background: rgba(255,255,255,.8);
+      border: 1px solid rgba(15,23,42,.12);
+      border-radius: 8px;
+      outline: none;
+      cursor: pointer;
+      transition: border-color .15s, background .15s, box-shadow .15s;
+      white-space: nowrap;
+    }
+    .exec-filter-select { padding-right: 28px; }
+    .exec-filter-input  { min-width: 140px; }
+    .exec-filter-period { min-width: 120px; }
+
+    .exec-filter-select:hover,
+    .exec-filter-input:hover  { background: #fff; border-color: rgba(15,23,42,.22); }
+    .exec-filter-select:focus,
+    .exec-filter-input:focus  { background: #fff; border-color: var(--arum-accent); box-shadow: 0 0 0 3px rgba(27,175,155,.10); }
+
+    /* Active state — a filter has a non-default value */
+    .exec-filter-active {
+      background: rgba(27,175,155,.06) !important;
+      border-color: var(--arum-accent) !important;
+      color: var(--arum-accent) !important;
+    }
+
+    /* Separator between filter groups */
+    .exec-filter-sep {
+      width: 1px;
+      height: 20px;
+      background: rgba(15,23,42,.1);
+      flex-shrink: 0;
+    }
+
+    /* Client autocomplete container */
+    .exec-filter-client-wrap { position: relative; }
+    .exec-filter-clear {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 14px;
+      color: #94A3B8;
+      background: none;
+      border: none;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0;
+    }
+    .exec-filter-clear:hover { color: var(--arum-primary); }
+
+    /* Autocomplete dropdown */
+    .exec-filter-dropdown {
+      position: absolute;
+      z-index: 50;
+      top: calc(100% + 4px);
+      left: 0;
+      min-width: 220px;
+      background: #fff;
+      border: 1px solid rgba(15,23,42,.1);
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(15,23,42,.10);
+      overflow: hidden;
+      max-height: 220px;
+      overflow-y: auto;
+    }
+    .exec-filter-dropdown-item {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 7px 12px;
+      font-size: 12.5px;
+      color: #475569;
+      background: none;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .exec-filter-dropdown-item:hover { background: rgba(248,250,252,1); color: var(--arum-primary); }
+    .exec-filter-dropdown-all {
+      color: #94A3B8;
+      border-bottom: 1px solid rgba(15,23,42,.06);
+      font-size: 12px;
+    }
+    .exec-filter-dropdown-selected {
+      font-weight: 600;
+      background: rgba(27,175,155,.05);
+      color: var(--arum-accent);
+    }
+
+    /* Reset button — only shows when active */
+    .exec-filter-reset {
+      height: 32px;
+      padding: 0 12px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #64748B;
+      background: none;
+      border: 1px solid rgba(15,23,42,.12);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .exec-filter-reset:hover {
+      color: var(--arum-danger);
+      border-color: var(--arum-danger);
+      background: rgba(220,38,38,.04);
+    }
+
+    /* File upload — icon + text, unobtrusive */
+    .exec-filter-upload {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      height: 32px;
+      padding: 0 10px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #94A3B8;
+      background: none;
+      border: 1px solid rgba(15,23,42,.08);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all .15s;
+      white-space: nowrap;
+    }
+    .exec-filter-upload:hover { color: var(--arum-primary); border-color: rgba(15,23,42,.18); background: rgba(255,255,255,.8); }
+
+    /* Context bar — single ultra-compact line */
+    .exec-context-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(15,23,42,.05);
+    }
+    .exec-ctx-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 9px;
+      border-radius: 99px;
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 18px;
+    }
+    .exec-ctx-period {
+      background: rgba(31,58,74,.07);
+      color: var(--arum-primary);
+    }
+    .exec-ctx-dim {
+      background: rgba(27,175,155,.10);
+      color: var(--arum-accent);
+    }
+    .exec-ctx-sector {
+      background: rgba(99,102,241,.10);
+      color: #6366F1;
+    }
+    .exec-ctx-status {
+      margin-left: auto;
+      font-size: 10.5px;
+      color: #94A3B8;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[var(--arum-bg)] text-slate-900">
+<div class="arum-gradient min-h-screen">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8" x-data="dashboard()">
+
+  <!-- ═══ HEADER ═══ -->
+  <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+    <div class="flex items-center gap-3">
+      <div class="h-10 w-10 rounded-2xl flex-shrink-0" style="background:var(--arum-primary)"></div>
+      <div>
+        <h1 class="text-2xl sm:text-3xl font-semibold tracking-tight" style="color:var(--arum-primary)">ARUM · Dashboard Ejecutivo</h1>
+        <p class="text-sm text-slate-500">Revenues · P&amp;L · Budget 2026</p>
+      </div>
+    </div>
+    <!-- Tab nav -->
+    <div class="flex flex-wrap gap-2">
+      <template x-for="t in tabs" :key="t.id">
+        <button @click="tab=t.id"
+          class="tab-btn px-4 py-2 rounded-xl font-medium text-sm shadow-sm"
+          :class="tab===t.id ? 'text-white' : 'text-slate-700'"
+          :style="tab===t.id ? 'background:var(--arum-primary)' : 'background:rgba(255,255,255,.7);border:1px solid rgba(15,23,42,.1)'"
+          x-text="t.label">
+        </button>
+      </template>
+    </div>
+  </div>
+
+  <!-- ═══ PULSE BAR — siempre visible ═══ -->
+  <div class="mt-5 pulse-bar rounded-2xl px-4 py-3 shadow-sm">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+      <!-- Revenue YTD -->
+      <div>
+        <div class="text-[10px] uppercase tracking-wider text-slate-500">Revenue neto YTD</div>
+        <div class="mt-0.5 text-lg font-semibold" style="color:var(--arum-primary)" x-text="fmtEUR(pulseRevenueYTD())"></div>
+      </div>
+      <!-- YoY -->
+      <div>
+        <div class="text-[10px] uppercase tracking-wider text-slate-500">Crecimiento YoY</div>
+        <div class="mt-0.5 text-lg font-semibold"
+          :class="pulseYoY()>=0 ? 'text-emerald-600' : 'text-red-600'"
+          x-text="fmtPct(pulseYoY())">
+        </div>
+      </div>
+      <!-- Concentración -->
+      <div>
+        <div class="text-[10px] uppercase tracking-wider text-slate-500">Top 3 clientes</div>
+        <div class="mt-0.5 text-lg font-semibold"
+          :class="pulseConc()>0.5 ? 'text-amber-600' : 'text-slate-800'"
+          x-text="fmtPct(pulseConc())">
+        </div>
+      </div>
+      <!-- Mix público -->
+      <div>
+        <div class="text-[10px] uppercase tracking-wider text-slate-500">% Sector público</div>
+        <div class="mt-0.5 text-lg font-semibold"
+          :class="pulsePubPct()>0.65 ? 'text-amber-600' : 'text-slate-800'"
+          x-text="fmtPct(pulsePubPct())">
+        </div>
+      </div>
+      <!-- Vencido -->
+      <div>
+        <div class="text-[10px] uppercase tracking-wider text-slate-500">Facturas vencidas</div>
+        <div class="mt-0.5 text-lg font-semibold"
+          :class="pulseVencido()>0 ? 'text-red-600' : 'text-emerald-600'"
+          x-text="fmtEUR(pulseVencido())">
+        </div>
+      </div>
+      <!-- EBITDA % -->
+      <div>
+        <div class="text-[10px] uppercase tracking-wider text-slate-500">EBITDA % (PyG)</div>
+        <div class="mt-0.5 text-lg font-semibold"
+          :class="pulseEBITDApct()>0 ? 'text-emerald-600' : 'text-red-600'"
+          x-text="fmtPct(pulseEBITDApct())">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ GLOBAL FILTERS ═══ -->
+  <div class="mt-3 arum-card rounded-2xl shadow-sm" style="padding:12px 16px">
+
+    <!-- Single control row -->
+    <div class="flex flex-wrap items-center gap-2">
+
+      <!-- Año -->
+      <select class="exec-filter-select"
+              x-model.number="filters.year"
+              @change="activePreset='custom'; refreshAll()"
+              title="Año">
+        <template x-for="y in availableYears()" :key="y">
+          <option :value="y" x-text="y"></option>
+        </template>
+      </select>
+
+      <!-- Periodo — dropdown collapses all presets -->
+      <select class="exec-filter-select exec-filter-period"
+              :class="activePreset !== 'ytd' ? 'exec-filter-active' : ''"
+              x-model="activePreset"
+              @change="applyPreset($event.target.value)"
+              title="Periodo">
+        <option value="ytd">YTD</option>
+        <option value="fy">Año completo</option>
+        <option value="mtd">Mes actual (MTD)</option>
+        <option value="qtd">Trimestre actual (QTD)</option>
+        <option value="l12m">Últimos 12 meses</option>
+        <option value="q1">Q1 (Ene–Mar)</option>
+        <option value="q2">Q2 (Abr–Jun)</option>
+        <option value="q3">Q3 (Jul–Sep)</option>
+        <option value="q4">Q4 (Oct–Dic)</option>
+      </select>
+
+      <!-- Separator -->
+      <div class="exec-filter-sep"></div>
+
+      <!-- Business Unit -->
+      <select class="exec-filter-select"
+              :class="filters.bu !== '__ALL__' ? 'exec-filter-active' : ''"
+              x-model="filters.bu"
+              @change="filters.client='__ALL__'; refreshAll()"
+              title="Business Unit">
+        <option value="__ALL__">Todas las BUs</option>
+        <template x-for="bu in businessUnits" :key="bu">
+          <option :value="bu" x-text="bu"></option>
+        </template>
+      </select>
+
+      <!-- Cliente — autocomplete con dropdown compacto -->
+      <div class="relative exec-filter-client-wrap"
+           x-data="{ query: '', open: false }"
+           @click.away="open=false"
+           x-effect="if(filters.client==='__ALL__') query=''">
+        <div class="relative">
+          <input type="text"
+                 class="exec-filter-input"
+                 :class="filters.client !== '__ALL__' ? 'exec-filter-active' : ''"
+                 :value="filters.client !== '__ALL__' ? filters.client : query"
+                 @input="query=$event.target.value; filters.client='__ALL__'; open=true; refreshAll()"
+                 @focus="open=true"
+                 @keydown.escape="open=false; query=''; filters.client='__ALL__'; refreshAll()"
+                 placeholder="Cliente">
+          <button x-show="filters.client !== '__ALL__'"
+                  @click.stop="filters.client='__ALL__'; query=''; open=false; refreshAll()"
+                  class="exec-filter-clear">×</button>
+        </div>
+        <!-- Dropdown -->
+        <div x-show="open && clientMatches(query).length > 0"
+             class="exec-filter-dropdown">
+          <button @click="filters.client='__ALL__'; query=''; open=false; refreshAll()"
+                  class="exec-filter-dropdown-item exec-filter-dropdown-all">
+            Todos
+          </button>
+          <template x-for="c in clientMatches(query)" :key="c">
+            <button @click="filters.client=c; query=''; open=false; refreshAll()"
+                    class="exec-filter-dropdown-item"
+                    :class="filters.client===c ? 'exec-filter-dropdown-selected' : ''"
+                    x-text="c">
+            </button>
+          </template>
+        </div>
+      </div>
+
+      <!-- Sector -->
+      <select class="exec-filter-select"
+              :class="filters.naturaleza !== '__ALL__' ? 'exec-filter-active' : ''"
+              x-model="filters.naturaleza"
+              @change="refreshAll()"
+              title="Sector">
+        <option value="__ALL__">Público + Privado</option>
+        <option value="Publico">Público</option>
+        <option value="Privado">Privado</option>
+      </select>
+
+      <!-- Reset — solo visible cuando hay filtros activos -->
+      <button x-show="activeFilterCount() > 0"
+              @click="resetFilters()"
+              class="exec-filter-reset"
+              title="Limpiar filtros">
+        Limpiar
+      </button>
+
+      <!-- File upload — extremo derecho, discreto -->
+      <div class="ml-auto">
+        <label class="exec-filter-upload" :title="fileLabel">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <span x-text="fileLabel === 'Datos_Dashboard.xlsx (recomendado)' ? 'Subir Excel' : fileLabel.split(' ')[0]"></span>
+          <input type="file" accept=".xlsx,.xls" class="hidden" @change="onFile($event)">
+        </label>
+      </div>
+
+    </div>
+
+    <!-- Context bar — single line, ultra-compact -->
+    <div class="exec-context-bar"
+         x-show="true">
+      <span class="exec-ctx-pill exec-ctx-period" x-text="periodLabel()"></span>
+      <span class="exec-ctx-pill exec-ctx-dim"
+            x-show="filters.bu !== '__ALL__'"
+            x-text="filters.bu"></span>
+      <span class="exec-ctx-pill exec-ctx-dim"
+            x-show="filters.client !== '__ALL__'"
+            x-text="filters.client"></span>
+      <span class="exec-ctx-pill exec-ctx-sector"
+            x-show="filters.naturaleza !== '__ALL__'"
+            x-text="filters.naturaleza === 'Publico' ? 'Público' : 'Privado'"></span>
+      <span class="exec-ctx-status" x-text="dataStatus"></span>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       TAB 1: FACTURACIÓN / REVENUES
+  ══════════════════════════════════════════════════════════ -->
+  <section x-show="tab==='facturacion'" class="mt-6 space-y-4">
+
+    <!-- KPIs row — 5 cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+
+      <!-- Revenue neto -->
+      <div class="kpi arum-card rounded-2xl p-4 shadow-sm">
+        <div class="text-xs uppercase tracking-wider text-slate-500">Revenue neto</div>
+        <div class="mt-1 text-2xl font-semibold" style="color:var(--arum-primary)" x-text="fmtEUR(factNetTotal())"></div>
+        <div class="mt-1 text-xs text-slate-500">
+          <span x-text="filters.bu==='__ALL__' ? 'Todas las BUs' : filters.bu"></span>
+        </div>
+      </div>
+
+      <!-- Crecimiento YoY -->
+      <div class="kpi arum-card rounded-2xl p-4 shadow-sm" style="border-left-color:var(--arum-accent-2)">
+        <div class="text-xs uppercase tracking-wider text-slate-500">Crecimiento YoY</div>
+        <div class="mt-1 text-2xl font-semibold"
+          :class="factYoY(filters.year)>=0 ? 'text-emerald-600' : 'text-red-600'"
+          x-text="fmtPct(factYoY(filters.year))">
+        </div>
+        <div class="mt-1 text-xs text-slate-500" x-text="factYoYDetail(filters.year)"></div>
+      </div>
+
+      <!-- Concentración top 3 -->
+      <div class="kpi arum-card rounded-2xl p-4 shadow-sm"
+           :class="pulseConc()>0.5 ? 'kpi-alert' : ''"
+           style="border-left-color:var(--arum-warning)">
+        <div class="text-xs uppercase tracking-wider text-slate-500">Concentración top 3</div>
+        <div class="mt-1 text-2xl font-semibold"
+          :class="pulseConc()>0.5 ? 'text-amber-600' : 'text-slate-800'"
+          x-text="fmtPct(factConcentration(3))">
+        </div>
+        <div class="mt-1 text-xs text-slate-500">% revenue en top 3 clientes</div>
+        <!-- mini bar -->
+        <div class="mt-2 h-1 w-full bg-slate-100 rounded">
+          <div class="h-1 rounded transition-all"
+            :class="factConcentration(3)>0.5 ? 'conc-bar-danger' : 'conc-bar'"
+            :style="'width:'+Math.min(factConcentration(3)*100,100)+'%'">
+          </div>
+        </div>
+      </div>
+
+      <!-- Mix público/privado -->
+      <div class="kpi arum-card rounded-2xl p-4 shadow-sm" style="border-left-color:#6366F1">
+        <div class="text-xs uppercase tracking-wider text-slate-500">Sector público</div>
+        <div class="mt-1 text-2xl font-semibold"
+          :class="factPubPct()>0.65 ? 'text-amber-600' : 'text-slate-800'"
+          x-text="fmtPct(factPubPct())">
+        </div>
+        <div class="mt-1 text-xs text-slate-500">
+          <span x-text="'Privado: '+fmtPct(1-factPubPct())"></span>
+        </div>
+      </div>
+
+      <!-- Facturas vencidas -->
+      <div class="kpi arum-card rounded-2xl p-4 shadow-sm"
+           :class="pulseVencido()>0 ? 'kpi-alert' : ''"
+           :style="pulseVencido()>0 ? '' : 'border-left-color:var(--arum-positive)'">
+        <div class="text-xs uppercase tracking-wider text-slate-500">Vencidas sin cobrar</div>
+        <div class="mt-1 text-2xl font-semibold"
+          :class="pulseVencido()>0 ? 'text-red-600' : 'text-emerald-600'"
+          x-text="fmtEUR(pulseVencido())">
+        </div>
+        <div class="mt-1 text-xs text-slate-500" x-text="factVencidoCount()+' facturas vencidas'"></div>
+      </div>
+    </div>
+
+    <!-- Charts row -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+
+      <!-- Facturación mensual YoY -->
+      <div class="arum-card rounded-2xl p-4 shadow-sm">
+        <div class="flex items-center justify-between mb-1">
+          <div>
+            <div class="text-sm font-semibold" style="color:var(--arum-primary)">Facturación mensual</div>
+            <div class="text-xs text-slate-500">Revenue neto · año actual vs anterior</div>
+          </div>
+          <label class="pill rounded-xl px-2 py-1 text-xs flex items-center gap-1.5 cursor-pointer">
+            <input type="checkbox" x-model="showYoY" @change="refreshFacturacion()"/>
+            Comparar año anterior
+          </label>
+        </div>
+        <div style="position:relative;height:200px">
+          <canvas id="factLine"></canvas>
+        </div>
+      </div>
+
+      <!-- Revenue por BU apilado -->
+      <div class="arum-card rounded-2xl p-4 shadow-sm">
+        <div class="text-sm font-semibold mb-1" style="color:var(--arum-primary)">Revenue por BU</div>
+        <div class="text-xs text-slate-500 mb-2" x-text="'Año '+filters.year+' · por Business Unit'"></div>
+        <div style="position:relative;height:200px">
+          <canvas id="buBar"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── TOP CLIENTES DEL PERIODO (responde a filtros) ── -->
+    <div class="arum-card rounded-2xl shadow-sm overflow-hidden">
+
+      <!-- Header -->
+      <div class="px-4 pt-4 pb-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
+           style="border-bottom:1px solid rgba(15,23,42,.06)">
+        <div>
+          <div class="text-sm font-semibold" style="color:var(--arum-primary)">Top clientes del periodo</div>
+          <div class="text-[11px] text-slate-400 mt-0.5"
+               x-text="(periodTopN > 0 && topClientsPeriod().length > periodTopN)
+                 ? 'Mostrando top '+periodTopN+' de '+topClientsPeriod().length+' clientes · ordenar por columna'
+                 : 'Ranking según filtros activos · '+topClientsPeriod().length+' clientes · ordenar por columna'">
+          </div>
+        </div>
+
+        <!-- Controls: period pill + top-N select -->
+        <div class="flex flex-wrap items-center gap-2">
+          <!-- Period context -->
+          <span class="pill rounded-full px-3 py-1 text-[11px] font-medium" style="color:var(--arum-primary)"
+                x-text="periodLabel()"></span>
+          <span class="pill rounded-full px-3 py-1 text-[11px]" x-show="filters.bu!=='__ALL__'"
+                x-text="filters.bu"></span>
+
+          <!-- Top-N selector: native select, same pattern as topClientN and detailTopN -->
+          <select class="pill rounded-xl px-2 py-1.5 text-xs" x-model.number="periodTopN">
+            <option value="5">Top 5</option>
+            <option value="10">Top 10</option>
+            <option value="15">Top 15</option>
+            <option value="20">Top 20</option>
+            <option value="0">Todos</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-xs" style="border-collapse:separate;border-spacing:0">
+          <thead>
+            <tr style="background:rgba(248,250,252,0.8)">
+              <th class="py-2.5 pl-4 pr-2 text-left text-[10px] uppercase tracking-wider text-slate-400"
+                  style="width:32px">#</th>
+              <th class="py-2.5 px-2 text-left text-[10px] uppercase tracking-wider text-slate-400 cursor-pointer hover:text-slate-700"
+                  @click="periodSort.col='client'; periodSort.dir*=-1">
+                Cliente
+                <span x-show="periodSort.col==='client'" x-text="periodSort.dir>0?'↑':'↓'" class="text-slate-400"></span>
+              </th>
+              <th class="py-2.5 px-2 text-left text-[10px] uppercase tracking-wider text-slate-400">BU</th>
+              <th class="py-2.5 px-2 text-right text-[10px] uppercase tracking-wider text-slate-400 cursor-pointer hover:text-slate-700"
+                  @click="periodSort.col='revenue'; periodSort.dir*=-1">
+                Revenue
+                <span x-show="periodSort.col==='revenue'" x-text="periodSort.dir>0?'↑':'↓'" class="text-slate-400"></span>
+              </th>
+              <th class="py-2.5 px-2 text-right text-[10px] uppercase tracking-wider text-slate-400 cursor-pointer hover:text-slate-700"
+                  @click="periodSort.col='pct'; periodSort.dir*=-1">
+                % Total
+                <span x-show="periodSort.col==='pct'" x-text="periodSort.dir>0?'↑':'↓'" class="text-slate-400"></span>
+              </th>
+              <th class="py-2.5 pr-4 pl-2 text-right text-[10px] uppercase tracking-wider text-slate-400 cursor-pointer hover:text-slate-700"
+                  @click="periodSort.col='yoy'; periodSort.dir*=-1">
+                Var. vs año ant.
+                <span x-show="periodSort.col==='yoy'" x-text="periodSort.dir>0?'↑':'↓'" class="text-slate-400"></span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <template x-for="(c, idx) in periodRanked()" :key="c.client">
+              <tr class="hover:bg-slate-50/60 transition-all"
+                  style="border-top:1px solid rgba(15,23,42,.04)">
+
+                <td class="py-2.5 pl-4 pr-2 text-[11px] text-slate-400 font-medium"
+                    x-text="idx+1"></td>
+
+                <td class="py-2.5 px-2">
+                  <div class="font-semibold text-slate-800 truncate" style="max-width:200px"
+                       :title="c.client" x-text="c.client"></div>
+                </td>
+
+                <td class="py-2.5 px-2">
+                  <span class="bu-pill" x-text="c.bu||'—'"></span>
+                </td>
+
+                <td class="py-2.5 px-2 text-right">
+                  <div class="font-semibold text-slate-800" x-text="fmtEUR(c.revenue)"></div>
+                  <div class="mt-1 rounded-full overflow-hidden ml-auto" style="height:3px;background:rgba(15,23,42,.07);max-width:80px">
+                    <div class="h-full rounded-full"
+                         :style="'width:'+Math.min(c.pct*100*2,100)+'%;background:var(--arum-accent)'"></div>
+                  </div>
+                </td>
+
+                <td class="py-2.5 px-2 text-right">
+                  <div class="font-medium"
+                       :class="c.pct>0.20 ? 'text-amber-600' : 'text-slate-600'"
+                       x-text="fmtPct(c.pct)"></div>
+                  <div class="text-[10px] mt-0.5"
+                       :class="c.pct>0.20 ? 'text-amber-500' : 'text-slate-400'"
+                       x-text="c.pct>0.20 ? '⚠ alta conc.' : ''"></div>
+                </td>
+
+                <td class="py-2.5 pr-4 pl-2 text-right">
+                  <template x-if="c.prevRevenue > 0">
+                    <div>
+                      <div class="font-semibold flex items-center justify-end gap-1"
+                           :class="c.yoy>0.05?'text-emerald-600':c.yoy<-0.05?'text-red-600':'text-slate-500'">
+                        <span x-text="yoyArrow(c.yoy)"></span>
+                        <span x-text="fmtPct(Math.abs(c.yoy))"></span>
+                      </div>
+                      <div class="text-[10px] text-slate-400 mt-0.5"
+                           x-text="(c.yoy>=0?'+':'')+fmtEUR(c.revenue-c.prevRevenue)"></div>
+                    </div>
+                  </template>
+                  <template x-if="c.prevRevenue === 0">
+                    <div>
+                      <div class="font-semibold text-emerald-600 text-[11px]">Nuevo</div>
+                      <div class="text-[10px] text-slate-400">sin histórico</div>
+                    </div>
+                  </template>
+                </td>
+
+              </tr>
+            </template>
+            <tr x-show="topClientsPeriod().length===0">
+              <td colspan="6" class="py-8 text-center text-slate-400 text-xs">
+                Sin datos para el periodo seleccionado
+              </td>
+            </tr>
+          </tbody>
+          <tfoot x-show="topClientsPeriod().length>0">
+            <tr style="background:rgba(248,250,252,0.9);border-top:1px solid rgba(15,23,42,.08)">
+              <td class="py-2 pl-4 pr-2"></td>
+              <td class="py-2 px-2 text-[11px] font-semibold text-slate-500">
+                <span x-text="periodTopN > 0 && topClientsPeriod().length > periodTopN
+                  ? 'Top '+periodTopN+' / '+topClientsPeriod().length+' clientes'
+                  : topClientsPeriod().length+' clientes'">
+                </span>
+              </td>
+              <td class="py-2 px-2"></td>
+              <!-- Revenue total always = full period, regardless of slice -->
+              <td class="py-2 px-2 text-right text-[11px] font-semibold text-slate-700"
+                  x-text="fmtEUR(topClientsPeriod().reduce((a,c)=>a+c.revenue,0))"></td>
+              <td class="py-2 px-2 text-right text-[11px] font-semibold text-slate-500">
+                <span x-show="periodTopN > 0 && topClientsPeriod().length > periodTopN"
+                      x-text="fmtPct(periodRanked().reduce((a,c)=>a+c.pct,0))"
+                      class="text-slate-400"
+                      :title="'Los top '+periodTopN+' concentran este % del total del periodo'">
+                </span>
+                <span x-show="!(periodTopN > 0 && topClientsPeriod().length > periodTopN)">100%</span>
+              </td>
+              <td class="py-2 pr-4 pl-2 text-right text-[11px] font-semibold"
+                  :class="(()=>{ const curr=topClientsPeriod().reduce((a,c)=>a+c.revenue,0); const prev=topClientsPeriod().reduce((a,c)=>a+c.prevRevenue,0); return curr>=prev?'text-emerald-600':'text-red-600'; })()"
+                  x-text="(()=>{ const curr=topClientsPeriod().reduce((a,c)=>a+c.revenue,0); const prev=topClientsPeriod().reduce((a,c)=>a+c.prevRevenue,0); return prev>0?(curr>=prev?'+':'')+fmtPct((curr-prev)/prev):'—'; })()">
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── CLIENT INTELLIGENCE PANEL ── -->
+    <div class="arum-card rounded-2xl p-4 shadow-sm">
+
+      <!-- Header row -->
+      <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between mb-4">
+        <div>
+          <div class="text-sm font-semibold" style="color:var(--arum-primary)">Cartera de clientes</div>
+          <div class="text-[11px] text-slate-400 mt-0.5">
+            Revenue · tendencia · concentración · riesgo
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <select class="pill rounded-xl px-2 py-1.5 text-xs" x-model.number="topClientN" @change="refreshFacturacion()">
+            <option value="10">Top 10</option>
+            <option value="15">Top 15</option>
+            <option value="20">Top 20</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- KPI strip: 3 executive cards, consistent with .kpi pattern -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+
+        <!-- Concentración top 3 -->
+        <div class="kpi arum-card rounded-2xl p-4 shadow-sm"
+             :class="factConcentration(3) > 0.5 ? 'kpi-alert' : ''"
+             :style="factConcentration(3) > 0.5 ? '' : 'border-left-color:var(--arum-warning)'">
+          <div class="text-xs uppercase tracking-wider text-slate-500">Concentración top 3</div>
+          <div class="mt-1 text-2xl font-semibold"
+               :class="factConcentration(3) > 0.5 ? 'text-amber-600' : 'text-slate-800'"
+               x-text="fmtPct(factConcentration(3))"></div>
+          <div class="mt-1 text-xs text-slate-500"
+               x-text="factConcentration(3) > 0.5 ? '⚠ Riesgo de concentración' : 'Distribución sana'"></div>
+          <!-- Mini bar -->
+          <div class="mt-2 h-1 w-full rounded-full overflow-hidden" style="background:rgba(15,23,42,.07)">
+            <div class="h-full rounded-full transition-all"
+                 :class="factConcentration(3) > 0.5 ? 'conc-bar-danger' : 'conc-bar'"
+                 :style="'width:'+Math.min(factConcentration(3)*100,100)+'%'"></div>
+          </div>
+        </div>
+
+        <!-- Clientes activos -->
+        <div class="kpi arum-card rounded-2xl p-4 shadow-sm"
+             :class="carteraRows().filter(c=>c.status==='No activo').length > 0 ? 'kpi-alert' : ''"
+             :style="carteraRows().filter(c=>c.status==='No activo').length > 0 ? '' : 'border-left-color:var(--arum-accent)'">
+          <div class="text-xs uppercase tracking-wider text-slate-500">Clientes activos</div>
+          <div class="mt-1 text-2xl font-semibold text-slate-800">
+            <span x-text="carteraRows().filter(c=>c.yCurr>0).length"></span><span class="text-base font-normal text-slate-400" x-text="' / '+carteraRows().length"></span>
+          </div>
+          <div class="mt-1 text-xs"
+               :class="carteraRows().filter(c=>c.status==='No activo').length > 0 ? 'text-amber-600' : 'text-slate-500'"
+               x-text="carteraRows().filter(c=>c.status==='No activo').length > 0
+                 ? carteraRows().filter(c=>c.status==='No activo').length + ' perdidos vs año ant.'
+                 : 'Sin bajas este año'"></div>
+        </div>
+
+        <!-- Nuevos clientes -->
+        <div class="kpi arum-card rounded-2xl p-4 shadow-sm"
+             style="border-left-color:var(--arum-positive)">
+          <div class="text-xs uppercase tracking-wider text-slate-500">Nuevos clientes</div>
+          <div class="mt-1 text-2xl font-semibold text-emerald-600"
+               x-text="carteraRows().filter(c=>c.status==='Nuevo').length"></div>
+          <div class="mt-1 text-xs text-slate-500"
+               x-text="'vs '+carteraRows().filter(c=>c.status==='Recurrente').length+' recurrentes'"></div>
+        </div>
+
+      </div>
+
+      <!-- Client rows -->
+      <div class="space-y-px">
+        <template x-for="(c, idx) in carteraRows()" :key="c.client">
+          <div class="group rounded-xl px-3 py-2.5 hover:bg-slate-50/70 transition-all"
+               style="border:1px solid transparent"
+               :style="c.status==='No activo' ? 'opacity:0.55' : ''">
+            <div class="flex items-center gap-3">
+
+              <!-- Rank + status dot -->
+              <div class="flex-shrink-0 w-6 text-center">
+                <div class="text-[11px] font-semibold text-slate-400" x-text="idx+1"></div>
+              </div>
+
+              <!-- Status indicator line (left border) -->
+              <div class="flex-shrink-0 w-1 rounded-full self-stretch"
+                   :style="'background:'+statusColor(c.status)+';min-height:36px'"></div>
+
+              <!-- Client name + BU -->
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2">
+                  <span class="text-xs font-semibold text-slate-800 truncate" :title="c.client"
+                        x-text="c.client.length>28 ? c.client.slice(0,28)+'…' : c.client"></span>
+                  <span class="bu-pill flex-shrink-0" x-text="c.bu||'—'"></span>
+                </div>
+                <!-- Sparkline: 3-year mini bars (years = filters.year-2, -1, current) -->
+                <div class="flex items-end gap-0.5 mt-1.5" style="height:16px">
+                  <template x-if="c.yPrev2>0||c.yPrev>0||c.yCurr>0">
+                    <div class="flex items-end gap-0.5" style="height:16px"
+                         x-data="{ mx: Math.max(c.yPrev2, c.yPrev, c.yCurr, 1) }">
+                      <div class="w-2 rounded-sm flex-shrink-0"
+                           :style="'height:'+Math.max(2,Math.round(c.yPrev2/mx*14))+'px;background:rgba(31,58,74,0.18)'"
+                           :title="filters.year-2"></div>
+                      <div class="w-2 rounded-sm flex-shrink-0"
+                           :style="'height:'+Math.max(2,Math.round(c.yPrev/mx*14))+'px;background:rgba(31,58,74,0.38)'"
+                           :title="filters.year-1"></div>
+                      <div class="w-2 rounded-sm flex-shrink-0"
+                           :style="'height:'+Math.max(2,Math.round(c.yCurr/mx*14))+'px;background:'+(c.yCurr>=c.yPrev?'#1BAF9B':'#DC2626')"></div>
+                    </div>
+                  </template>
+                  <span class="text-[10px] text-slate-400 ml-1.5 leading-none self-end"
+                        x-text="(filters.year-2)+'–'+String(filters.year).slice(2)"></span>
+                </div>
+              </div>
+
+              <!-- Revenue actual año -->
+              <div class="flex-shrink-0 text-right" style="min-width:80px">
+                <div class="text-xs font-semibold text-slate-800"
+                     x-text="c.yCurr>0 ? fmtEUR(c.yCurr) : '—'"></div>
+                <div class="text-[10px] text-slate-400 mt-0.5"
+                     x-text="'año ant.: '+(c.yPrev>0?fmtEUR(c.yPrev):'—')"></div>
+              </div>
+
+              <!-- YoY arrow + % -->
+              <div class="flex-shrink-0 text-right" style="min-width:54px">
+                <div class="text-xs font-semibold flex items-center justify-end gap-0.5"
+                     :class="c.yoy>0.05?'text-emerald-600':(c.yoy<-0.05?'text-red-600':'text-slate-500')">
+                  <span x-text="c.yPrev>0 ? yoyArrow(c.yoy) : ''"></span>
+                  <span x-text="c.yPrev>0 ? fmtPct(Math.abs(c.yoy)) : '—'"></span>
+                </div>
+                <div class="text-[10px] text-slate-400 mt-0.5">YoY</div>
+              </div>
+
+              <!-- Share bar + % -->
+              <div class="flex-shrink-0" style="min-width:72px">
+                <div class="flex items-center gap-1.5">
+                  <div class="flex-1 rounded-full overflow-hidden" style="height:4px;background:rgba(15,23,42,.08);min-width:36px">
+                    <div class="h-full rounded-full"
+                         :style="'width:'+Math.min(c.pct*100,100)+'%;background:'+(c.pct>0.2?'#D97706':'#1BAF9B')"></div>
+                  </div>
+                  <span class="text-[11px] text-slate-500 flex-shrink-0"
+                        x-text="fmtPct(c.pct)"></span>
+                </div>
+                <div class="text-[10px] text-slate-400 mt-0.5">del total</div>
+              </div>
+
+              <!-- Status badge -->
+              <div class="flex-shrink-0 text-right" style="min-width:64px">
+                <span class="badge" :class="statusBadgeClass(c.status)" x-text="c.status"></span>
+                <div class="text-[10px] text-slate-400 mt-1"
+                     x-text="c.naturaleza||''"></div>
+              </div>
+
+            </div>
+
+            <!-- Cumulative share bar — Pareto insight -->
+            <div x-show="idx < 5" class="mt-1.5 ml-9">
+              <div class="flex items-center gap-1.5">
+                <div class="rounded-full overflow-hidden" style="height:2px;background:rgba(15,23,42,.06);flex:1">
+                  <div class="h-full rounded-full" style="background:rgba(31,58,74,0.25)"
+                       :style="'width:'+Math.min(cumulativeShare(carteraRows(), idx+1)*100,100)+'%'"></div>
+                </div>
+                <span class="text-[10px] text-slate-400 flex-shrink-0"
+                      x-text="'top '+(idx+1)+' = '+fmtPct(cumulativeShare(carteraRows(), idx+1))+' del revenue'"></span>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+
+      <!-- Footer legend -->
+      <div class="mt-3 pt-3 flex flex-wrap gap-3 text-[10px] text-slate-400"
+           style="border-top:1px solid rgba(15,23,42,.06)">
+        <div class="flex items-center gap-1">
+          <div class="w-1 h-3 rounded-full" style="background:#1BAF9B"></div>
+          <span>Nuevo</span>
+        </div>
+        <div class="flex items-center gap-1">
+          <div class="w-1 h-3 rounded-full" style="background:#3B82F6"></div>
+          <span>Recurrente</span>
+        </div>
+        <div class="flex items-center gap-1">
+          <div class="w-1 h-3 rounded-full" style="background:#DC2626"></div>
+          <span>No activo</span>
+        </div>
+        <span class="text-slate-300">·</span>
+        <span>Barra teal = ↑ vs año ant. · Barra roja = ↓ vs año ant.</span>
+        <span class="text-slate-300">·</span>
+        <span>Barra naranja en % total = concentración &gt; 20%</span>
+      </div>
+    </div>
+
+    <!-- Detalle por cuenta (conservado, mejorado) -->
+    <div class="arum-card rounded-2xl p-4 shadow-sm">
+      <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between mb-3">
+        <div>
+          <div class="text-sm font-semibold" style="color:var(--arum-primary)">Detalle ingresos por servicio y cliente</div>
+          <div class="text-xs text-slate-500">Por tipo de servicio (Cuenta) · Top N clientes por línea</div>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <input x-model="detailQuery" placeholder="Buscar cliente o servicio…" class="pill rounded-xl px-3 py-1.5 text-xs w-52"/>
+          <label class="pill rounded-xl px-2 py-1.5 text-xs flex items-center gap-1.5 cursor-pointer">
+            <input type="checkbox" x-model="showAccountSubtotals"/> Subtotales
+          </label>
+          <select class="pill rounded-xl px-2 py-1.5 text-xs" x-model.number="detailTopN">
+            <option value="3">Top 3</option>
+            <option value="5">Top 5</option>
+            <option value="10">Top 10</option>
+          </select>
+        </div>
+      </div>
+      <div class="tbl-scroll">
+        <table class="min-w-full text-xs">
+          <thead class="text-[11px] uppercase tracking-wider text-slate-500">
+            <tr class="border-b border-slate-200/70">
+              <th class="py-2 pr-3 text-left">Servicio (Cuenta)</th>
+              <th class="py-2 pr-3 text-left">Cliente</th>
+              <th class="py-2 px-2 text-right" x-text="factYears()[0]||'—'"></th>
+              <th class="py-2 px-2 text-right" x-text="factYears()[1]||'—'"></th>
+              <th class="py-2 px-2 text-right" x-text="factYears()[2]||filters.year"></th>
+              <th class="py-2 pl-2 text-right">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <template x-for="r in detailedClientAccounts()" :key="r.account+'|'+r.client">
+              <tr class="border-b border-slate-200/40"
+                  :class="r.isSubtotal ? 'bg-slate-50' : 'hover:bg-slate-50/40'">
+                <td class="py-1.5 pr-3" :class="r.isSubtotal ? 'font-semibold text-slate-900' : 'text-slate-600'" x-text="r.account||'—'"></td>
+                <td class="py-1.5 pr-3" :class="r.isSubtotal ? 'font-semibold text-slate-900' : 'font-medium text-slate-800'" x-text="r.client"></td>
+                <td class="py-1.5 px-2 text-right text-slate-500" x-text="r.yPrev2>0?fmtEUR(r.yPrev2):'—'"></td>
+                <td class="py-1.5 px-2 text-right text-slate-500" x-text="r.yPrev>0?fmtEUR(r.yPrev):'—'"></td>
+                <td class="py-1.5 px-2 text-right font-medium" x-text="r.yCurr>0?fmtEUR(r.yCurr):'—'"></td>
+                <td class="py-1.5 pl-2 text-right font-semibold" x-text="fmtEUR(r.total)"></td>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       TAB 2: P&L / CUENTA DE EXPLOTACIÓN
+  ══════════════════════════════════════════════════════════ -->
+  <section x-show="tab==='pyg'" class="mt-6 space-y-4">
+
+    <!-- PyG KPIs — 5 cards con % incluido -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+
+      <div class="kpi arum-card rounded-2xl p-4 shadow-sm">
+        <div class="text-xs uppercase tracking-wider text-slate-500">Ingresos netos</div>
+        <div class="mt-1 text-xl font-semibold" style="color:var(--arum-primary)" x-text="fmtEUR(pyg('rev','Total'))"></div>
+        <div class="mt-1 text-xs text-slate-400">Fuente: Mayor contable</div>
+      </div>
+
+      <div class="kpi arum-card rounded-2xl p-4 shadow-sm" style="border-left-color:var(--arum-accent-2)">
+        <div class="text-xs uppercase tracking-wider text-slate-500">Margen bruto</div>
+        <div class="mt-1 text-xl font-semibold" x-text="fmtEUR(pyg('margen','Total'))"></div>
+        <div class="mt-1 text-xs"
+          :class="pyg('margen','Total')/pyg('rev','Total')>0.8 ? 'text-emerald-600' : 'text-amber-600'"
+          x-text="'% Rev: '+fmtPct(pyg('margen','Total')/pyg('rev','Total'))">
+        </div>
+      </div>
+
+      <div class="kpi arum-card rounded-2xl p-4 shadow-sm" style="border-left-color:var(--arum-accent)">
+        <div class="text-xs uppercase tracking-wider text-slate-500">EBITDA</div>
+        <div class="mt-1 text-xl font-semibold"
+          :class="pyg('ebitda','Total')>=0 ? '' : 'text-red-600'"
+          x-text="fmtEUR(pyg('ebitda','Total'))">
+        </div>
+        <div class="mt-1 text-xs"
+          :class="pyg('ebitda','Total')/pyg('rev','Total')>0.2 ? 'text-emerald-600' : (pyg('ebitda','Total')/pyg('rev','Total')>0 ? 'text-amber-600' : 'text-red-600')"
+          x-text="'Margen: '+fmtPct(pyg('ebitda','Total')/pyg('rev','Total'))">
+        </div>
+      </div>
+
+      <div class="kpi arum-card rounded-2xl p-4 shadow-sm" style="border-left-color:var(--arum-primary)">
+        <div class="text-xs uppercase tracking-wider text-slate-500">EBIT</div>
+        <div class="mt-1 text-xl font-semibold"
+          :class="pyg('ebit','Total')>=0 ? '' : 'text-red-600'"
+          x-text="fmtEUR(pyg('ebit','Total'))">
+        </div>
+        <div class="mt-1 text-xs text-slate-500" x-text="'Margen: '+fmtPct(pyg('ebit','Total')/pyg('rev','Total'))"></div>
+      </div>
+
+      <!-- Personal/Revenue ratio -->
+      <div class="kpi arum-card rounded-2xl p-4 shadow-sm" style="border-left-color:#6366F1">
+        <div class="text-xs uppercase tracking-wider text-slate-500">Personal / Revenue</div>
+        <div class="mt-1 text-xl font-semibold"
+          :class="Math.abs(pyg('pers','Total'))/pyg('rev','Total')>0.6 ? 'text-amber-600' : 'text-slate-800'"
+          x-text="fmtPct(Math.abs(pyg('pers','Total'))/pyg('rev','Total'))">
+        </div>
+        <div class="mt-1 text-xs text-slate-500" x-text="fmtEUR(pyg('pers','Total'))"></div>
+      </div>
+    </div>
+
+    <!-- Gráficos PyG -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+
+      <!-- Tendencia mensual con doble eje (€ + % EBITDA) -->
+      <div class="arum-card rounded-2xl p-4 shadow-sm">
+        <div class="text-sm font-semibold mb-1" style="color:var(--arum-primary)">Tendencia mensual</div>
+        <div class="text-xs text-slate-500 mb-2">Ingresos &amp; EBITDA (€) · % margen EBITDA (eje dcho.)</div>
+        <div style="position:relative;height:200px">
+          <canvas id="pygTrend"></canvas>
+        </div>
+      </div>
+
+      <!-- Waterfall EBITDA bridge — CORREGIDO -->
+      <div class="arum-card rounded-2xl p-4 shadow-sm">
+        <div class="text-sm font-semibold mb-1" style="color:var(--arum-primary)">Bridge → EBITDA</div>
+        <div class="text-xs text-slate-500 mb-2">Ingresos → costes → EBITDA · colores semánticos</div>
+        <div style="position:relative;height:200px">
+          <canvas id="pygWaterfall"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabla P&L principal (Mayor) con % Rev y colores semánticos -->
+    <div class="arum-card rounded-2xl p-4 shadow-sm">
+      <div class="flex items-center justify-between mb-3">
+        <div>
+          <div class="text-sm font-semibold" style="color:var(--arum-primary)">Cuenta de explotación — detalle mensual</div>
+          <div class="text-xs text-slate-500">Fuente: DDBB_Mayor · valores negativos = costes · verde = métricas positivas</div>
+        </div>
+        <div class="flex items-center gap-2">
+          <select x-model="pygDetailLevel" @change="refreshPyG()" class="pill rounded-xl px-2 py-1.5 text-xs">
+            <option value="ejecutivo">Ejecutivo</option>
+            <option value="cfo">CFO</option>
+            <option value="detalle">Detalle</option>
+          </select>
+        </div>
+      </div>
+      <div class="tbl-scroll">
+        <table class="min-w-full text-xs">
+          <thead class="text-[11px] uppercase tracking-wider text-slate-500">
+            <tr class="border-b border-slate-200/70">
+              <th class="py-2 pr-3 text-left" style="min-width:180px">Línea</th>
+              <th class="py-2 px-2 text-right font-semibold">Total</th>
+              <th class="py-2 px-2 text-right text-slate-400">% Rev</th>
+              <template x-for="m in monthsOnly" :key="m">
+                <th class="py-2 px-1 text-right" x-text="m.slice(0,3).toUpperCase()"></th>
+              </template>
+            </tr>
+          </thead>
+          <tbody>
+            <template x-for="row in pygTableRows()" :key="row.id">
+              <tr class="border-b border-slate-200/40"
+                  :class="row.type==='metric' ? 'pyg-metric' : (row.type==='section' ? 'pyg-section' : 'hover:bg-slate-50/40')">
+                <td class="py-1.5 pr-3">
+                  <div class="flex items-center gap-1.5">
+                    <button x-show="row.type==='section'" @click="togglePyg(row.group)"
+                            class="w-4 h-4 rounded text-[11px] bg-slate-100 hover:bg-slate-200 flex items-center justify-center flex-shrink-0"
+                            x-text="pygExpanded[row.group] ? '−' : '+'">
+                    </button>
+                    <span :class="row.level===2 ? 'pl-4 text-slate-500' : (row.type==='metric' ? 'text-slate-900' : '')"
+                          x-text="row.label">
+                    </span>
+                  </div>
+                </td>
+                <!-- Total con color semántico -->
+                <td class="py-1.5 px-2 text-right font-semibold"
+                  :class="pygCellClass(row, 'Total')"
+                  x-text="fmtEUR(pygRowValue(row,'Total'))">
+                </td>
+                <!-- % Rev -->
+                <td class="py-1.5 px-2 text-right text-slate-400"
+                  x-text="pyg('rev','Total')>0 ? fmtPct(pygRowValue(row,'Total')/pyg('rev','Total')) : '—'">
+                </td>
+                <!-- Monthly cells -->
+                <template x-for="m in monthsOnly" :key="row.id+'-'+m">
+                  <td class="py-1.5 px-1 text-right"
+                    :class="pygCellClass(row, m)"
+                    x-text="fmtEUR(pygRowValue(row,m))">
+                  </td>
+                </template>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- P&L por BU — desde P&G_Detallada (si disponible) -->
+    <div class="arum-card rounded-2xl p-4 shadow-sm" x-show="pygByBU.length > 0">
+      <div class="mb-3">
+        <div class="text-sm font-semibold" style="color:var(--arum-primary)">P&amp;L por Business Unit</div>
+        <div class="text-xs text-slate-500">Fuente: P&amp;G_Detallada · personal correctamente imputado por BU · Estructura = costes no imputables</div>
+      </div>
+      <div class="tbl-scroll">
+        <table class="min-w-full text-xs">
+          <thead class="text-[11px] uppercase tracking-wider text-slate-500">
+            <tr class="border-b border-slate-200/70">
+              <th class="py-2 pr-3 text-left">Línea P&amp;L</th>
+              <template x-for="bu in pygBUs" :key="bu">
+                <th class="py-2 px-2 text-right" x-text="bu"></th>
+              </template>
+              <th class="py-2 pl-2 text-right font-semibold">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <template x-for="row in pygByBU" :key="row.label">
+              <tr class="border-b border-slate-200/40"
+                  :class="row.isMetric ? 'pyg-metric' : (row.isSection ? 'bg-slate-50/50' : 'hover:bg-slate-50/40')">
+                <td class="py-1.5 pr-3"
+                  :class="row.isMetric ? 'font-semibold text-slate-900' : (row.isSection ? 'font-medium text-slate-700' : 'text-slate-600 pl-2')"
+                  x-text="row.label">
+                </td>
+                <template x-for="bu in pygBUs" :key="bu">
+                  <td class="py-1.5 px-2 text-right"
+                    :class="buCellClass(row.values[bu], row.isMetric)"
+                    x-text="fmtEUR(row.values[bu]||0)">
+                  </td>
+                </template>
+                <td class="py-1.5 pl-2 text-right font-semibold"
+                  :class="buCellClass(row.total, row.isMetric)"
+                  x-text="fmtEUR(row.total)">
+                </td>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+      </div>
+      <div class="mt-2 text-[11px] text-slate-400">
+        * Los márgenes de BU incluyen costes directos + personal imputado. Estructura agrupa amortizaciones y costes no atribuibles directamente.
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       TAB 3: BUDGET 2026 — Real vs Presupuesto
+  ══════════════════════════════════════════════════════════ -->
+  <section x-show="tab==='budget'" class="mt-6 space-y-4" x-init="$watch('tab', v => { if(v==='budget') refreshBudget(); })">
+
+    <!-- Empty state when no budget data -->
+    <div x-show="budgetRows.length === 0"
+         class="arum-card rounded-2xl p-10 text-center shadow-sm">
+      <div class="text-2xl mb-2">📊</div>
+      <div class="text-sm font-semibold text-slate-700">Sin datos de presupuesto</div>
+      <div class="text-xs text-slate-500 mt-1">Sube el Excel con la hoja <strong>PO2026</strong> para activar este módulo.</div>
+      <button @click="useDemo()" class="mt-4 px-4 py-2 rounded-xl text-sm font-semibold text-white shadow-sm"
+              style="background:var(--arum-primary)">Cargar demo</button>
+    </div>
+
+    <template x-if="budgetRows.length > 0">
+      <div class="space-y-4">
+
+        <!-- Controls row -->
+        <div class="arum-card rounded-2xl px-4 py-3 shadow-sm flex flex-wrap gap-3 items-end">
+          <div>
+            <div class="text-[11px] uppercase tracking-wider text-slate-500">Mes cerrado</div>
+            <select class="mt-1 pill rounded-xl px-3 py-1.5 text-sm"
+                    x-model.number="bgt.closedMonth" @change="refreshBudget()">
+              <template x-for="m in monthsIdx" :key="m">
+                <option :value="m" x-text="monthName(m)"></option>
+              </template>
+            </select>
+          </div>
+          <div>
+            <div class="text-[11px] uppercase tracking-wider text-slate-500">Business Unit</div>
+            <select class="mt-1 pill rounded-xl px-3 py-1.5 text-sm"
+                    x-model="bgt.bu" @change="refreshBudget()">
+              <option value="__ALL__">Todas</option>
+              <template x-for="bu in bgtBUs()" :key="bu">
+                <option :value="bu" x-text="bu"></option>
+              </template>
+            </select>
+          </div>
+          <div class="flex-1"></div>
+          <div class="text-xs text-slate-400 self-center text-right">
+            <div>
+              YTD hasta
+              <span class="font-medium text-slate-600" x-text="monthName(bgt.closedMonth)"></span>
+              2026
+            </div>
+            <div class="mt-0.5 text-[11px] text-slate-300 italic">
+              Filtros propios · independientes del panel global
+            </div>
+          </div>
+        </div>
+
+        <!-- KPI cards -->
+        <div x-data="{ k: bgtKPI() }" x-effect="k = bgtKPI()"
+             class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+
+          <!-- Real YTD -->
+          <div class="kpi arum-card rounded-2xl p-4 shadow-sm">
+            <div class="text-xs uppercase tracking-wider text-slate-500">Real YTD</div>
+            <div class="mt-1 text-xl font-semibold" style="color:var(--arum-primary)"
+                 x-text="fmtEUR(k.realYTD)"></div>
+            <div class="mt-1 text-xs text-slate-500" x-text="'hasta '+monthName(bgt.closedMonth)"></div>
+          </div>
+
+          <!-- Budget YTD -->
+          <div class="kpi arum-card rounded-2xl p-4 shadow-sm" style="border-left-color:#6366F1">
+            <div class="text-xs uppercase tracking-wider text-slate-500">Budget YTD</div>
+            <div class="mt-1 text-xl font-semibold text-slate-700" x-text="fmtEUR(k.budgetYTD)"></div>
+            <div class="mt-1 text-xs text-slate-500">presupuesto acumulado</div>
+          </div>
+
+          <!-- Desviación -->
+          <div class="kpi arum-card rounded-2xl p-4 shadow-sm"
+               :class="k.devEUR < 0 ? 'kpi-alert' : ''"
+               :style="k.devEUR >= 0 ? 'border-left-color:var(--arum-positive)' : ''">
+            <div class="text-xs uppercase tracking-wider text-slate-500">Desviación YTD</div>
+            <div class="mt-1 text-xl font-semibold" :class="devClass(k.devEUR)"
+                 x-text="(k.devEUR>=0?'+':'')+fmtEUR(k.devEUR)"></div>
+            <div class="mt-1 text-xs" :class="devClass(k.devEUR)"
+                 x-text="(k.devPct>=0?'+':'')+fmtPct(k.devPct)+' vs budget'"></div>
+          </div>
+
+          <!-- % Cumplimiento -->
+          <div class="kpi arum-card rounded-2xl p-4 shadow-sm"
+               :style="'border-left-color:'+(k.cumpl>=0.95?'#059669':(k.cumpl>=0.8?'#D97706':'#DC2626'))">
+            <div class="text-xs uppercase tracking-wider text-slate-500">Cumplimiento</div>
+            <div class="mt-1 text-xl font-semibold" :class="semaforoClass(k.cumpl)"
+                 x-text="fmtPct(k.cumpl)"></div>
+            <div class="progress-track mt-2">
+              <div class="progress-fill"
+                   :style="'width:'+Math.min(k.cumpl*100,100)+'%;background:'+progressColor(k.cumpl)"></div>
+            </div>
+          </div>
+
+          <!-- Forecast -->
+          <div class="kpi arum-card rounded-2xl p-4 shadow-sm" style="border-left-color:var(--arum-accent-2)">
+            <div class="text-xs uppercase tracking-wider text-slate-500">Forecast FY</div>
+            <div class="mt-1 text-xl font-semibold text-slate-700" x-text="fmtEUR(k.forecast)"></div>
+            <div class="mt-1 text-xs text-slate-500">
+              Budget FY: <span x-text="fmtEUR(k.budgetFY)"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart: mensual Real vs Budget + acumulado -->
+        <div class="arum-card rounded-2xl p-4 shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <div>
+              <div class="text-sm font-semibold" style="color:var(--arum-primary)">Real vs Budget — mensual 2026</div>
+              <div class="text-xs text-slate-500">Barras = mensual · Líneas = acumulado YTD · Verde = supera budget, rojo = por debajo</div>
+            </div>
+          </div>
+          <div style="position:relative;height:240px">
+            <canvas id="bgtMonthly"></canvas>
+          </div>
+        </div>
+        <!-- ── TABLA JERÁRQUICA: Real vs Budget por BU → Cliente ── -->
+        <div class="arum-card rounded-2xl shadow-sm overflow-hidden">
+
+          <!-- Header con breadcrumb de navegación -->
+          <div class="px-4 pt-4 pb-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
+               style="border-bottom:1px solid rgba(15,23,42,.06)">
+            <div>
+              <div class="text-sm font-semibold flex items-center gap-2" style="color:var(--arum-primary)">
+                <!-- Breadcrumb -->
+                <span x-show="bgt.view === 'bu_summary'">Real vs Budget por cliente</span>
+                <template x-if="bgt.view === 'client_list'">
+                  <span class="flex items-center gap-1.5">
+                    <button @click="bgt.view='bu_summary'; bgt.activeBU=null; bgt.drillClient=null"
+                            class="text-slate-400 hover:text-slate-700 transition-colors text-[13px]"
+                            title="Volver al resumen por BU">Real vs Budget por cliente</button>
+                    <span class="text-slate-300 text-[11px]">›</span>
+                    <span x-text="bgt.activeBU" style="color:var(--arum-primary)"></span>
+                  </span>
+                </template>
+              </div>
+              <div class="text-[11px] text-slate-400 mt-0.5">
+                YTD hasta <span x-text="monthName(bgt.closedMonth)"></span> ·
+                <template x-if="bgt.view === 'bu_summary'">
+                  <span x-text="bgtBUSummary().length + ' unidades de negocio · haz clic en una BU para ver sus clientes'"></span>
+                </template>
+                <template x-if="bgt.view === 'client_list'">
+                  <span>
+                    <span x-show="bgtTableN > 0 && bgtClientsByBU(bgt.activeBU).length >= bgtTableN"
+                          x-text="'Top '+bgtTableN+' de '+bgtClientsByBU(bgt.activeBU).length+' clientes'"></span>
+                    <span x-show="!(bgtTableN > 0 && bgtClientsByBU(bgt.activeBU).length >= bgtTableN)"
+                          x-text="bgtClientsByBU(bgt.activeBU).length+' clientes'"></span>
+                    · ordenar por columna · <span class="italic">++ = detalle mensual</span>
+                  </span>
+                </template>
+              </div>
+            </div>
+
+            <!-- Controls: Top-N + filtros (solo activos en vista clientes) -->
+            <div class="flex flex-wrap items-center gap-2">
+              <template x-if="bgt.view === 'client_list'">
+                <span>
+                  <select class="pill rounded-xl px-2 py-1.5 text-xs" x-model.number="bgtTableN"
+                          title="Número de clientes a mostrar">
+                    <option value="15">Top 15</option>
+                    <option value="25">Top 25</option>
+                    <option value="50">Top 50</option>
+                    <option value="100">Top 100</option>
+                    <option value="0">Todos</option>
+                  </select>
+                </span>
+              </template>
+              <template x-if="bgt.view === 'client_list'">
+                <span class="text-slate-200 text-sm select-none">|</span>
+              </template>
+              <button @click="bgtTableSort.show='all'"
+                      class="pill rounded-full px-3 py-1 text-[11px] transition-all"
+                      :style="bgtTableSort.show==='all'?'background:var(--arum-primary);color:#fff;border-color:var(--arum-primary)':''">
+                Todos
+              </button>
+              <button @click="bgtTableSort.show='risk'"
+                      class="pill rounded-full px-3 py-1 text-[11px] transition-all"
+                      :style="bgtTableSort.show==='risk'?'background:#DC2626;color:#fff;border-color:#DC2626':''">
+                En riesgo
+              </button>
+              <button @click="bgtTableSort.show='ok'"
+                      class="pill rounded-full px-3 py-1 text-[11px] transition-all"
+                      :style="bgtTableSort.show==='ok'?'background:#059669;color:#fff;border-color:#059669':''">
+                On track
+              </button>
+            </div>
+          </div>
+
+          <!-- ── VISTA 1: Resumen por BU ── -->
+          <template x-if="bgt.view === 'bu_summary'">
+            <div class="overflow-x-auto">
+              <table class="min-w-full text-xs" style="border-collapse:separate;border-spacing:0">
+                <thead>
+                  <tr style="background:rgba(248,250,252,0.8)">
+                    <th class="py-2.5 pl-4 pr-2 text-[10px] uppercase tracking-wider text-slate-400 text-left" style="width:28px">#</th>
+                    <th class="py-2.5 px-2 text-[10px] uppercase tracking-wider text-slate-400 text-left">Business Unit</th>
+                    <th class="py-2.5 px-2 text-[10px] uppercase tracking-wider text-slate-400 text-right">Budget YTD</th>
+                    <th class="py-2.5 px-2 text-[10px] uppercase tracking-wider text-slate-400 text-right">Real YTD</th>
+                    <th class="py-2.5 px-2 text-[10px] uppercase tracking-wider text-slate-400 text-right">Desv. €</th>
+                    <th class="py-2.5 px-2 text-[10px] uppercase tracking-wider text-slate-400 text-right">Desv. %</th>
+                    <th class="py-2.5 px-2 text-[10px] uppercase tracking-wider text-slate-400 text-right">Cumpl.</th>
+                    <th class="py-2.5 px-2 text-[10px] uppercase tracking-wider text-slate-400 text-right">% Total</th>
+                    <th class="py-2.5 px-2 text-[10px] uppercase tracking-wider text-slate-400 text-right">Clientes</th>
+                    <th class="py-2.5 pr-4 pl-2 text-[10px] uppercase tracking-wider text-slate-400 text-center">Ver</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <template x-for="(r, idx) in bgtBUSummary()" :key="r.bu">
+                    <tr class="hover:bg-slate-50/70 transition-all cursor-pointer"
+                        style="border-top:1px solid rgba(15,23,42,.04)"
+                        @click="bgt.activeBU=r.bu; bgt.view='client_list'; bgt.drillClient=null">
+                      <td class="py-3 pl-4 pr-2 text-[11px] text-slate-400 font-medium" x-text="idx+1"></td>
+                      <td class="py-3 px-2">
+                        <div class="font-semibold text-slate-800" x-text="r.bu"></div>
+                        <div class="mt-1 rounded-full overflow-hidden" style="height:3px;background:rgba(15,23,42,.07);max-width:140px">
+                          <div class="h-full rounded-full"
+                               :style="'width:'+Math.min((r.cumpl||0)*100,100)+'%;background:'+progressColor(r.cumpl)"></div>
+                        </div>
+                      </td>
+                      <td class="py-3 px-2 text-right text-slate-500 font-medium"
+                          x-text="r.budget>0 ? fmtEUR(r.budget) : '—'"></td>
+                      <td class="py-3 px-2 text-right font-semibold text-slate-800"
+                          x-text="r.real>0 ? fmtEUR(r.real) : (r.budget>0?'€0':'—')"></td>
+                      <td class="py-3 px-2 text-right font-semibold"
+                          :class="r.budget>0 ? devClass(r.dev_eur) : 'text-slate-400'"
+                          x-text="r.budget>0 ? (r.dev_eur>=0?'+':'')+fmtEUR(r.dev_eur) : '—'"></td>
+                      <td class="py-3 px-2 text-right text-[11px]"
+                          :class="r.budget>0 ? devClass(r.dev_pct) : 'text-slate-300'"
+                          x-text="r.budget>0 ? (r.dev_pct>=0?'+':'')+fmtPct(r.dev_pct) : '—'"></td>
+                      <td class="py-3 px-2 text-right">
+                        <template x-if="r.cumpl !== null">
+                          <div>
+                            <div class="font-semibold text-[12px]" :class="semaforoClass(r.cumpl)" x-text="fmtPct(r.cumpl)"></div>
+                            <div class="text-[10px] mt-0.5 text-slate-400"
+                                 x-text="r.cumpl>=0.95?'On track':r.cumpl>=0.80?'Atención':'En riesgo'"></div>
+                          </div>
+                        </template>
+                        <template x-if="r.cumpl === null">
+                          <div class="text-[11px] text-slate-400">—</div>
+                        </template>
+                      </td>
+                      <td class="py-3 px-2 text-right text-slate-500"
+                          x-text="r.real>0 ? fmtPct(r.pct_total) : '—'"></td>
+                      <td class="py-3 px-2 text-right">
+                        <span class="inline-flex items-center justify-center rounded-full text-[11px] font-semibold"
+                              style="min-width:24px;height:20px;background:rgba(15,23,42,.06);color:#64748b"
+                              x-text="r.nClients"></span>
+                      </td>
+                      <td class="py-3 pr-4 pl-2 text-center">
+                        <span class="pill rounded-lg px-2 py-0.5 text-[11px] font-medium"
+                              style="color:var(--arum-primary)">→</span>
+                      </td>
+                    </tr>
+                  </template>
+                  <tr x-show="bgtBUSummary().length === 0">
+                    <td colspan="10" class="py-8 text-center text-slate-400 text-xs">Sin datos de presupuesto</td>
+                  </tr>
+                </tbody>
+                <!-- Tfoot resumen total -->
+                <tfoot x-show="bgtBUSummary().length > 0">
+                  <tr style="background:rgba(248,250,252,0.9);border-top:2px solid rgba(15,23,42,.08)">
+                    <td class="py-2 pl-4 pr-2"></td>
+                    <td class="py-2 px-2 text-[11px] font-semibold text-slate-500"
+                        x-text="bgtBUSummary().length+' BUs'"></td>
+                    <td class="py-2 px-2 text-right text-[11px] font-semibold text-slate-500"
+                        x-text="fmtEUR(bgtBUSummary().reduce((a,r)=>a+r.budget,0))"></td>
+                    <td class="py-2 px-2 text-right text-[11px] font-semibold text-slate-700"
+                        x-text="fmtEUR(bgtBUSummary().reduce((a,r)=>a+r.real,0))"></td>
+                    <td class="py-2 px-2 text-right text-[11px] font-semibold"
+                        :class="devClass(bgtBUSummary().reduce((a,r)=>a+r.dev_eur,0))"
+                        x-text="(()=>{ const d=bgtBUSummary().reduce((a,r)=>a+r.dev_eur,0); return (d>=0?'+':'')+fmtEUR(d); })()"></td>
+                    <td class="py-2 px-2 text-right text-[11px] font-semibold"
+                        :class="(()=>{ const b=bgtBUSummary().reduce((a,r)=>a+r.budget,0); const rl=bgtBUSummary().reduce((a,r)=>a+r.real,0); return b>0?devClass(rl-b):'text-slate-400'; })()"
+                        x-text="(()=>{ const b=bgtBUSummary().reduce((a,r)=>a+r.budget,0); const rl=bgtBUSummary().reduce((a,r)=>a+r.real,0); return b>0?(rl>=b?'+':'')+fmtPct((rl-b)/b):'—'; })()"></td>
+                    <td class="py-2 px-2 text-right text-[11px] font-semibold"
+                        :class="(()=>{ const b=bgtBUSummary().reduce((a,r)=>a+r.budget,0); const rl=bgtBUSummary().reduce((a,r)=>a+r.real,0); return b>0?semaforoClass(rl/b):'text-slate-400'; })()"
+                        x-text="(()=>{ const b=bgtBUSummary().reduce((a,r)=>a+r.budget,0); const rl=bgtBUSummary().reduce((a,r)=>a+r.real,0); return b>0?fmtPct(rl/b):'—'; })()"></td>
+                    <td class="py-2 px-2 text-right text-[11px] text-slate-400">100%</td>
+                    <td class="py-2 px-2 text-right text-[11px] font-semibold text-slate-500"
+                        x-text="bgtBUSummary().reduce((a,r)=>a+r.nClients,0)"></td>
+                    <td class="py-2 pr-4 pl-2"></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </template>
+
+          <!-- ── VISTA 2: Clientes de una BU ── -->
+          <template x-if="bgt.view === 'client_list'">
+            <div>
+              <!-- Back button strip -->
+              <div class="px-4 py-2 flex items-center gap-2 text-[11px] text-slate-500"
+                   style="border-bottom:1px solid rgba(15,23,42,.04);background:rgba(248,250,252,0.5)">
+                <button @click="bgt.view='bu_summary'; bgt.activeBU=null; bgt.drillClient=null"
+                        class="flex items-center gap-1 pill rounded-lg px-2 py-1 text-[11px] hover:bg-white transition-all"
+                        style="color:var(--arum-primary)">
+                  ← Volver al resumen por BU
+                </button>
+              </div>
+
+              <div class="overflow-x-auto">
+                <table class="min-w-full text-xs" style="border-collapse:separate;border-spacing:0">
+                  <thead>
+                    <tr style="background:rgba(248,250,252,0.8)">
+                      <th class="py-2.5 pl-4 pr-2 text-[10px] uppercase tracking-wider text-slate-400 text-left" style="width:28px">#</th>
+                      <th class="py-2.5 px-2 text-[10px] uppercase tracking-wider text-slate-400 text-left cursor-pointer hover:text-slate-700"
+                          @click="bgtTableSort.col='raw'; bgtTableSort.dir*=-1">
+                        Cliente <span x-show="bgtTableSort.col==='raw'" x-text="bgtTableSort.dir>0?'↑':'↓'"></span>
+                      </th>
+                      <th class="py-2.5 px-2 text-[10px] uppercase tracking-wider text-slate-400 text-right cursor-pointer hover:text-slate-700"
+                          @click="bgtTableSort.col='budget'; bgtTableSort.dir*=-1">
+                        Budget YTD <span x-show="bgtTableSort.col==='budget'" x-text="bgtTableSort.dir>0?'↑':'↓'"></span>
+                      </th>
+                      <th class="py-2.5 px-2 text-[10px] uppercase tracking-wider text-slate-400 text-right cursor-pointer hover:text-slate-700"
+                          @click="bgtTableSort.col='real'; bgtTableSort.dir*=-1">
+                        Real YTD <span x-show="bgtTableSort.col==='real'" x-text="bgtTableSort.dir>0?'↑':'↓'"></span>
+                      </th>
+                      <th class="py-2.5 px-2 text-[10px] uppercase tracking-wider text-slate-400 text-right cursor-pointer hover:text-slate-700"
+                          @click="bgtTableSort.col='dev_eur'; bgtTableSort.dir*=-1">
+                        Desv. € <span x-show="bgtTableSort.col==='dev_eur'" x-text="bgtTableSort.dir>0?'↑':'↓'"></span>
+                      </th>
+                      <th class="py-2.5 px-2 text-[10px] uppercase tracking-wider text-slate-400 text-right cursor-pointer hover:text-slate-700"
+                          @click="bgtTableSort.col='dev_pct'; bgtTableSort.dir*=-1">
+                        Desv. % <span x-show="bgtTableSort.col==='dev_pct'" x-text="bgtTableSort.dir>0?'↑':'↓'"></span>
+                      </th>
+                      <th class="py-2.5 px-2 text-[10px] uppercase tracking-wider text-slate-400 text-right cursor-pointer hover:text-slate-700"
+                          @click="bgtTableSort.col='cumpl'; bgtTableSort.dir*=-1">
+                        Cumpl. <span x-show="bgtTableSort.col==='cumpl'" x-text="bgtTableSort.dir>0?'↑':'↓'"></span>
+                      </th>
+                      <th class="py-2.5 px-2 text-[10px] uppercase tracking-wider text-slate-400 text-right cursor-pointer hover:text-slate-700"
+                          @click="bgtTableSort.col='pct_total'; bgtTableSort.dir*=-1">
+                        % BU <span x-show="bgtTableSort.col==='pct_total'" x-text="bgtTableSort.dir>0?'↑':'↓'"></span>
+                      </th>
+                      <th class="py-2.5 pr-4 pl-2 text-[10px] uppercase tracking-wider text-slate-400 text-center">Detalle</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <template x-for="(r, idx) in bgtClientsByBU(bgt.activeBU)" :key="r.norm">
+
+                      <!-- Main client row -->
+                      <tr class="hover:bg-slate-50/60 transition-all"
+                          :class="r.unmapped ? 'unmapped-row' : ''"
+                          style="border-top:1px solid rgba(15,23,42,.04)">
+
+                        <td class="py-2.5 pl-4 pr-2 text-[11px] text-slate-400 font-medium" x-text="idx+1"></td>
+
+                        <td class="py-2.5 px-2">
+                          <div class="font-semibold text-slate-800 truncate" style="max-width:200px"
+                               :title="r.raw" x-text="r.raw"></div>
+                          <div class="mt-1 rounded-full overflow-hidden" style="height:3px;background:rgba(15,23,42,.07);max-width:120px">
+                            <div class="h-full rounded-full"
+                                 :style="'width:'+Math.min((r.cumpl||0)*100,100)+'%;background:'+progressColor(r.cumpl)"></div>
+                          </div>
+                        </td>
+
+                        <td class="py-2.5 px-2 text-right text-slate-500 font-medium"
+                            x-text="r.budget>0 ? fmtEUR(r.budget) : '—'"></td>
+
+                        <td class="py-2.5 px-2 text-right">
+                          <div class="font-semibold text-slate-800"
+                               x-text="r.real>0 ? fmtEUR(r.real) : (r.budget>0?'€0':'—')"></div>
+                          <template x-if="r.budget > 0">
+                            <div class="mt-1 rounded-full overflow-hidden ml-auto" style="height:3px;background:rgba(15,23,42,.07);max-width:64px">
+                              <div class="h-full rounded-full"
+                                   :style="'width:'+Math.min((r.real/r.budget)*100,100)+'%;background:'+progressColor(r.cumpl)"></div>
+                            </div>
+                          </template>
+                        </td>
+
+                        <td class="py-2.5 px-2 text-right">
+                          <template x-if="r.budget > 0">
+                            <div class="font-semibold" :class="devClass(r.dev_eur)"
+                                 x-text="(r.dev_eur>=0?'+':'')+fmtEUR(r.dev_eur)"></div>
+                          </template>
+                          <template x-if="r.budget === 0 && r.real > 0">
+                            <div class="text-[11px] text-slate-400 italic">sin budget</div>
+                          </template>
+                        </td>
+
+                        <td class="py-2.5 px-2 text-right">
+                          <template x-if="r.budget > 0">
+                            <div class="text-[11px]" :class="devClass(r.dev_pct)"
+                                 x-text="(r.dev_pct>=0?'+':'')+fmtPct(r.dev_pct)"></div>
+                          </template>
+                          <template x-if="r.budget === 0">
+                            <div class="text-[11px] text-slate-300">—</div>
+                          </template>
+                        </td>
+
+                        <td class="py-2.5 px-2 text-right">
+                          <template x-if="r.cumpl !== null">
+                            <div>
+                              <div class="font-semibold" :class="semaforoClass(r.cumpl)"
+                                   x-text="fmtPct(r.cumpl)"></div>
+                              <div class="text-[10px] mt-0.5 text-slate-400"
+                                   x-text="r.cumpl>=0.95?'On track':r.cumpl>=0.80?'Atención':'En riesgo'"></div>
+                            </div>
+                          </template>
+                          <template x-if="r.cumpl === null">
+                            <div class="text-[11px] text-slate-400">—</div>
+                          </template>
+                        </td>
+
+                        <td class="py-2.5 px-2 text-right text-slate-500"
+                            x-text="r.real>0 ? fmtPct(r.pct_total) : '—'"></td>
+
+                        <td class="py-2.5 pr-4 pl-2 text-center">
+                          <button class="pill rounded-lg px-2 py-0.5 text-[11px] hover:bg-white transition-all"
+                                  @click="bgt.drillClient = bgt.drillClient===r.norm ? null : r.norm"
+                                  x-text="bgt.drillClient===r.norm ? '−' : '++'">
+                          </button>
+                        </td>
+                      </tr>
+
+                      <!-- Drill-down mensual (igual que antes) -->
+                      <template x-if="bgt.drillClient === r.norm">
+                        <tr class="border-b border-slate-200/60 bg-slate-50/60">
+                          <td colspan="9" class="px-4 py-3">
+                            <div class="text-[11px] font-semibold text-slate-600 mb-2"
+                                 x-text="'Detalle mensual 2026 — ' + r.raw"></div>
+                            <table class="min-w-full text-xs">
+                              <thead>
+                                <tr class="text-[10px] uppercase tracking-wider text-slate-400 border-b border-slate-200/50">
+                                  <th class="py-1 pr-3 text-left">Fila</th>
+                                  <template x-for="m in monthsIdx" :key="m">
+                                    <th class="py-1 px-1.5 text-right" x-text="monthName(m).slice(0,3)"></th>
+                                  </template>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr class="border-b border-slate-100">
+                                  <td class="py-1 pr-3 font-medium text-slate-500">Budget</td>
+                                  <template x-for="md in bgtClientMonthly(r.norm)" :key="md.month">
+                                    <td class="py-1 px-1.5 text-right text-slate-500"
+                                        x-text="md.budget>0 ? fmtEUR(md.budget) : '—'"></td>
+                                  </template>
+                                </tr>
+                                <tr class="border-b border-slate-100">
+                                  <td class="py-1 pr-3 font-medium text-slate-700">Real</td>
+                                  <template x-for="md in bgtClientMonthly(r.norm)" :key="md.month">
+                                    <td class="py-1 px-1.5 text-right font-medium"
+                                        :class="md.month<=bgt.closedMonth ? (md.real>=md.budget?'semaforo-green':'dev-neg') : 'text-slate-300'"
+                                        x-text="md.real>0 ? fmtEUR(md.real) : (md.month<=bgt.closedMonth ? '€0' : '—')"></td>
+                                  </template>
+                                </tr>
+                                <tr>
+                                  <td class="py-1 pr-3 font-medium text-slate-500">Desv.</td>
+                                  <template x-for="md in bgtClientMonthly(r.norm)" :key="md.month">
+                                    <td class="py-1 px-1.5 text-right font-medium"
+                                        :class="md.month<=bgt.closedMonth && md.budget>0 ? devClass(md.dev_eur) : 'text-slate-200'"
+                                        x-text="md.month<=bgt.closedMonth && md.budget>0 ? (md.dev_eur>=0?'+':'')+fmtEUR(md.dev_eur) : '—'"></td>
+                                  </template>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </template>
+
+                    </template>
+
+                    <tr x-show="bgtClientsByBU(bgt.activeBU).length === 0">
+                      <td colspan="9" class="py-8 text-center text-slate-400 text-xs">
+                        Sin clientes para el filtro seleccionado
+                      </td>
+                    </tr>
+                  </tbody>
+
+                  <!-- Tfoot clientes BU -->
+                  <tfoot x-show="bgtClientsByBU(bgt.activeBU).length > 0">
+                    <tr style="background:rgba(248,250,252,0.9);border-top:1px solid rgba(15,23,42,.08)">
+                      <td class="py-2 pl-4 pr-2"></td>
+                      <td class="py-2 px-2 text-[11px] font-semibold text-slate-500">
+                        <span x-show="bgtTableN > 0 && bgtClientsByBU(bgt.activeBU).length >= bgtTableN"
+                              x-text="'Top '+bgtTableN+' / '+bgtClientsByBU(bgt.activeBU).length"></span>
+                        <span x-show="!(bgtTableN > 0 && bgtClientsByBU(bgt.activeBU).length >= bgtTableN)"
+                              x-text="bgtClientsByBU(bgt.activeBU).length+' clientes'"></span>
+                      </td>
+                      <td class="py-2 px-2 text-right text-[11px] font-semibold text-slate-500"
+                          x-text="fmtEUR(bgtClientsByBU(bgt.activeBU).reduce((a,r)=>a+r.budget,0))"></td>
+                      <td class="py-2 px-2 text-right text-[11px] font-semibold text-slate-700"
+                          x-text="fmtEUR(bgtClientsByBU(bgt.activeBU).reduce((a,r)=>a+r.real,0))"></td>
+                      <td class="py-2 px-2 text-right text-[11px] font-semibold"
+                          :class="devClass(bgtClientsByBU(bgt.activeBU).reduce((a,r)=>a+r.dev_eur,0))"
+                          x-text="(()=>{ const d=bgtClientsByBU(bgt.activeBU).reduce((a,r)=>a+r.dev_eur,0); return (d>=0?'+':'')+fmtEUR(d); })()"></td>
+                      <td class="py-2 px-2 text-right text-[11px] font-semibold"
+                          :class="(()=>{ const b=bgtClientsByBU(bgt.activeBU).reduce((a,r)=>a+r.budget,0); const rl=bgtClientsByBU(bgt.activeBU).reduce((a,r)=>a+r.real,0); return b>0?devClass(rl-b):'text-slate-400'; })()"
+                          x-text="(()=>{ const b=bgtClientsByBU(bgt.activeBU).reduce((a,r)=>a+r.budget,0); const rl=bgtClientsByBU(bgt.activeBU).reduce((a,r)=>a+r.real,0); return b>0?(rl>=b?'+':'')+fmtPct((rl-b)/b):'—'; })()"></td>
+                      <td class="py-2 px-2 text-right text-[11px] font-semibold"
+                          :class="(()=>{ const b=bgtClientsByBU(bgt.activeBU).reduce((a,r)=>a+r.budget,0); const rl=bgtClientsByBU(bgt.activeBU).reduce((a,r)=>a+r.real,0); return b>0?semaforoClass(rl/b):'text-slate-400'; })()"
+                          x-text="(()=>{ const b=bgtClientsByBU(bgt.activeBU).reduce((a,r)=>a+r.budget,0); const rl=bgtClientsByBU(bgt.activeBU).reduce((a,r)=>a+r.real,0); return b>0?fmtPct(rl/b):'—'; })()"></td>
+                      <td class="py-2 px-2 text-right text-[11px] text-slate-400">100%</td>
+                      <td class="py-2 pr-4 pl-2"></td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </template>
+
+          <!-- Legend -->
+          <div class="px-4 py-2 flex flex-wrap gap-3 text-[10px] text-slate-400"
+               style="border-top:1px solid rgba(15,23,42,.05)">
+            <span class="semaforo-green font-medium">On track ≥ 95%</span>
+            <span class="semaforo-amber font-medium">Atención 80–95%</span>
+            <span class="semaforo-red font-medium">En riesgo &lt; 80%</span>
+            <span class="text-slate-300">·</span>
+            <span class="italic">Filas en gris = real sin presupuesto mapeado</span>
+            <span class="text-slate-300">·</span>
+            <span x-show="bgt.view === 'bu_summary'">Haz clic en una BU para explorar sus clientes</span>
+            <span x-show="bgt.view === 'client_list'">Barras = % ejecución sobre budget · ++ = detalle mensual</span>
+          </div>
+        </div>
+        <!-- Top desviaciones: 2 mini-tables side by side -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+          <!-- Top desviaciones negativas -->
+          <div class="arum-card rounded-2xl p-4 shadow-sm">
+            <div class="text-sm font-semibold mb-2" style="color:var(--arum-danger)">
+              Top desviaciones negativas
+            </div>
+            <div class="text-xs text-slate-500 mb-3">Clientes que más se alejan del plan (bajo vs budget)</div>
+            <table class="min-w-full text-xs">
+              <thead class="text-[11px] uppercase tracking-wider text-slate-400">
+                <tr class="border-b border-slate-200/60">
+                  <th class="py-1.5 text-left">Cliente</th>
+                  <th class="py-1.5 px-2 text-right">Real</th>
+                  <th class="py-1.5 px-2 text-right">Desv. €</th>
+                  <th class="py-1.5 pl-1 text-right">Cumpl.</th>
+                </tr>
+              </thead>
+              <tbody>
+                <template x-for="r in bgtTopNeg()" :key="r.norm">
+                  <tr class="border-b border-slate-100">
+                    <td class="py-1.5 pr-2 max-w-[140px] truncate font-medium text-slate-800"
+                        :title="r.raw" x-text="r.raw.length>22?r.raw.slice(0,22)+'…':r.raw"></td>
+                    <td class="py-1.5 px-2 text-right text-slate-600" x-text="fmtEUR(r.real)"></td>
+                    <td class="py-1.5 px-2 text-right dev-neg" x-text="fmtEUR(r.dev_eur)"></td>
+                    <td class="py-1.5 pl-1 text-right" :class="semaforoClass(r.cumpl)"
+                        x-text="r.cumpl!==null?fmtPct(r.cumpl):'—'"></td>
+                  </tr>
+                </template>
+                <tr x-show="bgtTopNeg().length===0">
+                  <td colspan="4" class="py-3 text-center text-slate-400 text-xs">Sin desviaciones negativas</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Top desviaciones positivas -->
+          <div class="arum-card rounded-2xl p-4 shadow-sm">
+            <div class="text-sm font-semibold mb-2" style="color:var(--arum-positive)">
+              Top desviaciones positivas
+            </div>
+            <div class="text-xs text-slate-500 mb-3">Clientes que superan el plan (sobre-ejecutados)</div>
+            <table class="min-w-full text-xs">
+              <thead class="text-[11px] uppercase tracking-wider text-slate-400">
+                <tr class="border-b border-slate-200/60">
+                  <th class="py-1.5 text-left">Cliente</th>
+                  <th class="py-1.5 px-2 text-right">Real</th>
+                  <th class="py-1.5 px-2 text-right">Desv. €</th>
+                  <th class="py-1.5 pl-1 text-right">Cumpl.</th>
+                </tr>
+              </thead>
+              <tbody>
+                <template x-for="r in bgtTopPos()" :key="r.norm">
+                  <tr class="border-b border-slate-100">
+                    <td class="py-1.5 pr-2 max-w-[140px] truncate font-medium text-slate-800"
+                        :title="r.raw" x-text="r.raw.length>22?r.raw.slice(0,22)+'…':r.raw"></td>
+                    <td class="py-1.5 px-2 text-right text-slate-600" x-text="fmtEUR(r.real)"></td>
+                    <td class="py-1.5 px-2 text-right" :class="devClass(r.dev_eur)" x-text="'+'+fmtEUR(r.dev_eur)"></td>
+                    <td class="py-1.5 pl-1 text-right semaforo-green"
+                        x-text="r.cumpl!==null?fmtPct(r.cumpl):'N/A'"></td>
+                  </tr>
+                </template>
+                <tr x-show="bgtTopPos().length===0">
+                  <td colspan="4" class="py-3 text-center text-slate-400 text-xs">Sin desviaciones positivas aún</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </template>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════
+       TAB 4: COBROS — Aging & Cash Collection
+  ══════════════════════════════════════════════════════════ -->
+  <section x-show="tab==='cobros'" class="mt-6 space-y-4">
+
+    <!-- KPIs cobros -->
+    <div x-data="{ k: agingKPIs() }" x-effect="k = agingKPIs()"
+         class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+
+      <div class="kpi arum-card rounded-2xl p-4 shadow-sm" style="border-left-color:var(--arum-positive)">
+        <div class="text-xs uppercase tracking-wider text-slate-500">Cobrado</div>
+        <div class="mt-1 text-xl font-semibold text-emerald-600" x-text="fmtEUR(k.totalCobrado)"></div>
+        <div class="mt-1 text-xs text-slate-400" x-text="fmtPct(k.pctCobrado) + ' del facturado'"></div>
+      </div>
+
+      <div class="kpi arum-card rounded-2xl p-4 shadow-sm" style="border-left-color:var(--arum-warning)">
+        <div class="text-xs uppercase tracking-wider text-slate-500">Pendiente</div>
+        <div class="mt-1 text-xl font-semibold text-amber-600" x-text="fmtEUR(k.totalPendiente)"></div>
+        <div class="mt-1 text-xs text-slate-400" x-text="k.invoicesPendiente + ' facturas'"></div>
+      </div>
+
+      <div class="kpi arum-card rounded-2xl p-4 shadow-sm kpi-alert">
+        <div class="text-xs uppercase tracking-wider text-slate-500">Vencido sin cobrar</div>
+        <div class="mt-1 text-xl font-semibold text-red-600" x-text="fmtEUR(k.totalVencido)"></div>
+        <div class="mt-1 text-xs text-slate-400" x-text="k.invoicesVencido + ' facturas vencidas'"></div>
+      </div>
+
+      <div class="kpi arum-card rounded-2xl p-4 shadow-sm" style="border-left-color:#6366F1">
+        <div class="text-xs uppercase tracking-wider text-slate-500">DSO (días)</div>
+        <div class="mt-1 text-xl font-semibold"
+             :class="k.dso > 90 ? 'text-red-600' : k.dso > 60 ? 'text-amber-600' : 'text-slate-700'"
+             x-text="k.dso + ' días'"></div>
+        <div class="mt-1 text-xs text-slate-400">días med. cobro · año seleccionado</div>
+      </div>
+    </div>
+
+    <!-- Aging buckets -->
+    <div class="arum-card rounded-2xl p-4 shadow-sm" x-data="{ b: agingBuckets() }" x-effect="b = agingBuckets()">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <div class="text-sm font-semibold" style="color:var(--arum-primary)">Aging de cuentas a cobrar</div>
+          <div class="text-xs text-slate-400">Distribución del saldo vencido por antigüedad · facturas con estado Vencido</div>
+        </div>
+        <div class="text-xs font-semibold text-red-600"
+             x-text="'Total: ' + fmtEUR(Object.values(b).reduce((a,v)=>a+v,0))"></div>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <template x-for="bucket in ['1-30','31-60','61-90','90+']" :key="bucket">
+          <div class="rounded-xl p-3"
+               :style="'background:'+agingBucketColor(bucket)+'18;border:1px solid '+agingBucketColor(bucket)+'44'">
+            <div class="text-[11px] font-semibold uppercase tracking-wider mb-1"
+                 :style="'color:'+agingBucketColor(bucket)" x-text="bucket + ' días'"></div>
+            <div class="text-lg font-semibold text-slate-800" x-text="fmtEUR(b[bucket]||0)"></div>
+            <div class="mt-2 rounded-full overflow-hidden" style="height:4px;background:rgba(15,23,42,.08)">
+              <div class="h-full rounded-full"
+                   :style="'width:'+(Object.values(b).reduce((a,v)=>a+v,0)>0?Math.round((b[bucket]||0)/Object.values(b).reduce((a,v)=>a+v,0)*100):0)+'%;background:'+agingBucketColor(bucket)">
+              </div>
+            </div>
+            <div class="mt-1 text-[10px] text-slate-400"
+                 x-text="Object.values(b).reduce((a,v)=>a+v,0)>0 ? fmtPct((b[bucket]||0)/Object.values(b).reduce((a,v)=>a+v,0)) : '0%'">
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+
+    <!-- Aging por cliente -->
+    <div class="arum-card rounded-2xl shadow-sm overflow-hidden">
+
+      <div class="px-4 pt-4 pb-3 flex items-center justify-between" style="border-bottom:1px solid rgba(15,23,42,.06)">
+        <div>
+          <div class="text-sm font-semibold" style="color:var(--arum-primary)">Aging por cliente</div>
+          <div class="text-[11px] text-slate-400 mt-0.5">Clientes con facturas vencidas · click en columna para ordenar</div>
+        </div>
+        <div class="text-xs text-slate-400" x-text="agingSorted().length + ' clientes con saldo vencido'"></div>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-xs" style="border-collapse:separate;border-spacing:0">
+          <thead>
+            <tr style="background:rgba(248,250,252,0.8)">
+              <th class="py-2.5 pl-4 pr-2 text-[10px] uppercase tracking-wider text-slate-400 text-left" style="width:28px">#</th>
+              <th class="py-2.5 px-2 text-[10px] uppercase tracking-wider text-slate-400 text-left cursor-pointer hover:text-slate-700"
+                  @click="agingSort.col='cliente'; agingSort.dir*=-1">
+                Cliente <span x-show="agingSort.col==='cliente'" x-text="agingSort.dir>0?'↑':'↓'"></span>
+              </th>
+              <th class="py-2.5 px-2 text-[10px] uppercase tracking-wider text-slate-400 text-left">BU</th>
+              <th class="py-2.5 px-2 text-[10px] uppercase tracking-wider text-slate-400 text-right cursor-pointer hover:text-slate-700"
+                  @click="agingSort.col='amount'; agingSort.dir*=-1">
+                Vencido <span x-show="agingSort.col==='amount'" x-text="agingSort.dir>0?'↑':'↓'"></span>
+              </th>
+              <th class="py-2.5 px-2 text-[10px] uppercase tracking-wider text-slate-400 text-right cursor-pointer hover:text-slate-700"
+                  @click="agingSort.col='maxDays'; agingSort.dir*=-1">
+                Días máx. <span x-show="agingSort.col==='maxDays'" x-text="agingSort.dir>0?'↑':'↓'"></span>
+              </th>
+              <th class="py-2.5 px-2 text-[10px] uppercase tracking-wider text-slate-400 text-right cursor-pointer hover:text-slate-700"
+                  @click="agingSort.col='bucketOrder'; agingSort.dir*=-1">
+                Bucket <span x-show="agingSort.col==='bucketOrder'" x-text="agingSort.dir>0?'↑':'↓'"></span>
+              </th>
+              <th class="py-2.5 pr-4 pl-2 text-[10px] uppercase tracking-wider text-slate-400 text-right cursor-pointer hover:text-slate-700"
+                  @click="agingSort.col='count'; agingSort.dir*=-1">
+                Nº fact. <span x-show="agingSort.col==='count'" x-text="agingSort.dir>0?'↑':'↓'"></span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <template x-for="(r, idx) in agingSorted()" :key="r.cliente">
+              <tr class="hover:bg-slate-50/60 transition-all" style="border-top:1px solid rgba(15,23,42,.04)">
+                <td class="py-2.5 pl-4 pr-2 text-[11px] text-slate-400" x-text="idx+1"></td>
+                <td class="py-2.5 px-2 font-semibold text-slate-800 truncate" style="max-width:200px"
+                    :title="r.cliente" x-text="r.cliente"></td>
+                <td class="py-2.5 px-2"><span class="bu-pill" x-text="r.bu||'—'"></span></td>
+                <td class="py-2.5 px-2 text-right">
+                  <div class="font-semibold text-red-600" x-text="fmtEUR(r.amount)"></div>
+                  <div class="mt-1 rounded-full overflow-hidden ml-auto" style="height:3px;background:rgba(15,23,42,.07);max-width:80px">
+                    <div class="h-full rounded-full bg-red-500"
+                         :style="'width:'+(agingClients()[0]?.amount>0?Math.min(r.amount/agingClients()[0].amount*100,100):0)+'%'"></div>
+                  </div>
+                </td>
+                <td class="py-2.5 px-2 text-right font-medium"
+                    :class="r.maxDays>90?'text-red-600':r.maxDays>60?'text-amber-600':'text-slate-600'"
+                    x-text="r.maxDays + ' días'"></td>
+                <td class="py-2.5 px-2 text-right">
+                  <span class="badge rounded-full px-2 py-0.5 text-[10px] font-semibold"
+                        :style="'background:'+agingBucketColor(r.bucket)+'22;color:'+agingBucketColor(r.bucket)"
+                        x-text="r.bucket"></span>
+                </td>
+                <td class="py-2.5 pr-4 pl-2 text-right text-slate-500" x-text="r.count"></td>
+              </tr>
+            </template>
+            <tr x-show="agingSorted().length === 0">
+              <td colspan="7" class="py-8 text-center text-slate-400 text-xs">Sin facturas vencidas · 🎉</td>
+            </tr>
+          </tbody>
+          <tfoot x-show="agingSorted().length > 0">
+            <tr style="background:rgba(248,250,252,0.9);border-top:1px solid rgba(15,23,42,.08)">
+              <td colspan="3" class="py-2 pl-4 text-[11px] font-semibold text-slate-500"
+                  x-text="agingSorted().length + ' clientes'"></td>
+              <td class="py-2 px-2 text-right text-[11px] font-semibold text-red-600"
+                  x-text="fmtEUR(agingSorted().reduce((a,r)=>a+r.amount,0))"></td>
+              <td colspan="3"></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+  </section>
+
+  <footer class="mt-8 text-xs text-slate-400">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+      <div>ARUM · Dashboard Ejecutivo v21 · Uso interno C-Suite · Fuente: Datos_Dashboard.xlsx</div>
+      <div>Revenue neto = Subtotal (excl. abonos negativos agrupados por diseño)</div>
+    </div>
+  </footer>
+
+</div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════════════
+// ARUM Dashboard Engine v21
+// ════════════════════════════════════════════════════════════════
+function dashboard() {
+  const MONTHS = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+  const COLORS = {
+    primary: '#1F3A4A', accent: '#1BAF9B', accent2: '#A6C85A',
+    green: '#059669', red: '#DC2626', amber: '#D97706',
+    blue: '#3B82F6', purple: '#6366F1', gray: '#94A3B8'
+  };
+
+  // ── Utility helpers ──────────────────────────────────────────
+  const safeNum = (v) => {
+    if (v === null || v === undefined || v === '') return 0;
+    if (typeof v === 'number') return Number.isFinite(v) ? v : 0;
+    let s = String(v).trim().replace(/[^0-9,.-]/g, '');
+    const hasComma = s.includes(','), hasDot = s.includes('.');
+    if (hasComma && hasDot) {
+      s = s.lastIndexOf(',') > s.lastIndexOf('.') ? s.replace(/\./g,'').replace(',','.') : s.replace(/,/g,'');
+    } else if (hasComma) { s = s.replace(',','.'); }
+    const n = Number(s);
+    return Number.isFinite(n) ? n : 0;
+  };
+
+  const toDate = (v) => {
+    if (!v && v !== 0) return null;
+    if (v instanceof Date && !isNaN(v)) return v;
+    if (typeof v === 'number') {
+      const d = new Date(Date.UTC(1899,11,30) + v*86400000);
+      return isNaN(d) ? null : d;
+    }
+    const d = new Date(v);
+    return isNaN(d) ? null : d;
+  };
+
+  const sum = (arr, fn) => arr.reduce((a,x) => a + (fn ? fn(x) : x), 0);
+
+  // ── Memoization ──────────────────────────────────────────────
+  // pygAgg is expensive; cache keyed by year
+  const _pygAggCache = new Map();
+  const _pygCalcCache = new Map();
+
+  return {
+    // UI state
+    tab: 'facturacion',
+    tabs: [
+      { id:'facturacion', label:'Revenues' },
+      { id:'pyg', label:'P&L' },
+      { id:'budget', label:'Budget 2026' },
+      { id:'cobros', label:'Cobros' }
+    ],
+    fileLabel: 'Datos_Dashboard.xlsx (recomendado)',
+    dataStatus: 'Cargando demo…',
+
+    // Filters
+    filters: {
+      year: 2025,
+      period: 'ytd',       // ytd | fy | month | range
+      month: (new Date()).getMonth()+1,
+      monthFrom: 1,        // used when period='range'
+      monthTo:   (new Date()).getMonth()+1,
+      bu: '__ALL__',
+      client: '__ALL__',
+      naturaleza: '__ALL__', // Publico | Privado | __ALL__
+    },
+    activePreset: 'ytd',  // tracks which pill is highlighted
+
+    // Dimension lists (populated from data)
+    businessUnits: [],
+    clients: [],
+    monthsIdx: Array.from({length:12},(_,i)=>i+1),
+
+    // Revenue tab controls
+    showYoY: true,
+    topClientN: 15,
+    detailQuery: '',
+    showAccountSubtotals: true,
+    detailTopN: 5,
+
+    // PyG tab controls
+    pygDetailLevel: 'cfo',
+    pygTopN: 6,
+    pygExpanded: { '01':true,'02':true,'04':false,'05':false,'06':false,'07':false,'10':false },
+
+    // ── Per-block sort state (moved from nested x-data to avoid $root scope issues) ──
+    periodSort:   { col: 'revenue', dir: -1 },  // Top clientes del periodo
+    periodTopN:   10,   // 0 = Todos; positive integer = slice limit
+    carteraSort:  { col: 'total',   dir: -1 },  // Cartera de clientes (topClients)
+    bgtTableSort: { col: 'dev_eur', dir: -1, show: 'all' },  // Budget unified table
+    bgtTableN:    0,   // 0 = Todos; positive integer = Top-N slice limit
+    agingSort:    { col: 'amount',  dir: -1 },  // Aging por cliente
+
+    // Data
+    fact: [],
+    mayor: [],
+
+    // P&G_Detallada parsed data (optional, only if sheet exists)
+    pygByBU: [],
+    pygBUs: [],
+
+    // ── Budget 2026 state ────────────────────────────────────────
+    // budgetRows: flat long-format [{cliente_norm, bu, month, budget}]
+    budgetRows: [],
+    // budgetClientMap: normalised_name → canonical_name lookup (built at parse time)
+    budgetClientMap: {},
+    // Budget tab controls
+    bgt: {
+      closedMonth: Math.max(1, (new Date()).getMonth()), // getMonth()=0-based: March→2=Feb closed. In Jan(0) → max(1,0)=1
+      bu: '__ALL__',
+      drillClient: null,   // client selected for monthly drill-down
+      // ── Hierarchical navigation ──
+      // view: 'bu_summary' = BU aggregates | 'client_list' = clients of selected BU
+      view: 'bu_summary',
+      activeBU: null,      // BU currently drilled into (null = all BUs in summary)
+    },
+
+    // Charts
+    charts: { factLine:null, buBar:null, pygTrend:null, pygWaterfall:null, bgtMonthly:null },
+
+    // Pending render token (used by _scheduleRender to cancel stale renders)
+    _renderToken: null,
+
+    // Months
+    months: [...MONTHS,'Total'],
+    monthsOnly: [...MONTHS],
+
+    // ── Formatting ─────────────────────────────────────────────
+    fmtEUR(v) {
+      const n = Number(v)||0;
+      return new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
+    },
+    fmtPct(v) {
+      const n = Number(v)||0;
+      return new Intl.NumberFormat('es-ES',{style:'percent',maximumFractionDigits:1}).format(n);
+    },
+    monthName(mIdx) { return MONTHS[(Number(mIdx)||1)-1]||'—'; },
+
+    // ── File handling ───────────────────────────────────────────
+    async onFile(evt) {
+      const f = evt?.target?.files?.[0];
+      if (!f) return;
+      this.fileLabel = f.name;
+      this.dataStatus = 'Leyendo Excel…';
+      try {
+        const buf = await f.arrayBuffer();
+        const wb = XLSX.read(buf, {type:'array', cellDates:true});
+        await this.loadWorkbook(wb);
+        this.dataStatus = 'Datos cargados ✔';
+      } catch(e) {
+        console.error(e);
+        this.dataStatus = 'Error: '+e.message;
+      }
+    },
+
+    async loadWorkbook(wb) {
+      const pick = (names) => names.find(n => wb.SheetNames.includes(n))||null;
+      const toJson = (name) => XLSX.utils.sheet_to_json(wb.Sheets[name], {defval:null});
+
+      const sFact  = pick(['ALL_Facturacion','All_facturacion','ALL_FACTURACION','all facturacion','All Facturacion','all_facturacion']);
+      const sMayor = pick(['DDBB_Mayor','DDBB_mayor','Mayor']);
+      if (!sFact || !sMayor) throw new Error('Hojas requeridas no encontradas (ALL_Facturacion / DDBB_Mayor).');
+
+      // Parse ALL_Facturacion
+      // Fecha: soporta 'Fecha', 'Fecha de emisión' y variantes según naming real del Excel
+      this.fact = toJson(sFact).map(r => {
+        const d = toDate(r['Fecha'] ?? r['Fecha de emisión'] ?? r['Fecha de Emisión'] ?? r['Fecha de emision'] ?? r['Fecha Emisión'] ?? r['FechaEmision']);
+        const y = d ? d.getFullYear() : (r['Año']??r['Year']);
+        const m = d ? (d.getMonth()+1) : (r['Mes']??r['Month']);
+        const dc = toDate(r['Fecha de cobro']);
+        return {
+          ...r,
+          __date: d, __year: Number(y)||null, __month: Number(m)||null,
+          __total: safeNum(r['Subtotal']),
+          __cobrado: safeNum(r['Cobrado']),
+          __pendiente: safeNum(r['Pendiente']),
+          __estado: (r['Estado']||'').toString().trim(),
+          __naturaleza: (r['Naturaleza']||'').toString().trim().normalize('NFD').replace(/[\u0300-\u036f]/g,''),
+          __bu: (r['B.Unit']||r['B.Unit ']||'').toString().trim(),
+          __cliente: (r['Cliente']||'').toString().trim(),
+          __cuenta: (r['Cuenta']||'').toString().trim(),
+          __fechaCobro: dc,
+          __dso: (d && dc) ? Math.round((dc-d)/86400000) : null,
+        };
+      }).filter(r => r.__year);
+
+      // Parse DDBB_Mayor
+      this.mayor = toJson(sMayor).map(r => {
+        const d = toDate(r['Fecha']);
+        const y = d ? d.getFullYear() : null;
+        const m = d ? (d.getMonth()+1) : null;
+        return { ...r, __date:d, __year:y, __month:m, __net: safeNum(r['Haber'])-safeNum(r['Debe']) };
+      }).filter(r => r.__year);
+
+      // Parse P&G_Detallada (optional — no rompe si no existe)
+      const sPyg = pick(['P&G_Detallada','PG_Detallada','P&G Detallada']);
+      if (sPyg) {
+        try { this.parsePyGDetallada(wb.Sheets[sPyg]); }
+        catch(e) { console.warn('P&G_Detallada parse failed (non-critical):', e); }
+      }
+
+      // Parse POA2026 / PO2026 (optional — no rompe si no existe)
+      // Busca primero la variante con "A" (POA2026) y luego las anteriores por compatibilidad
+      const sBgt = pick(['POA2026','poa2026','POA_2026','PO2026','po2026','Budget2026','BUDGET2026']);
+      if (sBgt) {
+        try { this.parsePO2026(wb.Sheets[sBgt]); }
+        catch(e) { console.warn('PO2026 parse failed (non-critical):', e); }
+      }
+
+      // Invalidate caches
+      _pygAggCache.clear();
+      _pygCalcCache.clear();
+
+      this.bootstrapFilters();
+      this.refreshAll();
+      this.dataStatus = 'Datos cargados ✔';
+    },
+
+    // ── Parse PO2026 → long format ──────────────────────────────
+    // Sheet layout (0-indexed):
+    //   Row 0: empty  Row 1: year headers (col16=2026)
+    //   Row 2: month headers — col1=CLIENTES, cols 16-27 = ene..dic 2026
+    //   Row 3+: data rows. Col 1 = client name.
+    //   BU section markers: rows where col1 ∈ BU_NAMES (Campañas, Consultoria…)
+    //   Budget cols 2026: indices 16-27 (Q-AB in Excel 1-based = 0-based 16-27)
+    //   Total 2026: col 28 (AC). Skip: CLIENTE X, Total general, row 159 (% row)
+    parsePO2026(ws) {
+      const data = XLSX.utils.sheet_to_json(ws, {header:1, defval:null});
+      if (!data || data.length < 4) return;
+
+      // ── Column layout (0-based XLSX.js indices, sheet_to_json {header:1}) ──
+      // index 0 = col A = empty
+      // index 1 = col B = client name
+      // index 2 = col C = B Unit (canonical BU for that row)
+      // index 3-14 = cols D-O = monthly budget (ene=3, feb=4, ... dic=14)
+      // index 15 = col P = annual total (formula, not used)
+      // index 16 = col Q = "BUDGET" header only, then null for client rows
+
+      const COL_CLIENT  = 1;   // col B
+      const COL_BU      = 2;   // col C
+      const COL_MON_FROM = 3;  // col D = ene (month 1)
+      const COL_MON_TO   = 14; // col O = dic (month 12)
+
+      // BU section header rows have col B = col C = BU name
+      // These define currentBU for rows that follow (defensive: also read col C directly)
+      const BU_SECTION_NAMES = new Set([
+        'Campañas','Consultoria','PAUS','Servicios Urbanos','Clima y Territorio'
+      ]);
+
+      // Hard stop markers — rows at or after these contain only totals/summaries
+      const STOP_MARKERS = new Set(['Total general']);
+
+      // Per-row skip patterns — placeholders and header leftovers
+      const isSkipRow = (name) => {
+        if (!name) return true;
+        const n = name.trim();
+        if (!n) return true;
+        // CLIENTE X = BU-level placeholder
+        if (/^CLIENTE\s+X$/i.test(n)) return true;
+        // CLIENTES = column header
+        if (n === 'CLIENTES') return true;
+        // % rows (row 160 in current sheet has percentage values in col B)
+        // These appear as numbers when sheet_to_json reads them
+        if (typeof name === 'number') return true;
+        return false;
+      };
+
+      const records = [];
+      let currentBU = null;
+
+      for (let i = 3; i < data.length; i++) {
+        const row = data[i];
+        if (!row) continue;
+
+        const clientRaw = row[COL_CLIENT];
+
+        // Numeric rows (like the % row after Total general) — skip
+        if (typeof clientRaw === 'number') continue;
+
+        const clientStr = (clientRaw ?? '').toString().trim();
+        if (!clientStr) continue;
+
+        // Hard stop on Total general — everything after is summaries
+        if (STOP_MARKERS.has(clientStr)) break;
+
+        // Skip placeholder and header rows
+        if (isSkipRow(clientStr)) continue;
+
+        // BU section header: col B = col C = BU name
+        // Use col C as the definitive BU — more robust than relying on section order
+        const colCVal = (row[COL_BU] ?? '').toString().trim();
+        if (BU_SECTION_NAMES.has(clientStr) && BU_SECTION_NAMES.has(colCVal)) {
+          currentBU = colCVal;
+          continue;
+        }
+
+        // For client rows, prefer col C as BU (it's explicitly set in the Excel)
+        // Fall back to currentBU if col C is empty or matches no known BU
+        const rowBU = BU_SECTION_NAMES.has(colCVal) ? colCVal : currentBU;
+
+        const clientNorm = this.normClient(clientStr);
+
+        // Read monthly values: cols D-O (indices 3-14) = months 1-12
+        for (let col = COL_MON_FROM; col <= COL_MON_TO; col++) {
+          const val = row[col];
+          // Skip null/undefined (no budget entry for that month)
+          // Keep explicit 0 — a budgeted zero is a deliberate plan point
+          if (val === null || val === undefined) continue;
+          const n = Number(val);
+          if (!Number.isFinite(n)) continue;
+          const month = col - COL_MON_FROM + 1; // col 3 → month 1, col 14 → month 12
+          records.push({
+            cliente:    clientNorm,
+            clienteRaw: clientStr,
+            bu:         rowBU,
+            month,
+            year:       2026,
+            budget:     n,
+          });
+        }
+      }
+
+      this.budgetRows = records;
+    },
+
+    // ── Client name normalisation ────────────────────────────────
+    // Explicit lookup table (real name → budget canonical name).
+    // Key = name as it appears in ALL_Facturacion (real data).
+    // Value = normalised key used as join key in budgetRows.
+    // Both sides are normalised via _normBase before comparison.
+    normClient(name) {
+      if (!name) return '';
+      // Apply the lookup table first (both sides already lower+trimmed for matching)
+      const LOOKUP = {
+        // Real → Budget canonical (budget side key is what parsePO2026 stores)
+        // Key   = normalised fact client name (lower + trim + rstrip dots)
+        // Value = normalised budget client name (must match parsePO2026 output)
+        'aeropic sa':                                   'aeropic',
+        'ajuntament avellanes i sta linya':             "ajuntament d'avellanes",
+        'ajuntament de molins de rei':                  'aj. molins de rei',
+        'ajuntament de prullans':                       'aj. prullans',
+        'arno infraestructuras sl.':                    'arno infraestructuras sl',
+        'compost segria sau (compost segria)':          'compost segrià',
+        "estabanell y pahisa, sa (''estabanell y pahisa, s.a.'')":
+                                                        'estabanell y pahisa-innover-august serra',
+        'august serra ferrer sl':                       'estabanell y pahisa-innover-august serra',
+        'innover instalaciones de nuevas energias sl':  'estabanell y pahisa-innover-august serra',
+        // GBI PAPREC: fact has 'GBI PAPREC SA.' → maps to budget 'GBI PAPREC SA' (Consultoria)
+        // Note: 'GBI PAPREC SA (SALOU)' and '(CERDANYA)' remain separate budget entries
+        'gbi paprec sa.':                               'gbi paprec sa',
+        // UTE GBI PAPREC-TP CERDANYA (fact 2026) → GBI PAPREC SA (CERDANYA) in budget
+        'ute gbi paprec-tp cerdanya':                   'gbi paprec sa (cerdanya)',
+        // LLORENS: name order reversed between fact and budget
+        'llorens excavacions i contenidors sl':         'excavacions llorens',
+        // ROMERO POLO: fact has full legal name, budget uses short name
+        'jose antonio romero polo s.a.u.':              'romero polo',
+        'jose antonio romero polo s.a.u':               'romero polo',
+      };
+      // Normalise: lowercase, trim, collapse internal spaces, strip trailing dots
+      const base = name.toLowerCase().trim().replace(/\.+$/, '').replace(/\s+/g, ' ');
+      if (LOOKUP[base]) return LOOKUP[base];
+      // Also try with the raw lower+trim (no dot stripping) to catch entries like 'gbi paprec sa.'
+      const baseRaw = name.toLowerCase().trim();
+      if (LOOKUP[baseRaw]) return LOOKUP[baseRaw];
+      return base;
+    },
+
+    // ── Budget computed helpers ──────────────────────────────────
+
+    // Filter budgetRows by BU and month range (1..closedMonth for YTD)
+    bgtFilteredRows({ bu=null, monthFrom=1, monthTo=null }={}) {
+      const BU = bu ?? this.bgt.bu;
+      const TO = monthTo ?? this.bgt.closedMonth;
+      return this.budgetRows.filter(r => {
+        if (BU !== '__ALL__' && r.bu !== BU) return false;
+        if (r.month < monthFrom || r.month > TO) return false;
+        return true;
+      });
+    },
+
+    // Real 2026 rows filtered by BU and month range
+    realFilteredRows({ bu=null, monthFrom=1, monthTo=null }={}) {
+      const BU = bu ?? this.bgt.bu;
+      const TO = monthTo ?? this.bgt.closedMonth;
+      return this.fact.filter(r => {
+        if (r.__year !== 2026) return false;
+        if (BU !== '__ALL__' && r.__bu !== BU) return false;
+        if (r.__month < monthFrom || r.__month > TO) return false;
+        return true;
+      });
+    },
+
+    // Aggregate real 2026 revenue by normalised client name + BU + month
+    // Key includes BU so that a client appearing in multiple BUs is tracked separately
+    _realByClientMonth() {
+      const map = new Map(); // key = `${normClient}|${bu}|${month}`
+      for (const r of this.fact) {
+        if (r.__year !== 2026) continue;
+        const norm = this.normClient(r.__cliente);
+        const key  = norm + '|' + (r.__bu || '') + '|' + r.__month;
+        map.set(key, (map.get(key) || 0) + r.__total);
+      }
+      return map;
+    },
+
+    // Build joined client comparison table (YTD up to bgt.closedMonth)
+    // Join key: normalisedClientName + bu — handles clients present in multiple BUs
+    bgtClientTable() {
+      const BU = this.bgt.bu;
+      const M  = this.bgt.closedMonth;
+
+      // Aggregate budget per client+BU (YTD)
+      // Key: `${clientNorm}|${bu}`
+      const bgtMap = new Map();
+      for (const r of this.budgetRows) {
+        if (BU !== '__ALL__' && r.bu !== BU) continue;
+        if (r.month > M) continue;
+        const key = r.cliente + '|' + r.bu;
+        if (!bgtMap.has(key)) bgtMap.set(key, { budget:0, bu:r.bu, raw:r.clienteRaw, norm:r.cliente });
+        bgtMap.get(key).budget += r.budget;
+      }
+
+      // Aggregate real per client+BU (YTD)
+      // Use BU from fact data to match the budget BU
+      const realMap = new Map(); // key = `${normClient}|${bu}` → real total
+      const realBUMap = new Map(); // key = `${normClient}|${bu}` → bu label
+      for (const r of this.fact) {
+        if (r.__year !== 2026) continue;
+        if (BU !== '__ALL__' && r.__bu !== BU) continue;
+        if (r.__month > M) continue;
+        const norm = this.normClient(r.__cliente);
+        const key  = norm + '|' + (r.__bu || '');
+        realMap.set(key, (realMap.get(key) || 0) + r.__total);
+        if (!realBUMap.has(key)) realBUMap.set(key, r.__bu);
+      }
+
+      // Merge: all keys from both budget and real
+      const allKeys = new Set([...bgtMap.keys(), ...realMap.keys()]);
+      const totalReal = Array.from(realMap.values()).reduce((a,v) => a+v, 0);
+
+      const rows = [];
+      for (const key of allKeys) {
+        const bgtEntry = bgtMap.get(key);
+        const real     = realMap.get(key) || 0;
+        const budget   = bgtEntry ? bgtEntry.budget : 0;
+        const norm     = bgtEntry ? bgtEntry.norm : key.split('|')[0];
+        const rawBU    = key.split('|')[1] || '';
+        const bu       = bgtEntry ? bgtEntry.bu : (realBUMap.get(key) || rawBU || '—');
+        const raw      = bgtEntry ? bgtEntry.raw : norm;
+        const dev_eur  = real - budget;
+        const dev_pct  = budget !== 0 ? dev_eur / budget : (real > 0 ? 1 : 0);
+        const cumpl    = budget !== 0 ? real / budget : null;
+        const unmapped = !bgtEntry && real > 0;
+        rows.push({ norm, raw, bu, real, budget, dev_eur, dev_pct, cumpl,
+                    pct_total: totalReal > 0 ? real / totalReal : 0, unmapped });
+      }
+
+      // No sort here — bgtTableVisible() applies sort via bgtTableSort state.
+      return rows;
+    },
+
+    // Monthly series for the bar chart (budget vs real, full year 1-12)
+    bgtMonthlySeries() {
+      const BU = this.bgt.bu;
+      const realByM  = Array(12).fill(0);
+      const bgtByM   = Array(12).fill(0);
+
+      for (const r of this.budgetRows) {
+        if (BU !== '__ALL__' && r.bu !== BU) continue;
+        if (r.month >= 1 && r.month <= 12) bgtByM[r.month-1] += r.budget;
+      }
+      for (const r of this.fact) {
+        if (r.__year !== 2026) continue;
+        if (BU !== '__ALL__' && r.__bu !== BU) continue;
+        if (r.__month >= 1 && r.__month <= 12) realByM[r.__month-1] += r.__total;
+      }
+
+      // YTD cumulative lines
+      const M = this.bgt.closedMonth;
+      const ytdReal = Array(12).fill(null);
+      const ytdBgt  = Array(12).fill(null);
+      let cumR = 0, cumB = 0;
+      for (let i=0; i<12; i++) {
+        if (i < M) { cumR += realByM[i]; cumB += bgtByM[i]; ytdReal[i]=cumR; ytdBgt[i]=cumB; }
+      }
+
+      return { realByM, bgtByM, ytdReal, ytdBgt };
+    },
+
+    // Monthly drill-down for a single client
+    // normName format: `${clientNorm}|${bu}` — matches bgtClientTable key
+    bgtClientMonthly(normName) {
+      const realMap = this._realByClientMonth();
+      const parts   = normName.split('|');
+      const cNorm   = parts[0] || normName;
+      const cBU     = parts[1] || '';
+      const rows = [];
+      for (let m = 1; m <= 12; m++) {
+        // Budget: sum all budgetRows matching this client+BU for this month
+        const budget = this.budgetRows
+          .filter(r => r.cliente === cNorm && r.bu === cBU && r.month === m)
+          .reduce((a, r) => a + r.budget, 0);
+        // Real: key is `${normClient}|${bu}|${month}` (new format)
+        const real = realMap.get(cNorm + '|' + cBU + '|' + m) || 0;
+        rows.push({ month: m, budget, real, dev_eur: real - budget,
+                    dev_pct: budget !== 0 ? (real - budget) / budget : (real > 0 ? 1 : 0) });
+      }
+      return rows;
+    },
+
+    // KPI helpers
+    bgtKPI() {
+      const M  = this.bgt.closedMonth;
+      const BU = this.bgt.bu;
+
+      const realYTD   = this.realFilteredRows().reduce((a,r)=>a+r.__total,0);
+      const budgetYTD = this.bgtFilteredRows().reduce((a,r)=>a+r.budget,0);
+      const budgetFY  = this.budgetRows
+        .filter(r => BU==='__ALL__' || r.bu===BU)
+        .reduce((a,r)=>a+r.budget,0);
+      const devEUR    = realYTD - budgetYTD;
+      const devPct    = budgetYTD !== 0 ? devEUR/budgetYTD : 0;
+      const cumpl     = budgetYTD !== 0 ? realYTD/budgetYTD : 0;
+      // Simple forecast: real YTD + remaining budget months
+      const budgetRemaining = this.budgetRows
+        .filter(r => (BU==='__ALL__'||r.bu===BU) && r.month > M)
+        .reduce((a,r)=>a+r.budget,0);
+      const forecast  = realYTD + budgetRemaining;
+
+      return { realYTD, budgetYTD, budgetFY, devEUR, devPct, cumpl, forecast,
+               nRed: 0, nGreen: 0 }; // counts filled by bgtClientTable
+    },
+
+    // Semáforo class based on cumplimiento %
+    semaforoClass(cumpl) {
+      if (cumpl === null || cumpl === undefined) return 'dev-zero';
+      if (cumpl >= 0.95) return 'semaforo-green';
+      if (cumpl >= 0.80) return 'semaforo-amber';
+      return 'semaforo-red';
+    },
+
+    devClass(dev_eur) {
+      if (dev_eur > 0) return 'dev-pos';
+      if (dev_eur < 0) return 'dev-neg';
+      return 'dev-zero';
+    },
+
+    progressColor(cumpl) {
+      if (cumpl === null) return '#94A3B8';
+      if (cumpl >= 0.95) return '#059669';
+      if (cumpl >= 0.80) return '#D97706';
+      return '#DC2626';
+    },
+
+    // BU list from budget data (for budget filter)
+    bgtBUs() {
+      return Array.from(new Set(this.budgetRows.map(r=>r.bu).filter(Boolean))).sort();
+    },
+
+    // ── BU-level aggregated summary (for hierarchical navigation) ──
+    // Returns one row per BU with YTD budget, real, desviation, cumpl, client count
+    bgtBUSummary() {
+      const M = this.bgt.closedMonth;
+      const buMap = new Map(); // bu → { budget, real, nClients: Set of clientNorm }
+
+      // Aggregate budget per BU
+      for (const r of this.budgetRows) {
+        if (r.month > M) continue;
+        if (!buMap.has(r.bu)) buMap.set(r.bu, { budget:0, real:0, clients: new Set() });
+        buMap.get(r.bu).budget += r.budget;
+        buMap.get(r.bu).clients.add(r.cliente);
+      }
+
+      // Aggregate real per BU (2026 YTD)
+      for (const r of this.fact) {
+        if (r.__year !== 2026) continue;
+        if (r.__month > M) continue;
+        const bu = r.__bu || '—';
+        if (!buMap.has(bu)) buMap.set(bu, { budget:0, real:0, clients: new Set() });
+        buMap.get(bu).real += r.__total;
+        buMap.get(bu).clients.add(this.normClient(r.__cliente));
+      }
+
+      const totalReal = Array.from(buMap.values()).reduce((a,v) => a + v.real, 0);
+
+      return Array.from(buMap.entries())
+        .map(([bu, d]) => {
+          const dev_eur = d.real - d.budget;
+          const dev_pct = d.budget > 0 ? dev_eur / d.budget : (d.real > 0 ? 1 : 0);
+          const cumpl   = d.budget > 0 ? d.real / d.budget : null;
+          return {
+            bu, budget: d.budget, real: d.real, dev_eur, dev_pct, cumpl,
+            nClients: d.clients.size,
+            pct_total: totalReal > 0 ? d.real / totalReal : 0,
+          };
+        })
+        .filter(r => r.budget > 0 || r.real > 0)
+        .sort((a, b) => b.real - a.real);
+    },
+
+    // Clients visible in the drill-down for a given BU (respects bgtTableSort + bgtTableN)
+    bgtClientsByBU(bu) {
+      const s = this.bgtTableSort;
+      const M = this.bgt.closedMonth;
+
+      // Build client table scoped to this BU
+      const bgtMap = new Map();
+      for (const r of this.budgetRows) {
+        if (r.bu !== bu) continue;
+        if (r.month > M) continue;
+        const key = r.cliente;
+        if (!bgtMap.has(key)) bgtMap.set(key, { budget:0, raw:r.clienteRaw, norm:r.cliente, bu });
+        bgtMap.get(key).budget += r.budget;
+      }
+
+      const realMap = new Map();
+      for (const r of this.fact) {
+        if (r.__year !== 2026) continue;
+        if (r.__bu !== bu) continue;
+        if (r.__month > M) continue;
+        const norm = this.normClient(r.__cliente);
+        realMap.set(norm, (realMap.get(norm) || 0) + r.__total);
+      }
+
+      const allKeys = new Set([...bgtMap.keys(), ...realMap.keys()]);
+      const totalReal = Array.from(realMap.values()).reduce((a,v) => a+v, 0);
+
+      const rows = [];
+      for (const key of allKeys) {
+        const bgtEntry = bgtMap.get(key);
+        const real     = realMap.get(key) || 0;
+        const budget   = bgtEntry ? bgtEntry.budget : 0;
+        if (budget === 0 && real === 0) continue;
+        const norm     = bgtEntry ? bgtEntry.norm : key;
+        const raw      = bgtEntry ? bgtEntry.raw  : norm;
+        const dev_eur  = real - budget;
+        const dev_pct  = budget > 0 ? dev_eur / budget : (real > 0 ? 1 : 0);
+        const cumpl    = budget > 0 ? real / budget : null;
+        const unmapped = !bgtEntry && real > 0;
+        rows.push({ norm, raw, bu, real, budget, dev_eur, dev_pct, cumpl,
+                    pct_total: totalReal > 0 ? real / totalReal : 0, unmapped });
+      }
+
+      const filtered = s.show === 'risk' ? rows.filter(r => r.cumpl !== null && r.cumpl < 0.80)
+                     : s.show === 'ok'   ? rows.filter(r => r.cumpl !== null && r.cumpl >= 0.95)
+                     : rows;
+      const sorted = filtered.sort((a,b) => {
+        const av = a[s.col] ?? -Infinity, bv = b[s.col] ?? -Infinity;
+        return s.dir * (av < bv ? -1 : av > bv ? 1 : 0);
+      });
+      return (this.bgtTableN > 0) ? sorted.slice(0, this.bgtTableN) : sorted;
+    },
+
+
+    // Budget-only KPI for pulse bar
+    pulseBudgetCumpl() {
+      const M = (new Date()).getMonth(); // current month index (0-based → use as closed)
+      if (M === 0) return 0; // January — no closed month yet
+      const realYTD   = this.fact.filter(r=>r.__year===2026&&r.__month<=M).reduce((a,r)=>a+r.__total,0);
+      const budgetYTD = this.budgetRows.filter(r=>r.month<=M).reduce((a,r)=>a+r.budget,0);
+      return budgetYTD > 0 ? realYTD/budgetYTD : 0;
+    },
+
+    // ── Budget chart refresh ──────────────────────────────────────
+    refreshBudget() {
+      this._scheduleRender(() => this._doRefreshBudget());
+    },
+
+    _doRefreshBudget() {
+      const { realByM, bgtByM, ytdReal, ytdBgt } = this.bgtMonthlySeries();
+
+      this._destroyChart('bgtMonthly');
+      const ctx = document.getElementById('bgtMonthly');
+      // Canvas may not be in DOM yet if Alpine's <template x-if> hasn't stamped it.
+      // Retry after one rAF — same pattern already used by _scheduleRender.
+      if (!ctx) { requestAnimationFrame(() => this._doRefreshBudget()); return; }
+
+      const MONTHS_SHORT = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+      const M = this.bgt.closedMonth;
+
+      this.charts.bgtMonthly = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: MONTHS_SHORT,
+          datasets: [
+            {
+              label: 'Budget',
+              data: bgtByM,
+              backgroundColor: 'rgba(31,58,74,0.18)',
+              borderColor: '#1F3A4A',
+              borderWidth: 1,
+              borderRadius: 3,
+            },
+            {
+              label: 'Real',
+              data: realByM,
+              backgroundColor: MONTHS_SHORT.map((_,i) =>
+                i < M ? (realByM[i] >= bgtByM[i] ? 'rgba(27,175,155,0.75)' : 'rgba(220,38,38,0.65)')
+                      : 'rgba(148,163,184,0.3)'
+              ),
+              borderColor: MONTHS_SHORT.map((_,i) =>
+                i < M ? (realByM[i] >= bgtByM[i] ? '#1BAF9B' : '#DC2626') : '#94A3B8'
+              ),
+              borderWidth: 1,
+              borderRadius: 3,
+            },
+            {
+              label: 'Real acum.',
+              data: ytdReal,
+              type: 'line',
+              yAxisID: 'y2',
+              borderColor: '#1BAF9B',
+              borderWidth: 2,
+              pointRadius: 3,
+              tension: 0.35,
+              fill: false,
+              spanGaps: false,
+            },
+            {
+              label: 'Budget acum.',
+              data: ytdBgt,
+              type: 'line',
+              yAxisID: 'y2',
+              borderColor: '#1F3A4A',
+              borderWidth: 1.5,
+              borderDash: [5,4],
+              pointRadius: 2,
+              tension: 0.35,
+              fill: false,
+              spanGaps: false,
+            },
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } },
+            tooltip: {
+              callbacks: {
+                label: c => {
+                  const v = c.parsed.y;
+                  if (v === null) return null;
+                  return `${c.dataset.label}: ${new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(v)}`;
+                }
+              }
+            }
+          },
+          scales: {
+            x: { ticks: { font: { size: 10 } } },
+            y: {
+              type: 'linear', position: 'left',
+              ticks: { callback: v => new Intl.NumberFormat('es-ES',{notation:'compact'}).format(v), font: { size: 10 } }
+            },
+            y2: {
+              type: 'linear', position: 'right',
+              grid: { drawOnChartArea: false },
+              ticks: { callback: v => new Intl.NumberFormat('es-ES',{notation:'compact'}).format(v), font: { size: 10 } }
+            }
+          }
+        }
+      });
+    },
+    // Sheet structure (0-indexed rows, cols at odd positions):
+    // Row 0: headers — col1=label, col3=Total, col5=Consultoria, col7=Campañas,
+    //         col9=ServsUrbanos, col11=Clima&Terr, col13=PAUS, col15=Estructura
+    // Data rows: col1=label, col3..col15=values
+    parsePyGDetallada(ws) {
+      const data = XLSX.utils.sheet_to_json(ws, {header:1, defval:null});
+      if (!data || data.length < 3) return;
+
+      // Read BU headers from row 0 (0-indexed in sheet_to_json array)
+      const headerRow = data[0]||[];
+      // col indices: 1=label, 3=total, 5,7,9,11,13,15 = BUs
+      const buCols = [5,7,9,11,13,15];
+      const buNames = buCols.map(i => (headerRow[i]||'').toString().trim()).filter(Boolean);
+      this.pygBUs = buNames;
+
+      const rows = [];
+      for (let i=1; i<data.length; i++) {
+        const row = data[i]||[];
+        const label = (row[1]||'').toString().trim();
+        if (!label) continue;
+        const isMetric = /^[A-Z][A-Z ]+$/.test(label) && label.length > 3;
+        const isSection = !isMetric && label.length > 3;
+        const values = {};
+        buCols.forEach((col, idx) => {
+          const buName = buNames[idx];
+          if (buName) values[buName] = safeNum(row[col]);
+        });
+        const total = safeNum(row[3]);
+        rows.push({ label, isMetric, isSection, values, total });
+      }
+      this.pygByBU = rows;
+    },
+
+    // ── Demo data ───────────────────────────────────────────────
+    useDemo() {
+      const y = 2025, yp = 2024, ypp = 2023;
+      const mk = (yr, m, bu, c, nat, total, estado='Pagado', pendiente=0) => ({
+        Fecha: new Date(yr, m-1, 15), 'B.Unit': bu, Cliente: c, Cuenta: 'Servicio',
+        Subtotal: total, Estado: estado, Pendiente: pendiente, Naturaleza: nat,
+        'Fecha de cobro': estado==='Pagado' ? new Date(yr,m-1,15+35) : null,
+        Cobrado: estado==='Pagado' ? total : 0,
+        __date: new Date(yr,m-1,15), __year: yr, __month: m,
+        __total: total, __pendiente: pendiente, __estado: estado,
+        __naturaleza: nat, __bu: bu, __cliente: c, __cuenta: 'Servicio',
+        __fechaCobro: estado==='Pagado' ? new Date(yr,m-1,15+35) : null,
+        __dso: estado==='Pagado' ? 35 : null, __cobrado: estado==='Pagado' ? total : 0,
+      });
+      this.fact = [
+        // 2025
+        mk(y,1,'Campañas','Cliente A','Publico',12000), mk(y,1,'Servicios Urbanos','Cliente B','Privado',8000),
+        mk(y,2,'Campañas','Cliente A','Publico',15000), mk(y,2,'Clima y Territorio','Cliente C','Privado',6000),
+        mk(y,3,'Campañas','Cliente D','Publico',9000), mk(y,3,'Servicios Urbanos','Cliente B','Privado',11000),
+        mk(y,4,'Clima y Territorio','Cliente C','Privado',7000), mk(y,5,'Campañas','Cliente A','Publico',14000),
+        mk(y,6,'Servicios Urbanos','Cliente E','Publico',13000), mk(y,7,'Campañas','Cliente D','Publico',9500),
+        mk(y,8,'Clima y Territorio','Cliente C','Privado',7200), mk(y,9,'Campañas','Cliente A','Publico',16000),
+        mk(y,10,'Servicios Urbanos','Cliente B','Privado',12000,'Vencido',12000),
+        mk(y,11,'Campañas','Cliente F','Publico',10500), mk(y,12,'Clima y Territorio','Cliente C','Privado',7600),
+        mk(y,12,'Consultoria','Cliente G','Privado',5000,'Vencido',5000),
+        // 2024
+        mk(yp,1,'Campañas','Cliente A','Publico',10000), mk(yp,2,'Campañas','Cliente A','Publico',12000),
+        mk(yp,3,'Servicios Urbanos','Cliente B','Privado',9000), mk(yp,4,'Clima y Territorio','Cliente C','Privado',5500),
+        mk(yp,6,'Campañas','Cliente D','Publico',8000), mk(yp,9,'Campañas','Cliente A','Publico',11000),
+        mk(yp,10,'Consultoria','Cliente H','Privado',4000), mk(yp,12,'Campañas','Cliente F','Publico',8500),
+        // 2023
+        mk(ypp,3,'Campañas','Cliente A','Publico',9000), mk(ypp,6,'Servicios Urbanos','Cliente B','Privado',7000),
+        mk(ypp,9,'Clima y Territorio','Cliente C','Privado',5000), mk(ypp,12,'Campañas','Cliente D','Publico',7500),
+        // 2026 real (Jan–Feb)
+        mk(2026,1,'Campañas','Cliente A','Publico',14000), mk(2026,1,'Servicios Urbanos','Cliente B','Privado',7500),
+        mk(2026,1,'Consultoria','Cliente G','Privado',4200),
+        mk(2026,2,'Campañas','Cliente A','Publico',11000), mk(2026,2,'Campañas','Cliente D','Publico',8500),
+        mk(2026,2,'Clima y Territorio','Cliente C','Privado',5800),
+      ];
+
+      const mky = (m, ep, debe, haber) => ({
+        Fecha: new Date(y,m-1,28), Epigrafe: ep, Debe: debe, Haber: haber,
+        __date: new Date(y,m-1,28), __year: y, __month: m,
+        __net: haber - debe,
+      });
+      this.mayor = [
+        mky(1,'01 Ingresos de explotación - Prestación de servicios',0,30000),
+        mky(1,'02 Aprovisionamientos - Trabajos realizados por otras empresas',7000,0),
+        mky(1,'04 Gastos de personal - Sueldos y salarios',12000,0),
+        mky(1,'05 Otros gastos de explotación - Servicios de profesionales',5000,0),
+        mky(2,'01 Ingresos de explotación - Prestación de servicios',0,28000),
+        mky(2,'02 Aprovisionamientos - Trabajos realizados por otras empresas',6500,0),
+        mky(2,'04 Gastos de personal - Sueldos y salarios',12000,0),
+        mky(2,'05 Otros gastos de explotación - Servicios de profesionales',4800,0),
+        mky(3,'01 Ingresos de explotación - Prestación de servicios',0,32000),
+        mky(3,'04 Gastos de personal - Sueldos y salarios',12000,0),
+        mky(3,'05 Otros gastos de explotación - Servicios de profesionales',3500,0),
+        mky(4,'01 Ingresos de explotación - Prestación de servicios',0,25000),
+        mky(4,'04 Gastos de personal - Sueldos y salarios',12000,0),
+        mky(4,'07 Amortizaciones - Amortizaciones',1500,0),
+      ];
+
+      // Demo P&L por BU
+      this.pygBUs = ['Consultoria','Campañas','Servicios Urbanos','Clima y Territorio','Estructura'];
+      this.pygByBU = [
+        { label:'INGRESOS NETOS EXPLOTACION', isMetric:true, isSection:false, total:147000, values:{ Consultoria:5000, Campañas:95000, 'Servicios Urbanos':31000, 'Clima y Territorio':26000, Estructura:0 } },
+        { label:'Coste de Ingresos (Aprovisionamientos)', isMetric:false, isSection:true, total:-13500, values:{ Consultoria:0, Campañas:-13000, 'Servicios Urbanos':-500, 'Clima y Territorio':0, Estructura:0 } },
+        { label:'MARGEN BRUTO', isMetric:true, isSection:false, total:133500, values:{ Consultoria:5000, Campañas:82000, 'Servicios Urbanos':30500, 'Clima y Territorio':26000, Estructura:0 } },
+        { label:'Gastos de Personal', isMetric:false, isSection:true, total:-72000, values:{ Consultoria:-8000, Campañas:-28000, 'Servicios Urbanos':-12000, 'Clima y Territorio':-10000, Estructura:-14000 } },
+        { label:'Otros Gastos Operativos', isMetric:false, isSection:true, total:-13300, values:{ Consultoria:-500, Campañas:-800, 'Servicios Urbanos':-300, 'Clima y Territorio':-200, Estructura:-11500 } },
+        { label:'EBITDA', isMetric:true, isSection:false, total:48200, values:{ Consultoria:-3500, Campañas:53200, 'Servicios Urbanos':18200, 'Clima y Territorio':15800, Estructura:-25500 } },
+        { label:'Amortizaciones', isMetric:false, isSection:true, total:-6000, values:{ Consultoria:0, Campañas:0, 'Servicios Urbanos':0, 'Clima y Territorio':0, Estructura:-6000 } },
+        { label:'RESULTADO DE EXPLOTACIÓN', isMetric:true, isSection:false, total:42200, values:{ Consultoria:-3500, Campañas:53200, 'Servicios Urbanos':18200, 'Clima y Territorio':15800, Estructura:-31500 } },
+      ];
+
+      _pygAggCache.clear();
+      _pygCalcCache.clear();
+
+      // Demo budget 2026
+      const mkb = (bu, cli, m, v) => ({ cliente: cli, clienteRaw: cli, bu, month: m, year: 2026, budget: v });
+      this.budgetRows = [
+        mkb('Campañas','cliente a',1,13000), mkb('Campañas','cliente a',2,13000), mkb('Campañas','cliente a',3,13000),
+        mkb('Campañas','cliente a',4,13000), mkb('Campañas','cliente a',5,13000), mkb('Campañas','cliente a',6,13000),
+        mkb('Campañas','cliente a',7,13000), mkb('Campañas','cliente a',8,13000), mkb('Campañas','cliente a',9,13000),
+        mkb('Campañas','cliente a',10,13000),mkb('Campañas','cliente a',11,13000),mkb('Campañas','cliente a',12,13000),
+        mkb('Campañas','cliente d',1,9000),  mkb('Campañas','cliente d',2,9000),  mkb('Campañas','cliente d',3,9000),
+        mkb('Campañas','cliente d',4,9000),  mkb('Campañas','cliente d',5,9000),  mkb('Campañas','cliente d',6,9000),
+        mkb('Campañas','cliente f',1,8000),  mkb('Campañas','cliente f',2,8000),  mkb('Campañas','cliente f',3,8000),
+        mkb('Servicios Urbanos','cliente b',1,8000), mkb('Servicios Urbanos','cliente b',2,8000),
+        mkb('Servicios Urbanos','cliente b',3,8000), mkb('Servicios Urbanos','cliente b',4,8000),
+        mkb('Servicios Urbanos','cliente e',1,5000), mkb('Servicios Urbanos','cliente e',2,5000),
+        mkb('Consultoria','cliente g',1,4500), mkb('Consultoria','cliente g',2,4500), mkb('Consultoria','cliente g',3,4500),
+        mkb('Clima y Territorio','cliente c',1,6000), mkb('Clima y Territorio','cliente c',2,6000),
+        mkb('Clima y Territorio','cliente c',3,6000), mkb('Clima y Territorio','cliente c',4,6000),
+      ];
+      this.refreshAll();
+      this.dataStatus = 'Demo cargada · sube tu Excel para datos reales';
+    },
+
+    // ── Bootstrap filters from data ─────────────────────────────
+    bootstrapFilters() {
+      const years = this.availableYearsFromData();
+      const nowM = (new Date()).getMonth()+1;
+      this.filters.year    = years[years.length-1] ?? 2025;
+      this.filters.period  = 'ytd';
+      this.filters.monthTo = nowM;
+      this.filters.monthFrom = 1;
+      this.activePreset = 'ytd';
+      // Normalize BU field (handles 'B.Unit' with trailing space)
+      this.businessUnits = Array.from(new Set(
+        this.fact.map(r => r.__bu).filter(Boolean)
+      )).sort();
+      this.clients = Array.from(new Set(
+        this.fact.map(r => r.__cliente).filter(Boolean)
+      )).sort();
+    },
+
+    resetFilters() {
+      const years = this.availableYears();
+      const nowM = (new Date()).getMonth()+1;
+      this.filters = { year: years[years.length-1]??2025, period:'ytd', month:nowM,
+                       monthFrom:1, monthTo:nowM, bu:'__ALL__', client:'__ALL__', naturaleza:'__ALL__' };
+      this.activePreset = 'ytd';
+      this.refreshAll();
+    },
+
+    // ── Presets ──────────────────────────────────────────────────
+    applyPreset(preset) {
+      const now = new Date();
+      const y = this.filters.year;
+      const nowM = now.getMonth() + 1;
+      const q = Math.floor((nowM - 1) / 3); // 0-based quarter index
+      this.activePreset = preset;
+
+      if (preset === 'l12m') {
+        // L12M: last 12 months ending this month. May cross a year boundary.
+        // Store as a special flag — factFilteredRows handles it by ignoring __year.
+        Object.assign(this.filters, { period: 'l12m', monthFrom: nowM, monthTo: nowM });
+        this.refreshAll();
+        return;
+      }
+
+      const presets = {
+        mtd: { period:'month',  month: nowM, monthFrom:nowM, monthTo:nowM },
+        qtd: { period:'range',  monthFrom: q*3+1, monthTo: nowM },
+        ytd: { period:'ytd',    monthFrom:1, monthTo:nowM },
+        fy:  { period:'fy',     monthFrom:1, monthTo:12 },
+        q1:  { period:'range',  monthFrom:1,  monthTo:3  },
+        q2:  { period:'range',  monthFrom:4,  monthTo:6  },
+        q3:  { period:'range',  monthFrom:7,  monthTo:9  },
+        q4:  { period:'range',  monthFrom:10, monthTo:12 },
+      };
+      const p = presets[preset];
+      if (!p) return;
+      Object.assign(this.filters, p);
+      this.refreshAll();
+    },
+
+    // Label shown in context bar
+    periodLabel() {
+      const f = this.filters;
+      const MONTHS = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+      const mn = i => MONTHS[((i||1)-1+12)%12] ?? '';
+      if (f.period === 'ytd')   return `${f.year} · YTD Ene–${mn(f.monthTo || (new Date()).getMonth()+1)}`;
+      if (f.period === 'fy')    return `${f.year} · Año completo`;
+      if (f.period === 'month') return `${f.year} · ${mn(f.month)}`;
+      if (f.period === 'l12m')  return `L12M · ${mn((new Date()).getMonth()-10)} ${(new Date()).getFullYear()-((new Date()).getMonth()<11?1:0)}–${mn((new Date()).getMonth()+1)} ${(new Date()).getFullYear()}`;
+      if (f.period === 'range') {
+        // Detect named quarters
+        const qMap = { '1-3':'Q1', '4-6':'Q2', '7-9':'Q3', '10-12':'Q4' };
+        const key = `${f.monthFrom}-${f.monthTo}`;
+        if (qMap[key]) return `${f.year} · ${qMap[key]} (${mn(f.monthFrom)}–${mn(f.monthTo)})`;
+        return `${f.year} · ${mn(f.monthFrom)}–${mn(f.monthTo)}`;
+      }
+      return `${f.year}`;
+    },
+
+    activeFilterCount() {
+      let n = 0;
+      if (this.filters.bu !== '__ALL__')         n++;
+      if (this.filters.client !== '__ALL__')      n++;
+      if (this.filters.naturaleza !== '__ALL__')  n++;
+      if (this.activePreset !== 'ytd')            n++;
+      return n;
+    },
+
+    // Clients filtered by selected BU (for autocomplete)
+    filteredClients() {
+      const bu = this.filters.bu;
+      if (bu === '__ALL__') return this.clients;
+      return Array.from(new Set(
+        this.fact.filter(r => r.__bu === bu).map(r => r.__cliente).filter(Boolean)
+      )).sort();
+    },
+
+    clientMatches(q) {
+      const base = (q || '').toLowerCase().trim();
+      if (!base) return this.filteredClients().slice(0, 12);
+      return this.filteredClients().filter(c => c.toLowerCase().includes(base)).slice(0, 12);
+    },
+
+    // ── Aging / Cobros module ────────────────────────────────────
+    calcDSO() {
+      const BU  = this.filters.bu;
+      const NAT = this.filters.naturaleza;
+      const rows = this.fact.filter(r => {
+        if (r.__year !== this.filters.year || r.__dso === null || r.__dso < 0) return false;
+        if (BU  !== '__ALL__' && r.__bu        !== BU)  return false;
+        if (NAT !== '__ALL__' && r.__naturaleza !== NAT) return false;
+        return true;
+      });
+      if (!rows.length) return 0;
+      return Math.round(rows.reduce((a, r) => a + r.__dso, 0) / rows.length);
+    },
+
+    agingBuckets() {
+      const now = new Date(); now.setHours(0,0,0,0);
+      const BU  = this.filters.bu;
+      const NAT = this.filters.naturaleza;
+      const Y   = this.filters.year;
+      const buckets = { '1-30':0, '31-60':0, '61-90':0, '90+':0 };
+      for (const r of this.fact) {
+        if (r.__estado !== 'Vencido') continue;
+        if (!r.__date) continue;
+        if (r.__year !== Y) continue;
+        if (BU  !== '__ALL__' && r.__bu        !== BU)  continue;
+        if (NAT !== '__ALL__' && r.__naturaleza !== NAT) continue;
+        const days = Math.round((now - r.__date) / 86400000);
+        const amt  = r.__pendiente || 0;
+        if      (days <= 30)  buckets['1-30']  += amt;
+        else if (days <= 60)  buckets['31-60'] += amt;
+        else if (days <= 90)  buckets['61-90'] += amt;
+        else                  buckets['90+']   += amt;
+      }
+      return buckets;
+    },
+
+    agingClients() {
+      const now = new Date(); now.setHours(0,0,0,0);
+      const BU  = this.filters.bu;
+      const NAT = this.filters.naturaleza;
+      const Y   = this.filters.year;
+      const map = new Map();
+      for (const r of this.fact) {
+        if (r.__estado !== 'Vencido') continue;
+        if (!r.__date) continue;
+        if (r.__year !== Y) continue;
+        if (BU  !== '__ALL__' && r.__bu        !== BU)  continue;
+        if (NAT !== '__ALL__' && r.__naturaleza !== NAT) continue;
+        const days = Math.round((now - r.__date) / 86400000);
+        const amt  = r.__pendiente || 0;
+        const bucket = days <= 30 ? '1-30' : days <= 60 ? '31-60' : days <= 90 ? '61-90' : '90+';
+        const bucketOrder = { '1-30':1, '31-60':2, '61-90':3, '90+':4 };
+        if (!map.has(r.__cliente)) map.set(r.__cliente, { cliente: r.__cliente, bu: r.__bu, amount: 0, maxDays: 0, bucket: '1-30', bucketOrder: 1, count: 0 });
+        const o = map.get(r.__cliente);
+        o.amount += amt;
+        o.count++;
+        if (days > o.maxDays) {
+          o.maxDays = days;
+          o.bucket = bucket;
+          o.bucketOrder = bucketOrder[bucket];
+        }
+      }
+      return Array.from(map.values()).sort((a, b) => b.amount - a.amount);
+    },
+
+    agingKPIs() {
+      const BU  = this.filters.bu;
+      const NAT = this.filters.naturaleza;
+      let totalVencido = 0, totalPendiente = 0, totalCobrado = 0;
+      let invoicesVencido = 0, invoicesPendiente = 0;
+      for (const r of this.fact) {
+        if (r.__year !== this.filters.year) continue;
+        if (BU  !== '__ALL__' && r.__bu        !== BU)  continue;
+        if (NAT !== '__ALL__' && r.__naturaleza !== NAT) continue;
+        if (r.__estado === 'Vencido')   { totalVencido    += r.__pendiente||0; invoicesVencido++; }
+        if (r.__estado === 'Pendiente') { totalPendiente  += r.__pendiente||0; invoicesPendiente++; }
+        if (r.__estado === 'Pagado')    { totalCobrado    += r.__total||0; }
+      }
+      const totalFacturado = totalVencido + totalPendiente + totalCobrado;
+      return { totalVencido, totalPendiente, totalCobrado, totalFacturado,
+               invoicesVencido, invoicesPendiente,
+               pctCobrado: totalFacturado ? totalCobrado / totalFacturado : 0,
+               dso: this.calcDSO() };
+    },
+
+    agingBucketColor(bucket) {
+      return { '1-30': '#059669', '31-60': '#D97706', '61-90': '#EA580C', '90+': '#DC2626' }[bucket] || '#94A3B8';
+    },
+
+    // ── Year helpers ────────────────────────────────────────────
+    availableYearsFromData() {
+      const ys = Array.from(new Set(this.fact.map(r=>r.__year))).filter(Boolean).sort((a,b)=>a-b);
+      return ys.length ? ys : [2025];
+    },
+    availableYears() { return this.availableYearsFromData(); },
+    // Returns last 3 available years for multi-year display
+    factYears() {
+      const ys = this.availableYearsFromData();
+      return ys.slice(-3); // e.g. [2023, 2024, 2025]
+    },
+
+    // ── Filtering helpers ────────────────────────────────────────
+    factFilteredRows({ year=null, period=null, month=null, monthFrom=null, monthTo=null, bu=null, client=null, naturaleza=null }={}) {
+      const Y   = year       ?? this.filters.year;
+      const P   = period     ?? this.filters.period;
+      const M   = month      ?? this.filters.month;
+      const MF  = monthFrom  ?? this.filters.monthFrom;
+      const MT  = monthTo    ?? this.filters.monthTo;
+      const BU  = bu         ?? this.filters.bu;
+      const C   = client     ?? this.filters.client;
+      const NAT = naturaleza ?? this.filters.naturaleza;
+      const nowM = (new Date()).getMonth()+1;
+      const nowY = (new Date()).getFullYear();
+
+      // L12M: last 12 calendar months ending this month, cross-year aware
+      if (P === 'l12m') {
+        const cutoff = new Date(nowY, nowM - 12, 1); // 12 months ago (first day)
+        return this.fact.filter(r => {
+          if (!r.__date || r.__date < cutoff) return false;
+          const rd = new Date(r.__year, r.__month - 1, 1);
+          if (rd > new Date(nowY, nowM - 1, 31)) return false;
+          if (BU  !== '__ALL__' && r.__bu        !== BU)  return false;
+          if (C   !== '__ALL__' && r.__cliente   !== C)   return false;
+          if (NAT !== '__ALL__' && r.__naturaleza !== NAT) return false;
+          return true;
+        });
+      }
+
+      return this.fact.filter(r => {
+        if (r.__year !== Y) return false;
+        if (P === 'ytd'   && r.__month > nowM) return false;
+        if (P === 'month' && r.__month !== M)  return false;
+        if (P === 'range' && (r.__month < MF || r.__month > MT)) return false;
+        if (BU  !== '__ALL__' && r.__bu        !== BU)  return false;
+        if (C   !== '__ALL__' && r.__cliente   !== C)   return false;
+        if (NAT !== '__ALL__' && r.__naturaleza !== NAT) return false;
+        return true;
+      });
+    },
+
+    // ── PULSE BAR computed ───────────────────────────────────────
+    // Pulse bar is always YTD of filters.year (ignores period preset deliberately —
+    // it's a fixed-point health indicator). It does respect BU and naturaleza filters.
+    pulseRevenueYTD() {
+      const nowM = (new Date()).getMonth()+1;
+      const BU  = this.filters.bu;
+      const NAT = this.filters.naturaleza;
+      return sum(this.fact.filter(r => {
+        if (r.__year !== this.filters.year || r.__month > nowM) return false;
+        if (BU  !== '__ALL__' && r.__bu        !== BU)  return false;
+        if (NAT !== '__ALL__' && r.__naturaleza !== NAT) return false;
+        return true;
+      }), r => r.__total);
+    },
+    pulseYoY() {
+      const y = this.filters.year;
+      const nowM = (new Date()).getMonth()+1;
+      const BU  = this.filters.bu;
+      const NAT = this.filters.naturaleza;
+      const curr = this.pulseRevenueYTD();
+      const prev = sum(this.fact.filter(r => {
+        if (r.__year !== y-1 || r.__month > nowM) return false;
+        if (BU  !== '__ALL__' && r.__bu        !== BU)  return false;
+        if (NAT !== '__ALL__' && r.__naturaleza !== NAT) return false;
+        return true;
+      }), r => r.__total);
+      return prev ? (curr/prev)-1 : 0;
+    },
+    pulseConc() { return this.factConcentration(3); },
+    pulsePubPct() { return this.factPubPct(); },
+    pulseVencido() {
+      const BU  = this.filters.bu;
+      const NAT = this.filters.naturaleza;
+      return sum(this.fact.filter(r => {
+        if (r.__year !== this.filters.year || r.__estado !== 'Vencido') return false;
+        if (BU  !== '__ALL__' && r.__bu        !== BU)  return false;
+        if (NAT !== '__ALL__' && r.__naturaleza !== NAT) return false;
+        return true;
+      }), r => r.__pendiente);
+    },
+    pulseEBITDApct() {
+      const rev = this.pyg('rev','Total');
+      return rev ? this.pyg('ebitda','Total')/rev : 0;
+    },
+
+    // ── Revenue KPIs ─────────────────────────────────────────────
+    factNetTotal() {
+      return sum(this.factFilteredRows(), r => r.__total);
+    },
+    factTotal(year) {
+      // When period is 'l12m', factFilteredRows ignores the year param entirely.
+      // For KPI comparisons (factYoY) we need year-scoped totals, so degrade to 'ytd'.
+      const period = this.filters.period === 'l12m' ? 'ytd' : this.filters.period;
+      return sum(this.factFilteredRows({year, period, month:this.filters.month}), r=>r.__total);
+    },
+    factYoY(year) {
+      const curr = this.factTotal(year), prev = this.factTotal(year-1);
+      return prev ? (curr/prev)-1 : 0;
+    },
+    factYoYDetail(year) {
+      const delta = this.factTotal(year) - this.factTotal(year-1);
+      return (delta>=0?'+':'')+this.fmtEUR(delta)+' vs '+(year-1);
+    },
+
+    // ── Top clients ranked for the ACTIVE filter period ──────────
+    // Fully reactive: responds to year, period, month, BU, client filters.
+    // Returns sorted array with revenue, % of total, and YoY vs same period
+    // in year-1 (same period/month/BU combination).
+    topClientsPeriod() {
+      const rows = this.factFilteredRows(); // current period (handles l12m natively)
+
+      // For prev-year comparison: same period shifted back 1 year.
+      // L12M: shift the date window back 12 months — factFilteredRows with period='l12m'
+      // always computes from today, so we compute prev manually by filtering the year-shifted window.
+      let rowsPrev;
+      if (this.filters.period === 'l12m') {
+        const nowY = (new Date()).getFullYear();
+        const nowM = (new Date()).getMonth() + 1;
+        const cutoff = new Date(nowY - 1, nowM - 12, 1);
+        const cutoffEnd = new Date(nowY - 1, nowM - 1, 31);
+        const BU = this.filters.bu, C = this.filters.client, NAT = this.filters.naturaleza;
+        rowsPrev = this.fact.filter(r => {
+          if (!r.__date || r.__date < cutoff || r.__date > cutoffEnd) return false;
+          if (BU  !== '__ALL__' && r.__bu        !== BU)  return false;
+          if (C   !== '__ALL__' && r.__cliente   !== C)   return false;
+          if (NAT !== '__ALL__' && r.__naturaleza !== NAT) return false;
+          return true;
+        });
+      } else {
+        rowsPrev = this.factFilteredRows({ year: this.filters.year - 1 });
+      }
+
+      if (!rows.length) return [];
+
+      // Aggregate current period by client
+      const curr = new Map();
+      for (const r of rows) {
+        if (!curr.has(r.__cliente)) curr.set(r.__cliente, { revenue:0, bu: r.__bu });
+        curr.get(r.__cliente).revenue += r.__total;
+      }
+
+      // Aggregate previous period by client
+      const prev = new Map();
+      for (const r of rowsPrev) {
+        prev.set(r.__cliente, (prev.get(r.__cliente)||0) + r.__total);
+      }
+
+      const total = Array.from(curr.values()).reduce((a,v)=>a+v.revenue, 0);
+
+      return Array.from(curr.entries())
+        .map(([client, d]) => {
+          const prevRev = prev.get(client) || 0;
+          const yoy = prevRev > 0 ? (d.revenue - prevRev) / prevRev : 0;
+          return {
+            client,
+            bu:          d.bu,
+            revenue:     d.revenue,
+            prevRevenue: prevRev,
+            pct:         total > 0 ? d.revenue / total : 0,
+            yoy,
+          };
+        })
+        .sort((a, b) => b.revenue - a.revenue);
+    },
+
+    factConcentration(topN) {
+      const rows = this.factFilteredRows();
+      const total = sum(rows, r=>r.__total);
+      if (!total) return 0;
+      const byClient = new Map();
+      for (const r of rows) byClient.set(r.__cliente, (byClient.get(r.__cliente)||0)+r.__total);
+      const sorted = Array.from(byClient.values()).sort((a,b)=>b-a);
+      const topSum = sorted.slice(0,topN).reduce((a,v)=>a+v,0);
+      return topSum/total;
+    },
+
+    factPubPct() {
+      const rows = this.factFilteredRows();
+      const total = sum(rows, r=>r.__total);
+      if (!total) return 0;
+      const pub = sum(rows.filter(r=>r.__naturaleza==='Publico'), r=>r.__total);
+      return pub/total;
+    },
+
+    factVencidoCount() {
+      const BU  = this.filters.bu;
+      const NAT = this.filters.naturaleza;
+      return this.fact.filter(r => {
+        if (r.__year !== this.filters.year || r.__estado !== 'Vencido') return false;
+        if (BU  !== '__ALL__' && r.__bu        !== BU)  return false;
+        if (NAT !== '__ALL__' && r.__naturaleza !== NAT) return false;
+        return true;
+      }).length;
+    },
+
+    // ── Top Clients — DYNAMIC YEARS, with status ─────────────────
+    topClients() {
+      const years = this.factYears(); // last 3 available years
+      // Anchor yCurr to filters.year so the panel stays consistent with other views.
+      // yPrev / yPrev2 are always the two years before yCurr regardless of selection.
+      const yCurr  = this.filters.year;
+      const yPrev  = yCurr - 1;
+      const yPrev2 = yCurr - 2;
+      const BU  = this.filters.bu;
+      const C   = this.filters.client;
+      const NAT = this.filters.naturaleza;
+      const validYears = [yPrev2, yPrev, yCurr];
+
+      const rowsAll = this.fact.filter(r => {
+        if (!validYears.includes(r.__year))               return false;
+        if (BU  !== '__ALL__' && r.__bu        !== BU)    return false;
+        if (C   !== '__ALL__' && r.__cliente   !== C)     return false;
+        if (NAT !== '__ALL__' && r.__naturaleza !== NAT)  return false;
+        return true;
+      });
+
+      const totalCurr = sum(rowsAll.filter(r=>r.__year===yCurr), r=>r.__total);
+      const map = new Map();
+      for (const r of rowsAll) {
+        if (!map.has(r.__cliente)) map.set(r.__cliente, { client:r.__cliente, bu:r.__bu, yPrev2:0, yPrev:0, yCurr:0, total:0 });
+        const o = map.get(r.__cliente);
+        if (r.__year===yPrev2) o.yPrev2 += r.__total;
+        if (r.__year===yPrev)  o.yPrev  += r.__total;
+        if (r.__year===yCurr)  o.yCurr  += r.__total;
+        o.total += r.__total;
+      }
+
+      return Array.from(map.values())
+        .sort((a,b)=>b.total-a.total)
+        .slice(0, this.topClientN)
+        .map(c => ({
+          ...c,
+          yoy: c.yPrev ? (c.yCurr/c.yPrev)-1 : 0,
+          pct: totalCurr ? c.yCurr/totalCurr : 0,
+          status: c.yPrev>0 && c.yCurr>0 ? 'Recurrente' : (c.yPrev===0 && c.yCurr>0 ? 'Nuevo' : (c.yCurr===0 ? 'No activo' : 'Recurrente')),
+        }));
+    },
+
+    statusBadgeClass(status) {
+      if (status==='Nuevo')     return 'badge-new';
+      if (status==='Recurrente') return 'badge-rec';
+      return 'badge-lost';
+    },
+
+    statusColor(status) {
+      if (status==='Nuevo')      return '#1BAF9B';
+      if (status==='Recurrente') return '#3B82F6';
+      return '#DC2626';
+    },
+
+    yoyArrow(yoy) {
+      if (yoy >  0.05) return '▲';
+      if (yoy < -0.05) return '▼';
+      return '→';
+    },
+
+    cumulativeShare(rows, topN) {
+      const totalCurr = rows.reduce((a,c)=>a+c.yCurr,0);
+      if (!totalCurr) return 0;
+      return rows.slice(0,topN).reduce((a,c)=>a+c.yCurr,0) / totalCurr;
+    },
+
+    // ── Sorted computed arrays — replace nested x-data $root getters ────────
+    // These live in the parent component so Alpine template expressions can call
+    // them directly without needing $root traversal across component boundaries.
+
+    periodRanked() {
+      const s = this.periodSort;
+      const sorted = this.topClientsPeriod().slice().sort((a,b) => {
+        const av = a[s.col] ?? 0, bv = b[s.col] ?? 0;
+        return s.dir * (av < bv ? -1 : av > bv ? 1 : 0);
+      });
+      return this.periodTopN > 0 ? sorted.slice(0, this.periodTopN) : sorted;
+    },
+
+    carteraRows() {
+      return this.topClients();
+    },
+
+    bgtTableVisible() {
+      const s = this.bgtTableSort;
+      const rows = this.bgtRows.filter(r => r.budget > 0 || r.real > 0);
+      const filtered = s.show === 'risk' ? rows.filter(r => r.cumpl !== null && r.cumpl < 0.80)
+                     : s.show === 'ok'   ? rows.filter(r => r.cumpl !== null && r.cumpl >= 0.95)
+                     : rows;
+      const sorted = filtered.slice().sort((a,b) => {
+        const av = a[s.col] ?? -Infinity, bv = b[s.col] ?? -Infinity;
+        return s.dir * (av < bv ? -1 : av > bv ? 1 : 0);
+      });
+      // bgtTableN = 0 → Todos; > 0 → Top-N slice
+      return (this.bgtTableN > 0) ? sorted.slice(0, this.bgtTableN) : sorted;
+    },
+
+    // Total rows before Top-N slice (for the "X de Y" counter)
+    bgtTableTotal() {
+      const s = this.bgtTableSort;
+      const rows = this.bgtRows.filter(r => r.budget > 0 || r.real > 0);
+      const filtered = s.show === 'risk' ? rows.filter(r => r.cumpl !== null && r.cumpl < 0.80)
+                     : s.show === 'ok'   ? rows.filter(r => r.cumpl !== null && r.cumpl >= 0.95)
+                     : rows;
+      return filtered.length;
+    },
+
+    // Top-5 negative deviations for mini-table
+    bgtTopNeg() {
+      return this.bgtRows.filter(r => r.budget > 0 && r.dev_eur < 0)
+                         .sort((a,b) => a.dev_eur - b.dev_eur)
+                         .slice(0, 5);
+    },
+
+    // Top-5 positive deviations for mini-table
+    bgtTopPos() {
+      return this.bgtRows.filter(r => r.dev_eur > 0)
+                         .sort((a,b) => b.dev_eur - a.dev_eur)
+                         .slice(0, 5);
+    },
+
+    agingSorted() {
+      const s = this.agingSort;
+      return this.agingClients().slice().sort((a,b) => {
+        const av = a[s.col] ?? 0, bv = b[s.col] ?? 0;
+        return s.dir * (av < bv ? -1 : av > bv ? 1 : 0);
+      });
+    },
+
+    // Also expose bgtRows directly (replaces nested x-data getter)
+    get bgtRows() { return this.bgtClientTable(); },
+
+    // ── Detalle por cuenta — DYNAMIC YEARS ──────────────────────
+    detailedClientAccounts() {
+      const years = this.factYears();
+      const yCurr  = years[years.length-1] ?? this.filters.year;
+      const yPrev  = years[years.length-2] ?? yCurr-1;
+      const yPrev2 = years[years.length-3] ?? yCurr-2;
+      const q = (this.detailQuery||'').toLowerCase().trim();
+      const topN = Number(this.detailTopN||5);
+      const BU  = this.filters.bu;
+      const C   = this.filters.client;
+      const NAT = this.filters.naturaleza;
+
+      const rows = this.fact.filter(r => {
+        if (!years.includes(r.__year))               return false;
+        if (BU  !== '__ALL__' && r.__bu        !== BU)   return false;
+        if (C   !== '__ALL__' && r.__cliente   !== C)    return false;
+        if (NAT !== '__ALL__' && r.__naturaleza !== NAT) return false;
+        return true;
+      });
+      const accMap = new Map();
+      for (const r of rows) {
+        if (q) {
+          const hit = r.__cliente.toLowerCase().includes(q) || r.__cuenta.toLowerCase().includes(q);
+          if (!hit) continue;
+        }
+        if (!accMap.has(r.__cuenta)) accMap.set(r.__cuenta, new Map());
+        const clMap = accMap.get(r.__cuenta);
+        if (!clMap.has(r.__cliente)) clMap.set(r.__cliente, { client:r.__cliente, account:r.__cuenta, yPrev2:0, yPrev:0, yCurr:0, total:0 });
+        const o = clMap.get(r.__cliente);
+        if (r.__year===yPrev2) o.yPrev2 += r.__total;
+        if (r.__year===yPrev)  o.yPrev  += r.__total;
+        if (r.__year===yCurr)  o.yCurr  += r.__total;
+        o.total += r.__total;
+      }
+
+      const out = [];
+      const accounts = Array.from(accMap.keys()).map(account => {
+        const clients = Array.from(accMap.get(account).values());
+        return { account, clients, subtotal: sum(clients, c=>c.total) };
+      }).sort((a,b)=>b.subtotal-a.subtotal);
+
+      for (const a of accounts) {
+        const topCls = a.clients.sort((x,y)=>y.total-x.total).slice(0,topN);
+        for (const c of topCls) out.push(c);
+        if (this.showAccountSubtotals) {
+          out.push({ account:a.account, client:'Subtotal',
+            yPrev2: sum(a.clients,c=>c.yPrev2), yPrev: sum(a.clients,c=>c.yPrev),
+            yCurr: sum(a.clients,c=>c.yCurr),   total: a.subtotal, isSubtotal:true });
+        }
+      }
+      return out;
+    },
+
+    // ── PyG Engine — MEMOIZED ────────────────────────────────────
+    epigKey(epig) {
+      const s = (epig||'').toString().trim();
+      const m = s.match(/^(\d{2})\s*(.*)/);
+      if (!m) return { code:'OT', sub:s };
+      const code = m[1];
+      const rest = (m[2]||'').trim();
+      const parts = rest.split(' - ').map(x=>x.trim()).filter(Boolean);
+      const sub = parts.length>=2 ? parts.slice(1).join(' - ') : rest;
+      return { code, sub: sub||rest||s };
+    },
+
+    pygAgg(year) {
+      if (_pygAggCache.has(year)) return _pygAggCache.get(year);
+
+      const rows = this.mayor.filter(r => r.__year===year);
+      const months = Array.from({length:12},(_,i)=>i+1);
+      const out = {};
+      for (const m of months) out[m] = new Map();
+
+      for (const r of rows) {
+        const mi = r.__month||0;
+        if (mi<1||mi>12) continue;
+        const ep = r['Epigrafe']??r['Epígrafe']??r['EPIGRAFE']??r['EPÍGRAFE']??r['Epigrafe ']??'';
+        const {code, sub} = this.epigKey(ep);
+        if (!out[mi].has(code)) out[mi].set(code, new Map());
+        const sm = out[mi].get(code);
+        sm.set(sub, (sm.get(sub)||0)+(Number(r.__net)||0));
+      }
+
+      const total = new Map();
+      for (const m of months) {
+        for (const [code, sm] of out[m].entries()) {
+          if (!total.has(code)) total.set(code, new Map());
+          const tgt = total.get(code);
+          for (const [sub,v] of sm.entries()) tgt.set(sub,(tgt.get(sub)||0)+v);
+        }
+      }
+      out.Total = total;
+      _pygAggCache.set(year, out);
+      return out;
+    },
+
+    pygSectionTotals(calc, monthKey) {
+      const m = calc[monthKey]||calc.Total;
+      const sumCode = (code) => {
+        const sm = m.get(code); if (!sm) return 0;
+        let s=0; for (const v of sm.values()) s+=v||0; return s;
+      };
+      const rev   = sumCode('01');
+      const cogs  = sumCode('02');
+      const other = sumCode('03'); // subvenciones
+      const pers  = sumCode('04');
+      const opex  = sumCode('05');
+      const trib  = sumCode('06');
+      const amort = sumCode('07');
+      const fin   = sumCode('10');
+      const margen = rev + cogs;
+      const ebitda = margen + pers + opex + trib;
+      const ebit   = ebitda + amort;
+      const rbt    = ebit + fin;
+      return { rev, cogs, other, pers, opex, trib, amort, fin, margen, ebitda, ebit, rbt };
+    },
+
+    // pygCalc — MEMOIZED, respects filters.period and filters.month
+    pygCalc(year) {
+      // Cache key includes period+month so PyG KPIs respond to period filter
+      const P = this.filters.period, M = this.filters.month;
+      const cacheKey = `${year}|${P}|${M}`;
+      if (_pygCalcCache.has(cacheKey)) return _pygCalcCache.get(cacheKey);
+
+      const calc = this.pygAgg(year);
+      const months = Array.from({length:12},(_,i)=>i+1);
+      const nowM = (new Date()).getMonth()+1;
+      const out = {};
+
+      for (const m of months) {
+        const t = this.pygSectionTotals(calc, m);
+        out[m] = { ingresos:t.rev, margen:t.margen, ebitda:t.ebitda, ebit:t.ebit,
+                   cogs:t.cogs, pers:t.pers, opex:t.opex, trib:t.trib, amort:t.amort, fin:t.fin, rbt:t.rbt };
+      }
+
+      // FIX: 'Total' now respects period filter (ytd/month/fy)
+      let relevantMonths;
+      if (P === 'ytd')   relevantMonths = months.filter(m => m <= nowM);
+      else if (P === 'month') relevantMonths = [M];
+      else               relevantMonths = months;
+
+      const sumField = (field) => relevantMonths.reduce((a,m) => a+(out[m]?.[field]||0), 0);
+      out.Total = {
+        ingresos: sumField('ingresos'), margen: sumField('margen'),
+        ebitda: sumField('ebitda'),     ebit: sumField('ebit'),
+        cogs: sumField('cogs'),         pers: sumField('pers'),
+        opex: sumField('opex'),         trib: sumField('trib'),
+        amort: sumField('amort'),       fin: sumField('fin'),
+        rbt: sumField('rbt'),
+      };
+
+      _pygCalcCache.set(cacheKey, out);
+      return out;
+    },
+
+    pyg(field, monthLabel) {
+      const calc = this.pygCalc(this.filters.year);
+      const m = monthLabel==='Total' ? 'Total' : (MONTHS.indexOf(monthLabel)+1);
+      const data = calc[m]||calc.Total;
+      const MAP = { rev:'ingresos', margen:'margen', ebitda:'ebitda', ebit:'ebit',
+                    cogs:'cogs', pers:'pers', opex:'opex', rbt:'rbt' };
+      return data[MAP[field]??field]??0;
+    },
+
+    // PyG table rows — unchanged structure, new color helper
+    togglePyg(groupCode) {
+      if (!groupCode) return;
+      this.pygExpanded = { ...this.pygExpanded, [groupCode]: !this.pygExpanded[groupCode] };
+    },
+
+    pygTableRows() {
+      const y = this.filters.year;
+      const calc = this.pygAgg(y);
+      const mkSection = (code,label)  => ({id:'S|'+code, type:'section', group:code, code, sub:'__TOTAL__', level:0, label});
+      const mkLine    = (code,sub,label,level=2) => ({id:'L|'+code+'|'+sub, type:'line', group:code, code, sub, level, label});
+      const mkMetric  = (id,label)    => ({id, type:'metric', group:null, level:1, label});
+
+      const topSubs = (code) => {
+        const sm = calc.Total.get(code)||new Map();
+        const arr = Array.from(sm.entries()).map(([k,v])=>({k,v:Number(v)||0}));
+        arr.sort((a,b)=>Math.abs(b.v)-Math.abs(a.v));
+        if (this.pygDetailLevel==='ejecutivo') return [];
+        if (this.pygDetailLevel==='cfo')       return arr.slice(0,4);
+        return arr.slice(0, Math.max(3,Math.min(15,Number(this.pygTopN)||6)));
+      };
+
+      const rows = [];
+      const addSection = (code, sLabel, tLabel) => {
+        rows.push(mkSection(code, sLabel));
+        if (this.pygExpanded[code]) {
+          for (const s of topSubs(code)) rows.push(mkLine(code,s.k,s.k,2));
+          rows.push({id:'T|'+code, type:'line', group:code, code, sub:'__TOTAL__', level:1, label:tLabel});
+        }
+      };
+
+      addSection('01','01 · Ingresos de explotación','Total ingresos');
+      addSection('02','02 · Aprovisionamientos / Subcontratación','Total aprovisionamientos');
+      rows.push(mkMetric('M|MB','MARGEN BRUTO'));
+      addSection('04','04 · Gastos de personal','Total personal');
+      addSection('05','05 · Otros gastos de explotación','Total OPEX');
+      addSection('06','06 · Tributos','Total tributos');
+      rows.push(mkMetric('M|EBITDA','EBITDA'));
+      addSection('07','07 · Amortizaciones','Total amortización');
+      rows.push(mkMetric('M|EBIT','RESULTADO DE EXPLOTACIÓN'));
+      addSection('10','10 · Resultado financiero','Total financiero');
+      rows.push(mkMetric('M|RBT','RESULTADO ANTES DE IMPUESTOS (aprox.)'));
+      return rows;
+    },
+
+    pygRowValue(row, monthLabel) {
+      const y = this.filters.year;
+      const calc = this.pygAgg(y);
+      const monthKey = monthLabel==='Total' ? 'Total' : (MONTHS.indexOf(monthLabel)+1);
+      const totals = this.pygSectionTotals(calc, monthKey);
+
+      // FIX: metric rows use period-aware pygCalc for 'Total', but monthly values from pygAgg for individual months
+      if (row.type==='metric') {
+        if (monthLabel==='Total') {
+          // Use period-aware total
+          const calcPeriod = this.pygCalc(y);
+          const d = calcPeriod.Total;
+          if (row.id==='M|MB')   return d.margen;
+          if (row.id==='M|EBITDA') return d.ebitda;
+          if (row.id==='M|EBIT') return d.ebit;
+          if (row.id==='M|RBT')  return d.rbt;
+        } else {
+          if (row.id==='M|MB')   return totals.margen;
+          if (row.id==='M|EBITDA') return totals.ebitda;
+          if (row.id==='M|EBIT') return totals.ebit;
+          if (row.id==='M|RBT')  return totals.rbt;
+        }
+        return 0;
+      }
+
+      const m = calc[monthKey]||calc.Total;
+      const sm = m.get(row.code)||new Map();
+      if (row.sub==='__TOTAL__') { let s=0; for (const v of sm.values()) s+=v||0; return s; }
+      return sm.get(row.sub)||0;
+    },
+
+    // ── Semantic color helper for PyG cells ──────────────────────
+    pygCellClass(row, monthLabel) {
+      const v = this.pygRowValue(row, monthLabel);
+      if (row.type==='metric') {
+        // Metrics: green if positive, red if negative
+        return v >= 0 ? 'val-pos font-semibold' : 'val-neg font-semibold';
+      }
+      if (row.code==='01'||row.code==='03') {
+        // Revenue lines: always positive = good
+        return v >= 0 ? '' : 'val-neg';
+      }
+      // Cost lines: negative is expected/normal (gray), positive would be unusual (warn)
+      if (v < 0) return 'text-slate-700';
+      if (v > 0) return 'val-warn';
+      return 'text-slate-400';
+    },
+
+    // Color for BU table cells
+    buCellClass(v, isMetric) {
+      if (!isMetric) return v < 0 ? 'text-slate-600' : '';
+      return v >= 0 ? 'val-pos' : 'val-neg';
+    },
+
+    // ── Chart lifecycle helpers ───────────────────────────────────
+    // Safely destroy a Chart.js instance AND scrub the canvas element.
+    // Chart.js does not fully clean up the canvas on destroy() — residual
+    // internal metadata can cause "Canvas is already in use" on the next
+    // new Chart() call. Replacing the canvas with a fresh clone is the
+    // canonical solution recommended by the Chart.js maintainers.
+    _destroyChart(key) {
+      if (this.charts[key]) {
+        try { this.charts[key].destroy(); } catch(_) {}
+        this.charts[key] = null;
+      }
+      // Scrub the canvas: replace it with a clean clone so Chart.js has
+      // no residual state attached to the DOM element.
+      const el = document.getElementById(key);
+      if (el) {
+        const clone = el.cloneNode(false); // shallow — no children, no event listeners
+        el.parentNode.replaceChild(clone, el);
+      }
+    },
+
+    // Schedule chart rendering after Alpine has finished its current
+    // reactive cycle AND after the browser has painted the layout.
+    // This is the fix for the Alpine/Chart.js timing race:
+    //   Alpine mutates DOM (checkbox toggle, show/hide, class changes)
+    //   → ResizeObserver fires on the canvas before layout is stable
+    //   → Chart.js reads height: 0 → blank canvas.
+    // Two rAFs guarantee we're past both Alpine's microtask queue and
+    // the browser's layout/paint pass.
+    _scheduleRender(fn) {
+      // Cancel any pending render to avoid double-renders on rapid changes
+      if (this._renderToken) cancelAnimationFrame(this._renderToken);
+      this._renderToken = requestAnimationFrame(() => {
+        this._renderToken = requestAnimationFrame(() => {
+          fn.call(this);
+          this._renderToken = null;
+        });
+      });
+    },
+
+    // ── Refresh all charts ────────────────────────────────────────
+    refreshAll() {
+      _pygAggCache.clear();
+      _pygCalcCache.clear();
+      this._scheduleRender(() => {
+        this._doRefreshFacturacion();
+        this._doRefreshPyG();
+        this._doRefreshBudget();
+      });
+    },
+
+    // Public entry point called by UI events (toggle, filter changes).
+    // Always goes through _scheduleRender to avoid the timing race.
+    refreshFacturacion() {
+      this._scheduleRender(() => this._doRefreshFacturacion());
+    },
+
+    refreshPyG() {
+      this._scheduleRender(() => this._doRefreshPyG());
+    },
+
+    // ── Actual chart rendering (called only from _scheduleRender) ─
+    _doRefreshFacturacion() {
+      const year = this.filters.year;
+
+      // Monthly series current year
+      const rowsCurr = this.factFilteredRows({year, period:'fy'});
+      const series = Array(12).fill(0);
+      for (const r of rowsCurr) { if (r.__month>=1&&r.__month<=12) series[r.__month-1]+=r.__total; }
+
+      // Previous year for YoY
+      const rowsPrev = this.factFilteredRows({year:year-1, period:'fy'});
+      const prev = Array(12).fill(0);
+      for (const r of rowsPrev) { if (r.__month>=1&&r.__month<=12) prev[r.__month-1]+=r.__total; }
+
+      // ── Fact line chart ──
+      this._destroyChart('factLine');
+      const ctx = document.getElementById('factLine');
+      if (ctx) {
+        const datasets = [{
+          label: String(year), data: series,
+          borderColor: COLORS.accent, backgroundColor: COLORS.accent+'22',
+          tension: .35, borderWidth: 2, pointRadius: 3, fill: true,
+        }];
+        if (this.showYoY) datasets.push({
+          label: String(year-1), data: prev,
+          borderColor: COLORS.gray, borderDash: [5,5],
+          tension: .35, borderWidth: 1.5, pointRadius: 2, fill: false,
+        });
+        this.charts.factLine = new Chart(ctx, {
+          type: 'line',
+          data: { labels: MONTHS, datasets },
+          options: {
+            responsive: true, maintainAspectRatio: false,
+            plugins: {
+              legend: { position:'bottom', labels: { boxWidth:12, font:{size:11} } },
+              tooltip: { callbacks: { label: c => `${c.dataset.label}: ${this.fmtEUR(c.parsed.y)}` } }
+            },
+            scales: { y: { ticks: { callback: v => new Intl.NumberFormat('es-ES',{notation:'compact'}).format(v), font:{size:10} } } }
+          }
+        });
+      }
+
+      // ── Revenue por BU (bar) ──
+      this._destroyChart('buBar');
+      const ctx2 = document.getElementById('buBar');
+      if (ctx2) {
+        const buRevenue = new Map();
+        for (const r of rowsCurr) {
+          const bu = r.__bu||'Sin BU';
+          buRevenue.set(bu, (buRevenue.get(bu)||0)+r.__total);
+        }
+        const buLabels = Array.from(buRevenue.keys()).sort((a,b)=>buRevenue.get(b)-buRevenue.get(a));
+        const buPalette = [COLORS.accent, COLORS.accent2, '#6366F1', '#F59E0B', '#EC4899', COLORS.primary];
+        this.charts.buBar = new Chart(ctx2, {
+          type: 'bar',
+          data: {
+            labels: buLabels,
+            datasets: [{ label:'Revenue', data: buLabels.map(b=>buRevenue.get(b)),
+              backgroundColor: buPalette, borderWidth: 0 }]
+          },
+          options: {
+            indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+            plugins: { legend:{display:false}, tooltip:{callbacks:{label:c=>this.fmtEUR(c.parsed.x)}} },
+            scales: { x:{ ticks:{callback:v=>new Intl.NumberFormat('es-ES',{notation:'compact'}).format(v), font:{size:10}} } }
+          }
+        });
+      }
+    },
+
+    _doRefreshPyG() {
+      const year = this.filters.year;
+      const calc = this.pygCalc(year);
+
+      const ingresos = Array.from({length:12},(_,i)=>calc[i+1]?.ingresos||0);
+      const ebitda   = Array.from({length:12},(_,i)=>calc[i+1]?.ebitda||0);
+      const ebitdaPct = ingresos.map((v,i) => v ? Math.round((ebitda[i]/v)*1000)/10 : 0);
+
+      // ── Trend chart — dual axis ──
+      this._destroyChart('pygTrend');
+      const ctx = document.getElementById('pygTrend');
+      if (ctx) {
+        this.charts.pygTrend = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: MONTHS,
+            datasets: [
+              { label:'Ingresos', data: ingresos, yAxisID:'y',
+                borderColor: COLORS.primary, backgroundColor: COLORS.primary+'18',
+                tension:.35, borderWidth:2, pointRadius:2, fill:true },
+              { label:'EBITDA', data: ebitda, yAxisID:'y',
+                borderColor: COLORS.accent, tension:.35, borderWidth:2, pointRadius:2 },
+              { label:'% EBITDA', data: ebitdaPct, yAxisID:'y2',
+                borderColor: COLORS.accent2, borderDash:[4,3],
+                tension:.35, borderWidth:1.5, pointRadius:2, type:'line' },
+            ]
+          },
+          options: {
+            responsive: true, maintainAspectRatio: false,
+            plugins: {
+              legend: { position:'bottom', labels:{boxWidth:10,font:{size:10}} },
+              tooltip: { callbacks: {
+                label: c => c.dataset.yAxisID==='y2'
+                  ? `${c.dataset.label}: ${c.parsed.y.toFixed(1)}%`
+                  : `${c.dataset.label}: ${this.fmtEUR(c.parsed.y)}`
+              }}
+            },
+            scales: {
+              y:  { type:'linear', position:'left',  ticks:{callback:v=>new Intl.NumberFormat('es-ES',{notation:'compact'}).format(v), font:{size:10}} },
+              y2: { type:'linear', position:'right', grid:{drawOnChartArea:false},
+                    ticks:{callback:v=>v+'%', font:{size:10}}, min:0, max:100 }
+            }
+          }
+        });
+      }
+
+      // ── Waterfall EBITDA bridge ──
+      const tot = calc.Total;
+      const bridge = [
+        { k:'Ingresos', v: tot.ingresos },
+        { k:'COGS',     v: tot.cogs  },
+        { k:'Personal', v: tot.pers  },
+        { k:'OPEX',     v: tot.opex  },
+        { k:'Tributos', v: tot.trib  },
+        { k:'EBITDA',   v: tot.ebitda, isResult: true },
+      ];
+
+      this._destroyChart('pygWaterfall');
+      const ctx2 = document.getElementById('pygWaterfall');
+      if (ctx2) {
+        let running = 0;
+        const bases = [], vals = [], colors = [], labels = [];
+
+        for (const b of bridge) {
+          labels.push(b.k);
+          if (b.isResult) {
+            bases.push(Math.min(running, 0));
+            vals.push(Math.abs(running));
+            colors.push(running >= 0 ? COLORS.accent : COLORS.danger);
+          } else {
+            const start = running, end = running + b.v;
+            bases.push(Math.min(start, end));
+            vals.push(Math.abs(b.v));
+            if (b.k === 'Ingresos') colors.push(COLORS.positive);
+            else colors.push(b.v < 0 ? '#EF4444' : COLORS.amber);
+            running = end;
+          }
+        }
+
+        this.charts.pygWaterfall = new Chart(ctx2, {
+          type: 'bar',
+          data: {
+            labels,
+            datasets: [
+              { label:'Base', data: bases, stack:'s', backgroundColor: 'transparent', borderWidth: 0 },
+              { label:'Valor', data: vals, stack:'s', backgroundColor: colors, borderWidth: 0, borderRadius: 3 },
+            ]
+          },
+          options: {
+            responsive: true, maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: (c) => {
+                    if (c.datasetIndex===0) return null;
+                    const orig = bridge[c.dataIndex];
+                    return `${orig.k}: ${this.fmtEUR(orig.isResult ? tot.ebitda : orig.v)}`;
+                  }
+                },
+                filter: (item) => item.datasetIndex !== 0,
+              }
+            },
+            scales: { y:{ ticks:{callback:v=>new Intl.NumberFormat('es-ES',{notation:'compact'}).format(v), font:{size:10}} } }
+          }
+        });
+      }
+    },
+
+    init() {
+      this.useDemo();
+    }
+  };
+}
+</script>
+
+</body>
+</html>
