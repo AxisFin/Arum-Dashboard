@@ -1766,7 +1766,7 @@ template { display: none; }
                 <td class="py-2.5 pr-4 pl-2 text-right text-slate-500" x-text="r.count"></td>
               </tr>
             </template></tbody>
-          <tfoot x-show="agingSorted().length &gt; 0">
+          <tfoot x-show="agingSorted().length &gt; 0" style="">
             <tr style="background:rgba(248,250,252,0.9);border-top:1px solid rgba(15,23,42,.08)">
               <td colspan="3" class="py-2 pl-4 text-[11px] font-semibold text-slate-500" x-text="agingSorted().length + ' clientes'">21 clientes</td>
               <td class="py-2 px-2 text-right text-[11px] font-semibold text-red-600" x-text="fmtEUR(agingSorted().reduce((a,r)=&gt;a+r.amount,0))">73.249&nbsp;€</td>
@@ -1833,7 +1833,7 @@ function dashboard() {
   const _pygCalcCache = new Map();
 
   // ── Viewer state snapshot (injected by exportHTML) ─────
-  const _viewerSnap = {"tab":"facturacion","filters":{"year":2026,"period":"ytd","month":4,"monthFrom":1,"monthTo":4,"bu":"__ALL__","client":"__ALL__","naturaleza":"__ALL__"},"activePreset":"ytd","selectedMonths":[1,2,3,4],"showYoY":true,"detailTopN":5,"showAccountSubtotals":true,"pygDetailLevel":"cfo","pygTopN":6,"pygExpanded":{"10":false,"01":true,"02":true,"04":false,"05":false,"06":false,"07":false},"periodSort":{"col":"revenue","dir":-1},"periodTopN":10,"bgtTableSort":{"col":"dev_eur","dir":-1,"show":"all"},"bgtTableN":0,"agingSort":{"col":"amount","dir":-1},"bgt":{"closedMonth":3,"bu":"__ALL__","view":"bu_summary","activeBU":null,"drillClient":null}};
+  const _viewerSnap = {"tab":"facturacion","filters":{"year":2026,"period":"ytd","month":4,"monthFrom":1,"monthTo":4,"monthSet":null,"bu":"__ALL__","client":"__ALL__","naturaleza":"__ALL__"},"activePreset":"ytd","selectedMonths":[1,2,3,4],"showYoY":true,"detailTopN":5,"showAccountSubtotals":true,"pygDetailLevel":"cfo","pygTopN":6,"pygExpanded":{"10":false,"01":true,"02":true,"04":false,"05":false,"06":false,"07":false},"periodSort":{"col":"revenue","dir":-1},"periodTopN":10,"bgtTableSort":{"col":"dev_eur","dir":-1,"show":"all"},"bgtTableN":0,"agingSort":{"col":"amount","dir":-1},"bgt":{"closedMonth":3,"bu":"__ALL__","view":"bu_summary","activeBU":null,"drillClient":null}};
 
   // ── Export buffer (module-level, outside Alpine state) ───────
   // Populated by onFile(); read by exportHTML() and viewer boot.
@@ -1855,10 +1855,11 @@ function dashboard() {
     // Filters
     filters: {
       year: 2025,
-      period: 'ytd',       // ytd | fy | month | range
+      period: 'ytd',       // ytd | fy | month | range | set
       month: (new Date()).getMonth()+1,
-      monthFrom: 1,        // used when period='range'
+      monthFrom: 1,        // used when period='range' or 'set' (min of set)
       monthTo:   (new Date()).getMonth()+1,
+      monthSet:  null,     // Array<number> | null — exact month list for period='set'
       bu: '__ALL__',
       client: '__ALL__',
       naturaleza: '__ALL__', // Publico | Privado | __ALL__
@@ -1961,7 +1962,7 @@ function dashboard() {
       }
     },
 
-    async loadWorkbook(wb) {
+    async loadWorkbook(wb, { skipBootstrap = false } = {}) {
       const pick = (names) => names.find(n => wb.SheetNames.includes(n))||null;
       const toJson = (name) => XLSX.utils.sheet_to_json(wb.Sheets[name], {defval:null});
 
@@ -2019,7 +2020,20 @@ function dashboard() {
       _pygAggCache.clear();
       _pygCalcCache.clear();
 
-      this.bootstrapFilters();
+      // skipBootstrap=true in viewer mode: caller will apply the snapshotted filter
+      // state AFTER this call completes, so we must NOT overwrite it here.
+      if (!skipBootstrap) {
+        this.bootstrapFilters();
+      } else {
+        // Still need dimension lists (businessUnits, clients) built from real data
+        this.businessUnits = Array.from(new Set(
+          this.fact.map(r => r.__bu).filter(Boolean)
+        )).sort();
+        this.clients = Array.from(new Set(
+          this.fact.map(r => r.__cliente).filter(Boolean)
+        )).sort();
+      }
+
       this.refreshAll();
       this.dataStatus = 'Datos cargados ✔';
       // Show export button only when real data has been loaded (not demo, not viewer)
@@ -2795,18 +2809,15 @@ function dashboard() {
       this._monthPickerApply();
     },
 
-    // Derives filters.period / monthFrom / monthTo / activePreset from selectedMonths
+    // Derives filters.period / monthSet / activePreset from selectedMonths
     // and triggers a full refresh.
-    // NOTE: The underlying factFilteredRows engine filters by a continuous range
-    // [monthFrom..monthTo]. If non-contiguous months are selected (e.g. Jan + Mar),
-    // the range will include the gap months. This is a known engine limitation.
+    // Uses period:'set' for exact month membership — no implicit range expansion.
     _monthPickerApply() {
       const sel = this.selectedMonths;
 
       if (sel.length === 0) {
         // User explicitly deselected everything — honour it, show empty state.
-        // Do NOT restore silently; that caused months to reappear (bug fix).
-        Object.assign(this.filters, { period: 'range', monthFrom: 0, monthTo: 0 });
+        Object.assign(this.filters, { period: 'set', monthSet: [], monthFrom: 0, monthTo: 0 });
         this.activePreset = 'custom';
         this.refreshAll();
         return;
@@ -2817,10 +2828,15 @@ function dashboard() {
 
       if (sel.length === 12) {
         // All months → Año completo
-        Object.assign(this.filters, { period: 'fy', monthFrom: 1, monthTo: 12 });
+        Object.assign(this.filters, { period: 'fy', monthSet: null, monthFrom: 1, monthTo: 12 });
         this.activePreset = 'fy';
+      } else if (sel.length === mt - mf + 1) {
+        // Contiguous range — use 'range' for backward compatibility with other callers
+        Object.assign(this.filters, { period: 'range', monthSet: null, monthFrom: mf, monthTo: mt });
+        this.activePreset = 'custom';
       } else {
-        Object.assign(this.filters, { period: 'range', monthFrom: mf, monthTo: mt });
+        // Non-contiguous — use 'set' for exact membership filtering
+        Object.assign(this.filters, { period: 'set', monthSet: [...sel], monthFrom: mf, monthTo: mt });
         this.activePreset = 'custom';
       }
 
@@ -3038,12 +3054,14 @@ function dashboard() {
     },
 
     // ── Filtering helpers ────────────────────────────────────────
-    factFilteredRows({ year=null, period=null, month=null, monthFrom=null, monthTo=null, bu=null, client=null, naturaleza=null }={}) {
+    factFilteredRows({ year=null, period=null, month=null, monthFrom=null, monthTo=null, monthSet=null, bu=null, client=null, naturaleza=null }={}) {
       const Y   = year       ?? this.filters.year;
       const P   = period     ?? this.filters.period;
       const M   = month      ?? this.filters.month;
       const MF  = monthFrom  ?? this.filters.monthFrom;
       const MT  = monthTo    ?? this.filters.monthTo;
+      // 'set' period: exact list of months to include (non-contiguous support)
+      const MS  = monthSet   ?? this.filters.monthSet ?? null;
       const BU  = bu         ?? this.filters.bu;
       const C   = client     ?? this.filters.client;
       const NAT = naturaleza ?? this.filters.naturaleza;
@@ -3069,6 +3087,8 @@ function dashboard() {
         if (P === 'ytd'   && r.__month > nowM) return false;
         if (P === 'month' && r.__month !== M)  return false;
         if (P === 'range' && (r.__month < MF || r.__month > MT)) return false;
+        // 'set': exact membership check — respects non-contiguous selections
+        if (P === 'set'   && !(MS && MS.includes(r.__month))) return false;
         if (BU  !== '__ALL__' && r.__bu        !== BU)  return false;
         if (C   !== '__ALL__' && r.__cliente   !== C)   return false;
         if (NAT !== '__ALL__' && r.__naturaleza !== NAT) return false;
@@ -3541,13 +3561,10 @@ function dashboard() {
         try { this.charts[key].destroy(); } catch(_) {}
         this.charts[key] = null;
       }
-      // Scrub the canvas: replace it with a clean clone so Chart.js has
-      // no residual state attached to the DOM element.
-      const el = document.getElementById(key);
-      if (el) {
-        const clone = el.cloneNode(false); // shallow — no children, no event listeners
-        el.parentNode.replaceChild(clone, el);
-      }
+      // NOTE: Do NOT replace the canvas with cloneNode — Alpine manages the DOM
+      // and a replaced canvas may end up detached or with height:0 after Alpine's
+      // next reactive cycle. Chart.js.destroy() fully cleans its internal state;
+      // the canvas element itself is safe to reuse immediately after.
     },
 
     // Schedule chart rendering after Alpine has finished its current
@@ -3594,7 +3611,10 @@ function dashboard() {
     _doRefreshFacturacion() {
       const year = this.filters.year;
 
-      // Monthly series current year
+      // Monthly series current year — use full year (fy) to build the 12-bar chart,
+      // but highlight/mark only selected months via the filter period for KPIs.
+      // The line chart always shows all 12 months for context; bars outside the
+      // selected set are grayed out via point styling.
       const rowsCurr = this.factFilteredRows({year, period:'fy'});
       const series = Array(12).fill(0);
       for (const r of rowsCurr) { if (r.__month>=1&&r.__month<=12) series[r.__month-1]+=r.__total; }
@@ -3604,6 +3624,26 @@ function dashboard() {
       const prev = Array(12).fill(0);
       for (const r of rowsPrev) { if (r.__month>=1&&r.__month<=12) prev[r.__month-1]+=r.__total; }
 
+      // Determine which months are "active" (in the current selection)
+      // to visually distinguish selected vs non-selected months on the chart.
+      const activeMths = new Set(
+        this.filters.period === 'fy'    ? [1,2,3,4,5,6,7,8,9,10,11,12] :
+        this.filters.period === 'ytd'   ? Array.from({length:(new Date()).getMonth()+1},(_,i)=>i+1) :
+        this.filters.period === 'month' ? [this.filters.month] :
+        this.filters.period === 'set'   ? (this.filters.monthSet || []) :
+        this.filters.period === 'range' ? Array.from({length: this.filters.monthTo - this.filters.monthFrom + 1}, (_,i) => this.filters.monthFrom + i) :
+        [1,2,3,4,5,6,7,8,9,10,11,12]
+      );
+
+      // Point colors: accent for selected months, transparent for others
+      const pointColors = series.map((_, i) =>
+        activeMths.has(i + 1) ? COLORS.accent : 'rgba(0,0,0,0)'
+      );
+      const pointBorderColors = series.map((_, i) =>
+        activeMths.has(i + 1) ? COLORS.accent : 'rgba(148,163,184,0.4)'
+      );
+      const pointRadii = series.map((_, i) => activeMths.has(i + 1) ? 3 : 2);
+
       // ── Fact line chart ──
       this._destroyChart('factLine');
       const ctx = document.getElementById('factLine');
@@ -3611,7 +3651,11 @@ function dashboard() {
         const datasets = [{
           label: String(year), data: series,
           borderColor: COLORS.accent, backgroundColor: COLORS.accent+'22',
-          tension: .35, borderWidth: 2, pointRadius: 3, fill: true,
+          tension: .35, borderWidth: 2,
+          pointRadius: pointRadii,
+          pointBackgroundColor: pointColors,
+          pointBorderColor: pointBorderColors,
+          fill: true,
         }];
         if (this.showYoY) datasets.push({
           label: String(year-1), data: prev,
@@ -3632,12 +3676,14 @@ function dashboard() {
         });
       }
 
-      // ── Revenue por BU (bar) ──
+      // ── Revenue por BU (bar) — uses active filter period, not forced fy ──
       this._destroyChart('buBar');
       const ctx2 = document.getElementById('buBar');
       if (ctx2) {
+        // buBar reflects the current filter selection (not always fy)
+        const rowsBU = this.factFilteredRows();
         const buRevenue = new Map();
-        for (const r of rowsCurr) {
+        for (const r of rowsBU) {
           const bu = r.__bu||'Sin BU';
           buRevenue.set(bu, (buRevenue.get(bu)||0)+r.__total);
         }
@@ -3879,44 +3925,52 @@ function dashboard() {
       );
 
       // ── 7. Replace init() to boot from embedded data ─────────────
+      // CRITICAL SEQUENCE:
+      //   (a) loadWorkbook(wb, {skipBootstrap:true}) — parses data, builds dimension
+      //       lists, but does NOT call bootstrapFilters() which would overwrite snap.
+      //   (b) Apply _viewerSnap AFTER loadWorkbook resolves — snap wins over defaults.
+      //   (c) refreshAll() with the correct state already in place.
       out = out.replace(
         'init() {\n      this.useDemo();\n    }',
         [
           'init() {',
           '      // ── Viewer auto-start (injected by exportHTML) ──────────',
           '      if (_xlsxBuffer) {',
-          '        // Hide export button in viewer (data already embedded)',
+          '        // Hide export button — data already embedded',
           '        const expBtn = document.getElementById(\'exportHTMLBtn\');',
           '        if (expBtn) expBtn.style.display = \'none\';',
-          '        // Apply snapshotted UI state before rendering',
-          '        if (typeof _viewerSnap !== \'undefined\') {',
-          '          try {',
-          '            this.tab             = _viewerSnap.tab;',
-          '            this.activePreset    = _viewerSnap.activePreset;',
-          '            this.selectedMonths  = _viewerSnap.selectedMonths;',
-          '            this.showYoY         = _viewerSnap.showYoY;',
-          '            this.detailTopN      = _viewerSnap.detailTopN;',
-          '            this.showAccountSubtotals = _viewerSnap.showAccountSubtotals;',
-          '            this.pygDetailLevel  = _viewerSnap.pygDetailLevel;',
-          '            this.pygTopN         = _viewerSnap.pygTopN;',
-          '            this.pygExpanded     = _viewerSnap.pygExpanded;',
-          '            this.periodSort      = _viewerSnap.periodSort;',
-          '            this.periodTopN      = _viewerSnap.periodTopN;',
-          '            this.bgtTableSort    = _viewerSnap.bgtTableSort;',
-          '            this.bgtTableN       = _viewerSnap.bgtTableN;',
-          '            this.agingSort       = _viewerSnap.agingSort;',
-          '            Object.assign(this.filters, _viewerSnap.filters);',
-          '            Object.assign(this.bgt, _viewerSnap.bgt);',
-          '          } catch(e) { console.warn(\'viewer snap restore:\', e); }',
-          '        }',
-          '        // Boot from embedded workbook',
           '        const tryBoot = () => {',
           '          if (typeof XLSX === \'undefined\') { setTimeout(tryBoot, 80); return; }',
           '          try {',
           '            const wb = XLSX.read(_xlsxBuffer, {type:\'array\', cellDates:true});',
           '            this.fileLabel  = _xlsxFilename;',
-          '            this.dataStatus = \'Viewer · datos embebidos\';',
-          '            this.loadWorkbook(wb).then(() => {',
+          '            this.dataStatus = \'Viewer · cargando…\';',
+          '            // skipBootstrap:true — we apply snap state after parse, not bootstrapFilters()',
+          '            this.loadWorkbook(wb, { skipBootstrap: true }).then(() => {',
+          '              // Apply snapshotted UI state NOW — after data is parsed,',
+          '              // so bootstrapFilters() cannot overwrite it.',
+          '              if (typeof _viewerSnap !== \'undefined\') {',
+          '                try {',
+          '                  this.tab              = _viewerSnap.tab;',
+          '                  this.activePreset     = _viewerSnap.activePreset;',
+          '                  this.selectedMonths   = _viewerSnap.selectedMonths;',
+          '                  this.showYoY          = _viewerSnap.showYoY;',
+          '                  this.detailTopN       = _viewerSnap.detailTopN;',
+          '                  this.showAccountSubtotals = _viewerSnap.showAccountSubtotals;',
+          '                  this.pygDetailLevel   = _viewerSnap.pygDetailLevel;',
+          '                  this.pygTopN          = _viewerSnap.pygTopN;',
+          '                  this.pygExpanded      = _viewerSnap.pygExpanded;',
+          '                  this.periodSort       = _viewerSnap.periodSort;',
+          '                  this.periodTopN       = _viewerSnap.periodTopN;',
+          '                  this.bgtTableSort     = _viewerSnap.bgtTableSort;',
+          '                  this.bgtTableN        = _viewerSnap.bgtTableN;',
+          '                  this.agingSort        = _viewerSnap.agingSort;',
+          '                  Object.assign(this.filters, _viewerSnap.filters);',
+          '                  Object.assign(this.bgt,     _viewerSnap.bgt);',
+          '                } catch(e) { console.warn(\'viewer snap restore:\', e); }',
+          '              }',
+          '              // Re-render with the correct snapshotted state',
+          '              this.refreshAll();',
           '              this.dataStatus = \'Viewer · \' + _xlsxFilename;',
           '            }).catch(e => {',
           '              console.error(\'viewer boot:\', e);',
@@ -3954,38 +4008,41 @@ function dashboard() {
     init() {
       // ── Viewer auto-start (injected by exportHTML) ──────────
       if (_xlsxBuffer) {
-        // Hide export button in viewer (data already embedded)
+        // Hide export button — data already embedded
         const expBtn = document.getElementById('exportHTMLBtn');
         if (expBtn) expBtn.style.display = 'none';
-        // Apply snapshotted UI state before rendering
-        if (typeof _viewerSnap !== 'undefined') {
-          try {
-            this.tab             = _viewerSnap.tab;
-            this.activePreset    = _viewerSnap.activePreset;
-            this.selectedMonths  = _viewerSnap.selectedMonths;
-            this.showYoY         = _viewerSnap.showYoY;
-            this.detailTopN      = _viewerSnap.detailTopN;
-            this.showAccountSubtotals = _viewerSnap.showAccountSubtotals;
-            this.pygDetailLevel  = _viewerSnap.pygDetailLevel;
-            this.pygTopN         = _viewerSnap.pygTopN;
-            this.pygExpanded     = _viewerSnap.pygExpanded;
-            this.periodSort      = _viewerSnap.periodSort;
-            this.periodTopN      = _viewerSnap.periodTopN;
-            this.bgtTableSort    = _viewerSnap.bgtTableSort;
-            this.bgtTableN       = _viewerSnap.bgtTableN;
-            this.agingSort       = _viewerSnap.agingSort;
-            Object.assign(this.filters, _viewerSnap.filters);
-            Object.assign(this.bgt, _viewerSnap.bgt);
-          } catch(e) { console.warn('viewer snap restore:', e); }
-        }
-        // Boot from embedded workbook
         const tryBoot = () => {
           if (typeof XLSX === 'undefined') { setTimeout(tryBoot, 80); return; }
           try {
             const wb = XLSX.read(_xlsxBuffer, {type:'array', cellDates:true});
             this.fileLabel  = _xlsxFilename;
-            this.dataStatus = 'Viewer · datos embebidos';
-            this.loadWorkbook(wb).then(() => {
+            this.dataStatus = 'Viewer · cargando…';
+            // skipBootstrap:true — we apply snap state after parse, not bootstrapFilters()
+            this.loadWorkbook(wb, { skipBootstrap: true }).then(() => {
+              // Apply snapshotted UI state NOW — after data is parsed,
+              // so bootstrapFilters() cannot overwrite it.
+              if (typeof _viewerSnap !== 'undefined') {
+                try {
+                  this.tab              = _viewerSnap.tab;
+                  this.activePreset     = _viewerSnap.activePreset;
+                  this.selectedMonths   = _viewerSnap.selectedMonths;
+                  this.showYoY          = _viewerSnap.showYoY;
+                  this.detailTopN       = _viewerSnap.detailTopN;
+                  this.showAccountSubtotals = _viewerSnap.showAccountSubtotals;
+                  this.pygDetailLevel   = _viewerSnap.pygDetailLevel;
+                  this.pygTopN          = _viewerSnap.pygTopN;
+                  this.pygExpanded      = _viewerSnap.pygExpanded;
+                  this.periodSort       = _viewerSnap.periodSort;
+                  this.periodTopN       = _viewerSnap.periodTopN;
+                  this.bgtTableSort     = _viewerSnap.bgtTableSort;
+                  this.bgtTableN        = _viewerSnap.bgtTableN;
+                  this.agingSort        = _viewerSnap.agingSort;
+                  Object.assign(this.filters, _viewerSnap.filters);
+                  Object.assign(this.bgt,     _viewerSnap.bgt);
+                } catch(e) { console.warn('viewer snap restore:', e); }
+              }
+              // Re-render with the correct snapshotted state
+              this.refreshAll();
               this.dataStatus = 'Viewer · ' + _xlsxFilename;
             }).catch(e => {
               console.error('viewer boot:', e);
